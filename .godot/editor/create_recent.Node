@@ -1,3 +1,5 @@
+Label
+WorldEnvironment
 Square
 TextureRect
 Panel
@@ -5,7 +7,6 @@ Node
 TextureButton
 Button
 Node2D
-Label
 Sprite2D
 Control
 CanvasLayer

@@ -20,6 +20,7 @@ func _notification(what: int) -> void:
 		if scale != size:
 			scale = size
 
+
 func _ready():
 	sprite.material = sprite.material.duplicate()
 	_update_material_size(size.x, size.y)
