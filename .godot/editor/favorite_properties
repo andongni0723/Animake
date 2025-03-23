@@ -1,0 +1,11 @@
+[Control]
+
+properties=PackedStringArray("size", "rotation", "scale", "position")
+
+[CanvasItem]
+
+properties=PackedStringArray("modulate", "self_modulate")
+
+[Node2D]
+
+properties=PackedStringArray("position", "rotation", "scale")

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_圖層_2" data-name="圖層 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 322.13 60">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g id="_圖層_1-2" data-name="圖層 1">
+    <path class="cls-1" d="M114.13,50h-8V30s0-12,16-12,16,0,16,0v8h-16s-8,0-8,8"/>
+    <rect class="cls-1" x="130.13" y="30" width="8" height="20"/>
+    <rect class="cls-1" x="146.13" y="18" width="8" height="32"/>
+    <rect class="cls-1" x="146.13" y="6" width="8" height="8"/>
+    <path class="cls-1" d="M170.13,50h-8V30s0-12,16-12h32v8h-32s-8,0-8,8"/>
+    <rect class="cls-1" x="182.13" y="26" width="8" height="24"/>
+    <rect class="cls-1" x="202.13" y="30" width="8" height="20"/>
+    <path class="cls-1" d="M226.13,34h-8v-4s0-12,16-12,16,0,16,0v8h-16s-8,0-8,8"/>
+    <path class="cls-1" d="M226.13,34h-8v4s0,12,16,12,4,0,4,0v-8h-4s-8,0-8-8"/>
+    <rect class="cls-1" x="242.13" y="30" width="8" height="20"/>
+    <rect class="cls-1" x="258.13" y="10" width="8" height="40"/>
+    <path class="cls-1" d="M298.13,34h-8v-4s0-12,16-12,16,0,16,0v8h-16s-8,0-8,8"/>
+    <path class="cls-1" d="M298.13,34h-8v4s0,12,16,12,16,0,16,0v-8h-16s-8,0-8-8"/>
+    <path class="cls-1" d="M321.87,30s.35,8-7.65,8h-8s-4.35,0-4.35-4,4.35-4,4.35-4h15.65Z"/>
+    <polygon class="cls-1" points="279.95 18 289.95 18 275.95 34 289.95 50 279.95 50 266.1 33.61 279.95 18"/>
+    <path class="cls-1" d="M66.13,50h-8V18s0-12,16-12h24V14h-24s-8,0-8,8"/>
+    <rect class="cls-1" x="90.13" y="18" width="8" height="32"/>
+    <rect class="cls-1" x="66.13" y="30" width="20" height="8"/>
+    <g>
+      <polyline class="cls-1" points="0 28 34 0 45.92 0 12 28"/>
+      <polyline class="cls-1" points="0 32 33.67 60 46.33 60 12 32"/>
+      <polyline class="cls-1" points="46 56 15 30 46 4"/>
+    </g>
+  </g>
+</svg>

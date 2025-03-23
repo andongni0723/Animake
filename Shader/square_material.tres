@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://b2x0jmmgx44ac"]
+
+[ext_resource type="Shader" uid="uid://bala7s070by83" path="res://Shader/rounded.gdshader" id="1_ojf0q"]
+
+[resource]
+shader = ExtResource("1_ojf0q")
+shader_parameter/rounded_radius = 38.216
+shader_parameter/view_width = 400.0
+shader_parameter/view_height = 200.0
+shader_parameter/border_width = 0.0
+shader_parameter/border_color = Vector4(1, 0, 0, 1)

@@ -1,0 +1,169 @@
+[gd_scene load_steps=10 format=3 uid="uid://ddnwwsvd0y3jm"]
+
+[ext_resource type="Script" uid="uid://w85ki6lxi3eo" path="res://Scripts/OtherObject/ui_manager.gd" id="1_g86mt"]
+[ext_resource type="FontFile" uid="uid://cjwnxrcj433s5" path="res://Font/JetBrainsMono-Regular.ttf" id="2_q2uwy"]
+[ext_resource type="Texture2D" uid="uid://bxk7e5117ua8o" path="res://white.png" id="3_5ulvj"]
+[ext_resource type="Script" uid="uid://806ifmr2fpdq" path="res://Scripts/OtherObject/pointer_position_label.gd" id="4_g86mt"]
+[ext_resource type="Shader" uid="uid://bala7s070by83" path="res://Shader/rounded.gdshader" id="5_g86mt"]
+[ext_resource type="Texture2D" uid="uid://c3cb14wy82v0w" path="res://_Assets/Animake-v2/Animake-v2-white.svg" id="6_e304g"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qetym"]
+font = ExtResource("2_q2uwy")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e304g"]
+shader = ExtResource("5_g86mt")
+shader_parameter/rounded_radius = 10.0
+shader_parameter/view_width = 150.0
+shader_parameter/view_height = 60.0
+shader_parameter/border_width = 0.0
+shader_parameter/border_color = Vector4(1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_g86mt"]
+font = ExtResource("2_q2uwy")
+font_size = 40
+
+[node name="Node2D" type="Node2D"]
+
+[node name="UI Manager" type="Node2D" parent="." node_paths=PackedStringArray("_read_file_button", "_reload_file_button")]
+script = ExtResource("1_g86mt")
+_read_file_button = NodePath("../CanvasLayer/Control/Read File Button")
+_reload_file_button = NodePath("../CanvasLayer/Control/Reload File Button")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
+
+[node name="Bounds" type="Node2D" parent="."]
+z_index = -999
+
+[node name="Bound" type="Sprite2D" parent="Bounds"]
+position = Vector2(-1172, 7)
+scale = Vector2(0.148437, 5.125)
+texture = ExtResource("3_5ulvj")
+
+[node name="Bound2" type="Sprite2D" parent="Bounds"]
+position = Vector2(1172, 7)
+scale = Vector2(0.148437, 5.125)
+texture = ExtResource("3_5ulvj")
+
+[node name="Bound3" type="Sprite2D" parent="Bounds"]
+position = Vector2(0, -670)
+rotation = 1.5708
+scale = Vector2(0.144, 9.3)
+texture = ExtResource("3_5ulvj")
+
+[node name="Bound4" type="Sprite2D" parent="Bounds"]
+position = Vector2(0, 670)
+rotation = 1.5708
+scale = Vector2(0.144, 9.3)
+texture = ExtResource("3_5ulvj")
+
+[node name="Background" type="Sprite2D" parent="."]
+modulate = Color(0.0784314, 0.0862745, 0.113725, 1)
+z_index = -1000
+scale = Vector2(10.2031, 6.29)
+texture = ExtResource("3_5ulvj")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Pointer Position Label" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 32.0
+offset_right = 742.0
+offset_bottom = 75.0
+scale = Vector2(0.72, 0.72)
+text = "Pointer Position: (20, 100)"
+label_settings = SubResource("LabelSettings_qetym")
+vertical_alignment = 1
+script = ExtResource("4_g86mt")
+
+[node name="Reload File Button" type="TextureButton" parent="CanvasLayer/Control"]
+self_modulate = Color(0.1863, 0.204435, 0.27, 1)
+material = SubResource("ShaderMaterial_e304g")
+offset_left = 24.0
+offset_top = 144.0
+offset_right = 174.0
+offset_bottom = 187.46
+texture_normal = ExtResource("3_5ulvj")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/Reload File Button"]
+self_modulate = Color(0.360784, 0.647059, 0.878431, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 150.0
+offset_bottom = 44.29
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+text = "Reload File"
+label_settings = SubResource("LabelSettings_g86mt")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Read File Button" type="TextureButton" parent="CanvasLayer/Control"]
+self_modulate = Color(0.1863, 0.204435, 0.27, 1)
+material = SubResource("ShaderMaterial_e304g")
+layout_mode = 0
+offset_left = 24.0
+offset_top = 80.0
+offset_right = 174.0
+offset_bottom = 123.46
+texture_normal = ExtResource("3_5ulvj")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/Read File Button"]
+self_modulate = Color(0.883993, 0.6014, 0.97, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 150.0
+offset_bottom = 44.29
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+text = "Read File"
+label_settings = SubResource("LabelSettings_g86mt")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Logo Background" type="TextureRect" parent="CanvasLayer/Control"]
+self_modulate = Color(0.154, 0.169333, 0.2, 0)
+layout_mode = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 392.0
+offset_bottom = 105.0
+scale = Vector2(0.48, 0.48)
+texture = ExtResource("3_5ulvj")
+expand_mode = 1
+
+[node name="LOGO" type="TextureRect" parent="CanvasLayer/Control/Logo Background"]
+self_modulate = Color(0.83, 0.83, 0.83, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 23.0
+offset_top = 13.0
+offset_right = -23.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.88, 0.88)
+pivot_offset = Vector2(161.782, 30.678)
+texture = ExtResource("6_e304g")
+
+[node name="Anime Node" type="Node2D" parent="."]

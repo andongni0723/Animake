@@ -1,0 +1,7 @@
+res://Scripts/GameManager.gd
+res://main-scene.tscn
+res://Shader/rounded.gdshader
+res://Prefabs/square.tscn
+res://Scripts/Development/square.gd
+res://Scripts/OtherObject/ui_manager.gd
+res://Scripts/game-manager.gd
