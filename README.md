@@ -1,4 +1,3 @@
-![Animake-v2-white](https://github.com/user-attachments/assets/7fb1eb3d-468b-4714-952e-36491add0ce9)
-
+<img src="Animake-v2-white.svg" width=400 alt="Animake Logo">
 <br>
 use code make animation
