@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgm82wpkrhmlj"]
+
+[ext_resource type="Texture2D" uid="uid://bxk7e5117ua8o" path="res://white.png" id="1_q4r68"]
+
+[node name="TextureRect" type="TextureRect"]
+self_modulate = Color(0, 0.607843, 0.0784314, 0.658824)
+offset_left = 11.0
+offset_top = 6.0
+offset_right = 258.0
+offset_bottom = 328.0
+texture = ExtResource("1_q4r68")
+expand_mode = 1

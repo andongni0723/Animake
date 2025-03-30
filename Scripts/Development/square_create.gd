@@ -10,4 +10,4 @@ static func _init() -> void:
 
 
 static func make_square(pos: Vector2) -> Square:
-	return GameManager.spawn(square_detail.basic_square, pos, 0) as Square
+	return Core.spawn(square_detail.basic_square, pos, 0) as Square

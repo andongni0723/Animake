@@ -4,14 +4,12 @@ class_name Square
 
 var radius: float = 0.0:
 	set(value):
-		radius = value
-		sprite.material.set_shader_parameter("rounded_radius", radius)
+		sprite.material.set_shader_parameter("rounded_radius", value)
 
 var size: Vector2 = Vector2.ONE:
 	set(value):
-		size = value
 		scale = value
-		_update_material_size(size.x, size.y)
+		_update_material_size(scale.x, scale.y)
 
 
 func _notification(what: int) -> void:

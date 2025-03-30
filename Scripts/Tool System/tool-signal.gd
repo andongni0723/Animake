@@ -1,0 +1,3 @@
+extends Node
+
+signal rect_tool_left_click

@@ -1,11 +1,19 @@
-[gd_scene load_steps=11 format=3 uid="uid://ddnwwsvd0y3jm"]
+[gd_scene load_steps=22 format=3 uid="uid://ddnwwsvd0y3jm"]
 
 [ext_resource type="Script" uid="uid://w85ki6lxi3eo" path="res://Scripts/OtherObject/ui_manager.gd" id="1_g86mt"]
+[ext_resource type="Script" uid="uid://bhae2k1rp6e5i" path="res://Scripts/hint-manager.gd" id="1_i1fv3"]
 [ext_resource type="FontFile" uid="uid://cjwnxrcj433s5" path="res://Font/JetBrainsMono-Regular.ttf" id="2_q2uwy"]
 [ext_resource type="Texture2D" uid="uid://bxk7e5117ua8o" path="res://white.png" id="3_5ulvj"]
 [ext_resource type="Script" uid="uid://806ifmr2fpdq" path="res://Scripts/OtherObject/pointer_position_label.gd" id="4_g86mt"]
 [ext_resource type="Shader" uid="uid://bala7s070by83" path="res://Shader/rounded.gdshader" id="5_g86mt"]
 [ext_resource type="Texture2D" uid="uid://c3cb14wy82v0w" path="res://_Assets/Animake-v2/Animake-v2-white.svg" id="6_e304g"]
+[ext_resource type="Texture2D" uid="uid://f3lkte1vv623" path="res://out square.png" id="6_jvpjp"]
+[ext_resource type="Script" uid="uid://c6f0p3ybhm3dp" path="res://Scripts/OtherObject/current_tool_label.gd" id="7_p0wft"]
+[ext_resource type="PackedScene" uid="uid://2cea68gkwesg" path="res://Prefabs/error_hint_bar.tscn" id="8_ikad4"]
+[ext_resource type="Script" uid="uid://h6bfv4ois6dq" path="res://Scripts/OtherObject/mouse_line.gd" id="8_t871u"]
+[ext_resource type="Script" uid="uid://k185mhxc8slw" path="res://Scripts/Tool System/rect-tool.gd" id="10_libv1"]
+[ext_resource type="PackedScene" uid="uid://c7xn57xcmpm0a" path="res://Prefabs/rect_tool_square.tscn" id="11_pc8c5"]
+[ext_resource type="PackedScene" uid="uid://cgm82wpkrhmlj" path="res://Prefabs/rect_tool_ui_square.tscn" id="12_p0wft"]
 
 [sub_resource type="Environment" id="Environment_e304g"]
 background_mode = 3
@@ -17,11 +25,11 @@ glow_bloom = 1.0
 [sub_resource type="LabelSettings" id="LabelSettings_qetym"]
 font = ExtResource("2_q2uwy")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_e304g"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t871u"]
 shader = ExtResource("5_g86mt")
 shader_parameter/rounded_radius = 10.0
 shader_parameter/view_width = 150.0
-shader_parameter/view_height = 60.0
+shader_parameter/view_height = 43.0
 shader_parameter/border_width = 0.0
 shader_parameter/border_color = Vector4(1, 0, 0, 1)
 
@@ -29,15 +37,42 @@ shader_parameter/border_color = Vector4(1, 0, 0, 1)
 font = ExtResource("2_q2uwy")
 font_size = 40
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jvpjp"]
+shader = ExtResource("5_g86mt")
+shader_parameter/rounded_radius = 10.0
+shader_parameter/view_width = 150.0
+shader_parameter/view_height = 43.0
+shader_parameter/border_width = 0.0
+shader_parameter/border_color = Vector4(1, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e304g"]
+shader = ExtResource("5_g86mt")
+shader_parameter/rounded_radius = 10.0
+shader_parameter/view_width = 60.0
+shader_parameter/view_height = 60.0
+shader_parameter/border_width = 0.0
+shader_parameter/border_color = Vector4(1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_p0wft"]
+font = ExtResource("2_q2uwy")
+font_size = 25
+
 [node name="Node2D" type="Node2D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_e304g")
 
-[node name="UI Manager" type="Node2D" parent="." node_paths=PackedStringArray("_read_file_button", "_reload_file_button")]
+[node name="Hint Manager" type="Node2D" parent="."]
+script = ExtResource("1_i1fv3")
+
+[node name="UI Manager" type="Node2D" parent="." node_paths=PackedStringArray("_read_file_button", "_reload_file_button", "_canvas", "_world_canvas", "_rect_tool_button")]
 script = ExtResource("1_g86mt")
-_read_file_button = NodePath("../CanvasLayer/Control/Read File Button")
-_reload_file_button = NodePath("../CanvasLayer/Control/Reload File Button")
+_read_file_button = NodePath("../Canvas/Control/Read File Button")
+_reload_file_button = NodePath("../Canvas/Control/Reload File Button")
+_canvas = NodePath("../Canvas")
+_world_canvas = NodePath("../World Canvas")
+_hint_bar = ExtResource("8_ikad4")
+_rect_tool_button = NodePath("../Canvas/Control/Rect Line Button")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
@@ -72,15 +107,16 @@ modulate = Color(0.0784314, 0.0862745, 0.113725, 1)
 z_index = -1000
 scale = Vector2(10.2031, 6.29)
 texture = ExtResource("3_5ulvj")
+metadata/_edit_lock_ = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Canvas" type="CanvasLayer" parent="."]
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="Control" type="Control" parent="Canvas"]
 layout_mode = 3
 anchors_preset = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="Pointer Position Label" type="Label" parent="CanvasLayer/Control"]
+[node name="Pointer Position Label" type="Label" parent="Canvas/Control"]
 layout_mode = 0
 offset_left = 192.0
 offset_top = 24.0
@@ -92,9 +128,21 @@ label_settings = SubResource("LabelSettings_qetym")
 vertical_alignment = 1
 script = ExtResource("4_g86mt")
 
-[node name="Read File Button" type="TextureButton" parent="CanvasLayer/Control"]
+[node name="Pointer Position Label2" type="Label" parent="Canvas/Control"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 64.0
+offset_right = 710.0
+offset_bottom = 107.0
+scale = Vector2(0.72, 0.72)
+text = "Current Tool: None"
+label_settings = SubResource("LabelSettings_qetym")
+vertical_alignment = 1
+script = ExtResource("7_p0wft")
+
+[node name="Read File Button" type="TextureButton" parent="Canvas/Control"]
 self_modulate = Color(0.1863, 0.204435, 0.27, 1)
-material = SubResource("ShaderMaterial_e304g")
+material = SubResource("ShaderMaterial_t871u")
 layout_mode = 0
 offset_left = 24.0
 offset_top = 80.0
@@ -104,7 +152,7 @@ texture_normal = ExtResource("3_5ulvj")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/Read File Button"]
+[node name="Label" type="Label" parent="Canvas/Control/Read File Button"]
 self_modulate = Color(1.2, 0.6, 1, 1)
 layout_mode = 1
 anchors_preset = 15
@@ -120,19 +168,20 @@ label_settings = SubResource("LabelSettings_g86mt")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Reload File Button" type="TextureButton" parent="CanvasLayer/Control"]
+[node name="Reload File Button" type="TextureButton" parent="Canvas/Control"]
 self_modulate = Color(0.1863, 0.204435, 0.27, 1)
-material = SubResource("ShaderMaterial_e304g")
+material = SubResource("ShaderMaterial_jvpjp")
 layout_mode = 0
 offset_left = 24.0
 offset_top = 144.0
 offset_right = 174.0
 offset_bottom = 187.46
+pivot_offset = Vector2(195, 49)
 texture_normal = ExtResource("3_5ulvj")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/Reload File Button"]
+[node name="Label" type="Label" parent="Canvas/Control/Reload File Button"]
 self_modulate = Color(0.361, 0.647, 1.2, 1)
 layout_mode = 1
 anchors_preset = 15
@@ -149,7 +198,31 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_lock_ = true
 
-[node name="Logo Background" type="TextureRect" parent="CanvasLayer/Control"]
+[node name="Rect Line Button" type="TextureButton" parent="Canvas/Control"]
+self_modulate = Color(0.1863, 0.204435, 0.27, 1)
+material = SubResource("ShaderMaterial_e304g")
+layout_mode = 0
+offset_left = 26.0
+offset_top = 206.0
+offset_right = 86.0
+offset_bottom = 266.0
+texture_normal = ExtResource("3_5ulvj")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="Canvas/Control/Rect Line Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.65, 0.65)
+pivot_offset = Vector2(30, 29)
+texture = ExtResource("6_jvpjp")
+expand_mode = 1
+
+[node name="Logo Background" type="TextureRect" parent="Canvas/Control"]
 self_modulate = Color(0.154, 0.169333, 0.2, 0)
 layout_mode = 0
 offset_left = 8.0
@@ -160,7 +233,7 @@ scale = Vector2(0.48, 0.48)
 texture = ExtResource("3_5ulvj")
 expand_mode = 1
 
-[node name="LOGO" type="TextureRect" parent="CanvasLayer/Control/Logo Background"]
+[node name="LOGO" type="TextureRect" parent="Canvas/Control/Logo Background"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -177,3 +250,75 @@ texture = ExtResource("6_e304g")
 metadata/_edit_lock_ = true
 
 [node name="Anime Node" type="Node2D" parent="."]
+
+[node name="Rect Tool Manager" type="Node2D" parent="." node_paths=PackedStringArray("horizontal_line", "vertical_line", "second_line_parent", "size_x_label", "size_y_label")]
+script = ExtResource("10_libv1")
+square_prefab = ExtResource("11_pc8c5")
+ui_square_prefab = ExtResource("12_p0wft")
+horizontal_line = NodePath("Horizontal Line")
+vertical_line = NodePath("Vertical Line")
+second_line_parent = NodePath("Second Line")
+size_x_label = NodePath("CanvasLayer/Size X Label")
+size_y_label = NodePath("CanvasLayer/Size Y Label")
+metadata/_edit_lock_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Rect Tool Manager"]
+follow_viewport_enabled = true
+
+[node name="Size X Label" type="Label" parent="Rect Tool Manager/CanvasLayer"]
+self_modulate = Color(0.0117647, 1, 0.133333, 1)
+offset_left = 86.0
+offset_top = -64.0
+offset_right = 176.0
+offset_bottom = -30.0
+pivot_offset = Vector2(45, 32)
+text = "222.11"
+label_settings = SubResource("LabelSettings_p0wft")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Size Y Label" type="Label" parent="Rect Tool Manager/CanvasLayer"]
+self_modulate = Color(0.0117647, 1, 0.133333, 1)
+offset_left = -74.0
+offset_top = 69.0
+offset_right = 16.0
+offset_bottom = 103.0
+rotation = -1.5708
+pivot_offset = Vector2(45, 34)
+text = "222.11"
+label_settings = SubResource("LabelSettings_p0wft")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Horizontal Line" type="Sprite2D" parent="Rect Tool Manager"]
+self_modulate = Color(0, 1, 0.129431, 1)
+scale = Vector2(10, 0.01)
+texture = ExtResource("3_5ulvj")
+script = ExtResource("8_t871u")
+lock_x = true
+
+[node name="Vertical Line" type="Sprite2D" parent="Rect Tool Manager"]
+self_modulate = Color(0, 1, 0.129431, 1)
+scale = Vector2(0.01, 5)
+texture = ExtResource("3_5ulvj")
+script = ExtResource("8_t871u")
+lock_y = true
+
+[node name="Second Line" type="Node2D" parent="Rect Tool Manager"]
+visible = false
+
+[node name="Horizontal Line" type="Sprite2D" parent="Rect Tool Manager/Second Line"]
+self_modulate = Color(0, 1, 0.129431, 1)
+scale = Vector2(50, 0.01)
+texture = ExtResource("3_5ulvj")
+
+[node name="Vertical Line" type="Sprite2D" parent="Rect Tool Manager/Second Line"]
+self_modulate = Color(0, 1, 0.129431, 1)
+scale = Vector2(0.01, 50)
+texture = ExtResource("3_5ulvj")
+
+[node name="World Canvas" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="TextureRect" parent="World Canvas" instance=ExtResource("12_p0wft")]
+visible = false

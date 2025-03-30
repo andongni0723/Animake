@@ -1,6 +1,13 @@
+res://Scripts/Development/core.gd
 res://main-scene.tscn
 res://Shader/rounded.gdshader
+res://Scripts/OtherObject/rect_tool_square.gd
 res://Prefabs/square.tscn
-res://Scripts/GameManager.gd
-res://Scripts/Development/square.gd
-res://Scripts/Development/Base/base_object.gd
+res://Prefabs/error_hint_bar.tscn
+res://Prefabs/rect_tool_square.tscn
+res://Scripts/Development/square_create.gd
+res://Scripts/game-manager.gd
+res://Scripts/OtherObject/hint-bar.gd
+res://Scripts/hint-manager.gd
+res://Scripts/Tool System/tool-signal.gd
+res://anime_script.gd

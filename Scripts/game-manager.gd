@@ -1,8 +1,8 @@
-extends Node2D
+extends	Node2D
 
-var mouse_position: Vector2 = Vector2.ZERO
+var	mouse_position:	Vector2	= Vector2.ZERO
 
-var dialog: FileDialog
+var	dialog:	FileDialog
 
 func _ready():
 	_create_file_dialog()
@@ -13,19 +13,6 @@ func _ready():
 func _physics_process(_delta):
 	mouse_position = get_global_mouse_position()
 
-func spawn(prefab: PackedScene, spawn_position: Vector2 = Vector2.ZERO, spawn_rotation: float = 0) -> Node2D:
-	var instance := prefab.instantiate()
-	instance.position = spawn_position
-	instance.rotation = spawn_rotation
-	_get_anime_node().add_child(instance)
-	return instance
- 
-func new_tween(_trans: int = Tween.TRANS_QUART, _ease: int = Tween.EASE_OUT) -> Tween:
-	return get_tree().create_tween().set_trans(_trans).set_ease(_ease)
-
-func timer(_time: float) -> SceneTreeTimer:
-	return get_tree().create_timer(_time)
-
 # 創建檔案對話框
 func _create_file_dialog():
 	dialog = FileDialog.new()
@@ -34,8 +21,8 @@ func _create_file_dialog():
 	
 	# 設定對話框屬性
 	dialog.file_mode = FileDialog.FILE_MODE_OPEN_FILE  # 使用 file_mode 而不是 mode
-	dialog.access = FileDialog.ACCESS_FILESYSTEM
-	dialog.current_path = "/"
+	dialog.access =	FileDialog.ACCESS_FILESYSTEM
+	dialog.current_path	= "/"
 
 	dialog.title = "選擇檔案"
 	dialog.filters = ["*.gd"]  # 只顯示 .gd 檔案
@@ -54,22 +41,32 @@ func _open_file_dialog():
 	_delete_anime_node()
 
 
-
 # 當檔案被選擇時的處理函數
 func _on_file_selected(path):
+	# check	path is .gd	file
+	if not path.ends_with(".gd"):
+		HintManager.call_error_hint("file is not .gd")
+		return
+
 	ResourceLoader.load(path, "", ResourceLoader.CACHE_MODE_IGNORE)
-	var script = load(path).new()
+	var	script = load(path).new()
 	if script:
 		if script.has_method("main"):
-			script.main()
+			var callable = Callable(script, "main")
+			var result = await callable.call()
+			print(result)
 		else:
-			print("warning: don't have main() function in main script")
+			HintManager.call_error_hint("don't have	main() function	in main	script")	
 	else:
-		printerr("error: can't load script file")
+		HintManager.call_error_hint("can't load	script file")
+
+func _call_script(script):
+	script.main()
+
 
 func _reload_file():
 	if not dialog:
-		print("dialog not exist")
+		HintManager.call_error_hint("file dialog is not	exist")
 		return
 
 	_delete_anime_node()
@@ -79,14 +76,14 @@ func _reload_file():
 
 
 func _get_anime_node() -> Node2D:
-	var anime_node := get_node_or_null("/root/Node2D/Anime Node")
+	var	anime_node := get_node_or_null("/root/Node2D/Anime Node")
 	if not anime_node:
 		anime_node = Node2D.new()
 		get_node("/root/Node2D").add_child(anime_node)
-		anime_node.name = "Anime Node"
+		anime_node.name	= "Anime Node"
 		
 	return anime_node
 
 func _delete_anime_node() -> void:
-	var anime_node := get_node_or_null("/root/Node2D/Anime Node")
+	var	anime_node := get_node_or_null("/root/Node2D/Anime Node")
 	if anime_node: anime_node.queue_free()
