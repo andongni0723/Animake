@@ -4,6 +4,8 @@ var	mouse_position:	Vector2	= Vector2.ZERO
 
 var	dialog:	FileDialog
 
+var is_playing: bool = false
+
 func _ready():
 	_create_file_dialog()
 	_open_file_dialog()
@@ -11,6 +13,8 @@ func _ready():
 	UIManager.reload_file_button.pressed.connect(_reload_file)
 
 func _physics_process(_delta):
+	if is_playing:
+		print(is_playing)
 	mouse_position = get_global_mouse_position()
 
 # 創建檔案對話框
@@ -48,13 +52,17 @@ func _on_file_selected(path):
 		HintManager.call_error_hint("file is not .gd")
 		return
 
+	if is_playing:
+		HintManager.call_error_hint("script is playing, please stop it first")
+		return
+
 	ResourceLoader.load(path, "", ResourceLoader.CACHE_MODE_IGNORE)
 	var	script = load(path).new()
 	if script:
 		if script.has_method("main"):
-			var callable = Callable(script, "main")
-			var result = await callable.call()
-			print(result)
+			is_playing = true
+			await script.main()
+			is_playing = false
 		else:
 			HintManager.call_error_hint("don't have	main() function	in main	script")	
 	else:
@@ -67,6 +75,10 @@ func _call_script(script):
 func _reload_file():
 	if not dialog:
 		HintManager.call_error_hint("file dialog is not	exist")
+		return
+
+	if is_playing:
+		HintManager.call_error_hint("script is playing, please stop it first")
 		return
 
 	_delete_anime_node()
