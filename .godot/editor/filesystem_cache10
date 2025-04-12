@@ -1,12 +1,13 @@
 bdbec74c6e5bd72edee867077d70896c
-::res://::1743325934
-Animake-v2-white.svg::CompressedTexture2D/CompressedTexture2D::3329989660588078749::1742733008::1742733787::1::::<><><>0<>0<>5810f01b602f88fc91c0aa4e175a81bd<>res://.godot/imported/Animake-v2-white.svg-0089de9fd1f1af1822559d116b138f29.ctex::
+::res://::1744412585
+animake-v3-white.svg::CompressedTexture2D/CompressedTexture2D::149343099832824973::1743654384::1743657858::1::::<><><>0<>0<>1073863a59e390bc22c8af4a3d668011<>res://.godot/imported/animake-v3-white.svg-feb9b80684034d8ba08ddd03f9fc252e.ctex::
+anime_script.gd::GDScript/GDScript::2229462311001385038::1744283385::0::1::::<>Node2D<><>0<>0<><>::
 circle.png::CompressedTexture2D/CompressedTexture2D::8799004999947954312::1742546546::1742546546::1::::<><><>0<>0<>07eeaa3093c48d9e2b3dbe26540ae68d<>res://.godot/imported/circle.png-10953cad44a8947fbdd4128a631e9e52.ctex::
-export_presets.cfg::TextFile::-1::1743325860::0::1::::<><><>0<>0<><>::
+export_presets.cfg::TextFile/TextFile::-1::1743325997::0::1::::<><><>0<>0<><>::
 icon.svg::CompressedTexture2D/CompressedTexture2D::6251691478570989579::1742546487::1742546492::1::::<><><>0<>0<>54e874519ee78ea92767f6b3644c0e63<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
-main-scene.tscn::PackedScene::7398041532134833310::1743325929::0::1::::<><><>0<>0<><>::uid://w85ki6lxi3eo::::res://Scripts/OtherObject/ui_manager.gd<>uid://bhae2k1rp6e5i::::res://Scripts/hint-manager.gd<>uid://cjwnxrcj433s5::::res://Font/JetBrainsMono-Regular.ttf<>uid://bxk7e5117ua8o::::res://white.png<>uid://806ifmr2fpdq::::res://Scripts/OtherObject/pointer_position_label.gd<>uid://bala7s070by83::::res://Shader/rounded.gdshader<>uid://c3cb14wy82v0w::::res://_Assets/Animake-v2/Animake-v2-white.svg<>uid://f3lkte1vv623::::res://out square.png<>uid://c6f0p3ybhm3dp::::res://Scripts/OtherObject/current_tool_label.gd<>uid://2cea68gkwesg::::res://Prefabs/error_hint_bar.tscn<>uid://h6bfv4ois6dq::::res://Scripts/OtherObject/mouse_line.gd<>uid://k185mhxc8slw::::res://Scripts/Tool System/rect-tool.gd<>uid://c7xn57xcmpm0a::::res://Prefabs/rect_tool_square.tscn<>uid://cgm82wpkrhmlj::::res://Prefabs/rect_tool_ui_square.tscn
+main-scene.tscn::PackedScene::7398041532134833310::1744412585::0::1::::<><><>0<>0<><>::uid://w85ki6lxi3eo::::res://Scripts/OtherObject/ui_manager.gd<>uid://bhae2k1rp6e5i::::res://Scripts/Manager/hint-manager.gd<>uid://cjwnxrcj433s5::::res://Font/JetBrainsMono-Regular.ttf<>uid://bxk7e5117ua8o::::res://white.png<>uid://806ifmr2fpdq::::res://Scripts/OtherObject/pointer_position_label.gd<>uid://bala7s070by83::::res://Shader/rounded.gdshader<>uid://c3cb14wy82v0w::::res://_Assets/Animake-v2/Animake-v2-white.svg<>uid://f3lkte1vv623::::res://out square.png<>uid://c6f0p3ybhm3dp::::res://Scripts/OtherObject/current_tool_label.gd<>uid://2cea68gkwesg::::res://Prefabs/error_hint_bar.tscn<>uid://h6bfv4ois6dq::::res://Scripts/OtherObject/mouse_line.gd<>uid://cixie5v1vsdec::::res://Data/main-theme.tres<>uid://k185mhxc8slw::::res://Scripts/Tool System/rect-tool.gd<>uid://c7xn57xcmpm0a::::res://Prefabs/rect_tool_square.tscn<>uid://b3ay2p3dbd01t::::res://Scripts/OtherObject/anime_object_tree.gd<>uid://cgm82wpkrhmlj::::res://Prefabs/rect_tool_example_square.tscn<>uid://du77iuaovi1m1::::res://Prefabs/Data Panel/data_panel.tscn
 out square.png::CompressedTexture2D/CompressedTexture2D::409433545496432358::1742546546::1742546546::1::::<><><>0<>0<>b6a5bfedf2b7aa07fbd1fe3c09400912<>res://.godot/imported/out square.png-9b9da6efbeed573d0351345497d98806.ctex::
-README.md::TextFile/TextFile::-1::1742733008::0::1::::<><><>0<>0<><>::
+README.md::TextFile/TextFile::-1::1743654492::0::1::::<><><>0<>0<><>::
 triangle.png::CompressedTexture2D/CompressedTexture2D::4668277750740982478::1742546546::1742546546::1::::<><><>0<>0<>efda6c8be79c836a24cb72b55f5ff7a7<>res://.godot/imported/triangle.png-53a0c5b2abae92a9e7f23d30d12f32c2.ctex::
 white.png::CompressedTexture2D/CompressedTexture2D::4023359568942880208::1742546619::1742546619::1::::<><><>0<>0<>4116a34e184b3d386c5d3c1174affb26<>res://.godot/imported/white.png-d8533361663a5f8fe5200e5b5262a62d.ctex::
 ::res://_Assets/::1742699764
@@ -15,47 +16,71 @@ Animake-v2-white.png::CompressedTexture2D/CompressedTexture2D::77149543840511251
 Animake-v2-white.svg::CompressedTexture2D/CompressedTexture2D::6742366450692009124::1742699764::1742699764::1::::<><><>0<>0<>92c2dc809f98e0f35d3e1513254f663a<>res://.godot/imported/Animake-v2-white.svg-14335bb30bff51837f3930e88b3e3874.ctex::
 Animake-v2.png::CompressedTexture2D/CompressedTexture2D::8274382807459383853::1742699764::1742699764::1::::<><><>0<>0<>b2bba5402c5ab7e30d29abe048a7567a<>res://.godot/imported/Animake-v2.png-bd5d66d50ba01a43c9d2c59ac21b8e34.ctex::
 Animake-v2.svg::CompressedTexture2D/CompressedTexture2D::3722895635507980987::1742699764::1742699764::1::::<><><>0<>0<>128c273b194fe3e8db5f6db00dc00f93<>res://.godot/imported/Animake-v2.svg-4d53882aa9d76485d168ed149e491fcc.ctex::
-::res://Data/::1742552948
-SquareDetail.tres::Resource/SquareDetail::1550395523375026530::1742552948::0::1::::<><><>0<>0<><>::uid://yjrwbca2uemi::::res://Prefabs/square.tscn<>uid://b4f1q526j0d6h::::res://Scripts/Resources/square_detail.gd
-::res://Font/::1742547034
-JetbrainMono.tres::FontFile/FontFile::5709916721843002925::1742547034::0::1::::<><><>0<>0<><>::
+::res://Data/::1744413755
+main-theme.tres::Theme/Theme::5382327293303079542::1744361603::0::1::::<><><>0<>0<><>::uid://cjwnxrcj433s5::::res://Font/JetBrainsMono-Regular.ttf
+object_detail.tres::Resource/ObjectDetail::1575002136118921099::1744359580::0::1::::<><><>0<>0<><>::uid://duneobu7gmk3i::::res://Scripts/Resources/object_detail.gd<>uid://ndgogsf27663::::res://Prefabs/empty_object.tscn
+setting_detail.tres::Resource/SettingDetail::8769222410593332009::1744368163::0::1::::<><><>0<>0<><>::uid://c178p6kbo1u3q::::res://Scripts/Resources/setting_property.gd<>uid://bddtlgisx3afg::::res://Scripts/Resources/setting_detail.gd
+square_detail.tres::Resource/SquareDetail::1048876255629620127::1743850215::0::1::::<><><>0<>0<><>::uid://yjrwbca2uemi::::res://Prefabs/square.tscn<>uid://b4f1q526j0d6h::::res://Scripts/Resources/square_detail.gd
+text_detail.tres::Resource/TextDetail::9021242786074853841::1743850135::0::1::::<><><>0<>0<><>::uid://sp4krtx4rym1::::res://Prefabs/text.tscn<>uid://bbdumlosrsdlk::::res://Scripts/Resources/text_detail.gd
+::res://Data/Object Data/::1744421898
+base-object-data.tres::Resource/SettingDetail::5021919432136746152::1744421898::0::1::::<><><>0<>0<><>::uid://c178p6kbo1u3q::::res://Scripts/Resources/setting_property.gd<>uid://bddtlgisx3afg::::res://Scripts/Resources/setting_detail.gd
+base_sprite_data.tres::Resource/SettingDetail::6449042519213642344::1744422215::0::1::::<><><>0<>0<><>::uid://c178p6kbo1u3q::::res://Scripts/Resources/setting_property.gd<>uid://bddtlgisx3afg::::res://Scripts/Resources/setting_detail.gd
+::res://Font/::1743676719
+JetbrainMono.tres::FontFile/FontFile::5709916721843002925::1743676719::0::1::::<><><>0<>0<><>::
 JetBrainsMono-Regular.ttf::FontFile/FontFile::5450788561318952642::1742547028::1742547028::1::::<><><>0<>0<>8f83746700c2e03a851b25e4063ac657<>res://.godot/imported/JetBrainsMono-Regular.ttf-90dbef1d3a9760ef99646cdfc0e87058.fontdata::
-::res://Prefabs/::1743325929
-error_hint_bar.tscn::PackedScene::1899472081195305802::1743325929::0::1::::<><><>0<>0<><>::uid://cjwnxrcj433s5::::res://Font/JetBrainsMono-Regular.ttf<>uid://cm6og5cewvs8m::::res://Scripts/OtherObject/hint-bar.gd
-rect_tool_square.tscn::PackedScene::7067209663254941498::1743325929::0::1::::<><><>0<>0<><>::uid://bxk7e5117ua8o::::res://white.png<>uid://cli7m8pq8hn2c::::res://Scripts/OtherObject/rect_tool_square.gd<>uid://f3lkte1vv623::::res://out square.png
-rect_tool_ui_square.tscn::PackedScene/PackedScene::5220800018622969975::1743217496::0::1::::<><><>0<>0<><>::uid://bxk7e5117ua8o::::res://white.png
-square.tscn::PackedScene::1704183179092083968::1743325929::0::1::::<><><>0<>0<><>::uid://bxk7e5117ua8o::::res://white.png<>uid://cesukmnowo3pu::::res://Scripts/Development/square.gd
-::res://Scripts/::1743293701
-game-manager.gd::GDScript::6689051913089251105::1743324662::0::1::::<>Node2D<><>0<>0<><>::
-hint-manager.gd::GDScript::2878034239757913372::1743221866::0::1::::<>Node2D<><>0<>0<><>::
-::res://Scripts/Development/::1743315892
-core.gd::GDScript::3071107352759250116::1743316692::0::1::::<>Node<><>0<>0<><>::
-node_style_interpreter.gd::GDScript::7468648750782626649::1743299373::0::1::::NodeStyleInterpreter<>RefCounted<><>0<>0<><>::
-square.gd::GDScript::5091988390334523474::1743297866::0::1::::Square<>BaseSprite<><>0<>0<><>::
-square_create.gd::GDScript::3499735545453639569::1743299210::0::1::::SquareCreate<>RefCounted<><>0<>0<><>::
-::res://Scripts/Development/Base/::1742741837
-base_object.gd::GDScript/GDScript::6497395702386882767::1743156208::0::1::::BaseObject<>Node2D<><>0<>0<><>::
-base_sprite.gd::GDScript/GDScript::6063416013206287150::1742551104::0::1::::BaseSprite<>BaseObject<><>0<>0<><>::
-::res://Scripts/Development/Base/IMain/::1742557504
-IMain.gd::GDScript/GDScript::3435177533365270446::1742557394::0::1::::IMain<>Node2D<><>0<>0<><>::
-::res://Scripts/OtherObject/::1743305680
-current_tool_label.gd::GDScript::6960563628447643861::1743295304::0::1::::<>Label<><>0<>0<><>::
-hint-bar.gd::GDScript::5679965533082705214::1743299085::0::1::::<>Control<><>0<>0<><>::
+::res://Prefabs/::1744421898
+empty_object.tscn::PackedScene/PackedScene::919037746839000838::1743851571::0::1::::<><><>0<>0<><>::uid://cjsi4kdd4h6eu::::res://Scripts/Development/empty.gd
+error_hint_bar.tscn::PackedScene/PackedScene::1899472081195305802::1743762719::0::1::::<><><>0<>0<><>::uid://cjwnxrcj433s5::::res://Font/JetBrainsMono-Regular.ttf<>uid://cm6og5cewvs8m::::res://Scripts/OtherObject/hint-bar.gd
+rect_tool_example_square.tscn::PackedScene/PackedScene::5220800018622969975::1744282794::0::1::::<><><>0<>0<><>::uid://bxk7e5117ua8o::::res://white.png
+rect_tool_square.tscn::PackedScene/PackedScene::7067209663254941498::1744282794::0::1::::<><><>0<>0<><>::uid://bxk7e5117ua8o::::res://white.png<>uid://cli7m8pq8hn2c::::res://Scripts/OtherObject/rect_tool_square.gd<>uid://f3lkte1vv623::::res://out square.png
+square.tscn::PackedScene::1704183179092083968::1744421898::0::1::::<><><>0<>0<><>::uid://bxk7e5117ua8o::::res://white.png<>uid://cesukmnowo3pu::::res://Scripts/Development/square.gd
+text.tscn::PackedScene::1296144425857457162::1744412585::0::1::::<><><>0<>0<><>::uid://cixie5v1vsdec::::res://Data/main-theme.tres<>uid://bijrqlrm6n2yy::::res://Scripts/Development/text.gd
+::res://Prefabs/Data Panel/::1744413646
+data_panel.tscn::PackedScene::8631057293221136490::1744412585::0::1::::<><><>0<>0<><>::uid://cixie5v1vsdec::::res://Data/main-theme.tres<>uid://cyjnpnf03bar7::::res://Prefabs/Data Panel/property_item.tscn<>uid://qelukrmebf4n::::res://Scripts/Data Panel/data_panel.gd<>uid://dw642utbjbndx::::res://Data/setting_detail.tres
+property_item.tscn::PackedScene::6476769814000971658::1744413646::0::1::::<><><>0<>0<><>::uid://bye3q8bixmkbc::::res://Scripts/Data Panel/property_item.gd<>uid://cixie5v1vsdec::::res://Data/main-theme.tres
+::res://Scripts/::1744368875
+test.gd::GDScript/GDScript::1454703110961030421::1743675094::0::1::::<>Node2D<><>0<>0<><>::
+::res://Scripts/Data Panel/::1744412291
+data_panel.gd::GDScript::1131983164069079299::1744373035::0::1::::<>PanelContainer<><>0<>0<><>::
+property_item.gd::GDScript::4080940825732118236::1744412581::0::1::::PropertyItem<>HBoxContainer<><>0<>0<><>::
+::res://Scripts/Development/::1743851532
+empty.gd::GDScript/GDScript::5442237813710229056::1743851554::0::1::::EmptyObject<>BaseObject<><>0<>0<><>::
+node_style_interpreter.gd::GDScript/GDScript::7468648750782626649::1743299373::0::1::::NodeStyleInterpreter<>RefCounted<><>0<>0<><>::
+square.gd::GDScript::5091988390334523474::1744413712::0::1::::Square<>BaseSprite<><>0<>0<><>::
+text.gd::GDScript::2967572198769127500::1744413738::0::1::::Text<>BaseObject<><>0<>0<><>::
+::res://Scripts/Development/API/::1743851350
+core.gd::GDScript/GDScript::3071107352759250116::1744283204::0::1::::<>Node<><>0<>0<><>::
+create.gd::GDScript/GDScript::5650428089527952061::1744283287::0::1::::Create<>RefCounted<><>0<>0<><>::
+::res://Scripts/Development/Base/::1744413646
+base_object.gd::GDScript::6497395702386882767::1744422138::0::1::::BaseObject<>Node2D<><>0<>0<><>::
+base_sprite.gd::GDScript::6063416013206287150::1744413642::0::1::::BaseSprite<>BaseObject<><>0<>0<><>::
+tween_wrapper.gd::GDScript/GDScript::7041156323593822749::1743675973::0::1::::TweenWrapper<>RefCounted<><>0<>0<><>::
+::res://Scripts/Manager/::1743850888
+game-manager.gd::GDScript/GDScript::6689051913089251105::1743677231::0::1::::<>Node2D<><>0<>0<><>::
+hint-manager.gd::GDScript/GDScript::2878034239757913372::1743326616::0::1::::<>Node2D<><>0<>0<><>::
+::res://Scripts/OtherObject/::1744421898
+anime_object_tree.gd::GDScript/GDScript::4353214561062401267::1744282794::0::1::::<>Tree<><>0<>0<><>::
+current_tool_label.gd::GDScript/GDScript::6960563628447643861::1743674300::0::1::::<>Label<><>0<>0<><>::
+hint-bar.gd::GDScript::5679965533082705214::1744368889::0::1::::<>Control<><>0<>0<><>::
 mouse_line.gd::GDScript/GDScript::555388410241581826::1743149346::0::1::::<>Sprite2D<><>0<>0<><>::
 pointer_position_label.gd::GDScript/GDScript::2369738078996663594::1742639656::0::1::::<>Label<><>0<>0<><>::
-rect_tool_square.gd::GDScript::5563399799946400084::1743310915::0::1::::<>TextureRect<><>0<>0<><>::
-ui_manager.gd::GDScript::1614118862249338326::1743224033::0::1::::UIManager<>Node2D<><>0<>0<><>::
-::res://Scripts/Resources/::1742552433
+rect_tool_square.gd::GDScript::5563399799946400084::1744421898::0::1::::<>TextureRect<><>0<>0<><>::
+ui_manager.gd::GDScript/GDScript::1614118862249338326::1743224033::0::1::::UIManager<>Node2D<><>0<>0<><>::
+::res://Scripts/Resources/::1744367847
+object_detail.gd::GDScript/GDScript::8590143788610336552::1743850999::0::1::::ObjectDetail<>Resource<><>0<>0<><>::
+setting_detail.gd::GDScript::2604353942813104448::1744368000::0::1::::SettingDetail<>Resource<><>0<>0<><>::
+setting_property.gd::GDScript::6665843481511912424::1744372612::0::1::::SettingProperty<>Resource<><>0<>0<><>::
 square_detail.gd::GDScript/GDScript::4433827871312481321::1742552035::0::1::::SquareDetail<>Resource<><>0<>0<><>::
+text_detail.gd::GDScript/GDScript::2464039030200880876::1743850071::0::1::::TextDetail<>Resource<><>0<>0<><>::
 ::res://Scripts/Tool System/::1743298627
-rect-tool.gd::GDScript::757620134707156508::1743310968::0::1::::<>Node2D<><>0<>0<><>::
-tool-manager.gd::GDScript::3374203195879622438::1743299136::0::1::::<>Node<><>0<>0<><>::
-tool-signal.gd::GDScript::350987564785866708::1743293660::0::1::::<>Node<><>0<>0<><>::
-::res://Scripts/Tool System/Tool State/::1743295049
-base_tool_state.gd::GDScript::6858753551823407124::1743294071::0::1::::BaseToolState<>Node<><>0<>0<><>::
-none_state.gd::GDScript::6186162445659413917::1743294142::0::1::::<>BaseToolState<><>0<>0<><>::
-rect_tool_state.gd::GDScript::2167498339630338032::1743295667::0::1::::<>BaseToolState<><>0<>0<><>::
-::res://Shader/::1743325929
-rounded.gdshader::Shader::2409186969920538422::1743325929::0::1::::<><><>0<>0<><>::
+rect-tool.gd::GDScript/GDScript::757620134707156508::1743310968::0::1::::<>Node2D<><>0<>0<><>::
+tool-manager.gd::GDScript/GDScript::3374203195879622438::1743299136::0::1::::<>Node<><>0<>0<><>::
+tool-signal.gd::GDScript/GDScript::350987564785866708::1744280345::0::1::::<>Node<><>0<>0<><>::
+::res://Scripts/Tool System/Tool State/::1743325935
+base_tool_state.gd::GDScript/GDScript::6858753551823407124::1743294071::0::1::::BaseToolState<>Node<><>0<>0<><>::
+none_state.gd::GDScript/GDScript::6186162445659413917::1743294142::0::1::::<>BaseToolState<><>0<>0<><>::
+rect_tool_state.gd::GDScript/GDScript::2167498339630338032::1743295667::0::1::::<>BaseToolState<><>0<>0<><>::
+::res://Shader/::1744421898
+rounded.gdshader::Shader::2409186969920538422::1744421898::0::1::::<><><>0<>0<><>::
 square_material.tres::ShaderMaterial/ShaderMaterial::4330534796350032270::1743151700::0::1::::<><><>0<>0<><>::uid://bala7s070by83::::res://Shader/rounded.gdshader
 ::res://User/::1742633952

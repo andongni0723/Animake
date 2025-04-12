@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://sp4krtx4rym1"]
+
+[ext_resource type="Theme" uid="uid://cixie5v1vsdec" path="res://Data/main-theme.tres" id="1_1udep"]
+[ext_resource type="Script" uid="uid://bijrqlrm6n2yy" path="res://Scripts/Development/text.gd" id="2_aqmo6"]
+
+[node name="Text" type="Node2D"]
+script = ExtResource("2_aqmo6")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -26.5
+offset_right = 48.0
+offset_bottom = 26.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_1udep")
+text = "Text"

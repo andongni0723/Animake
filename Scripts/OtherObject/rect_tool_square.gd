@@ -21,8 +21,9 @@ func _gui_input(event: InputEvent) -> void:
 		_is_chosen = !_is_chosen
 		_is_drag = false
 		choose_image.visible = _is_chosen
-		choose_image.size = size + Vector2.ONE * 30 
-		choose_image.position = Vector2.ZERO
+		# choose_image.size = size + Vector2.ONE * 30 
+		# choose_image.position = Vector2.ZERO
+		# choose_image.scale = Vector2.ONE * 1.1
 
 	
 func _process(_delta):

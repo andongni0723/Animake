@@ -13,8 +13,6 @@ func _ready():
 	UIManager.reload_file_button.pressed.connect(_reload_file)
 
 func _physics_process(_delta):
-	if is_playing:
-		print(is_playing)
 	mouse_position = get_global_mouse_position()
 
 # 創建檔案對話框
@@ -41,6 +39,10 @@ func _open_file_dialog():
 	if not dialog:
 		_create_file_dialog()
 	
+	if is_playing:
+		HintManager.call_error_hint("script is playing, please stop it first")
+		return
+	
 	dialog.visible = true
 	_delete_anime_node()
 
@@ -50,10 +52,6 @@ func _on_file_selected(path):
 	# check	path is .gd	file
 	if not path.ends_with(".gd"):
 		HintManager.call_error_hint("file is not .gd")
-		return
-
-	if is_playing:
-		HintManager.call_error_hint("script is playing, please stop it first")
 		return
 
 	ResourceLoader.load(path, "", ResourceLoader.CACHE_MODE_IGNORE)

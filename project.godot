@@ -10,18 +10,20 @@ config_version=5
 
 [application]
 
-config/name="Godot_AnimeMake"
+config/name="Godot_Animake"
+config/version="0.3"
+config/tags=PackedStringArray("animake")
 run/main_scene="res://main-scene.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://celwn3yeh6ij"
 
 [autoload]
 
-HintManager="*res://Scripts/hint-manager.gd"
-GameManager="*res://Scripts/game-manager.gd"
+HintManager="*res://Scripts/Manager/hint-manager.gd"
+GameManager="*res://Scripts/Manager/game-manager.gd"
 ToolManager="*res://Scripts/Tool System/tool-manager.gd"
 ToolSignal="*res://Scripts/Tool System/tool-signal.gd"
-Core="*res://Scripts/Development/core.gd"
+Core="*res://Scripts/Development/API/core.gd"
 
 [display]
 

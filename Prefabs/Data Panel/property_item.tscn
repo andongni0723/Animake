@@ -1,0 +1,96 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyjnpnf03bar7"]
+
+[ext_resource type="Script" uid="uid://bye3q8bixmkbc" path="res://Scripts/Data Panel/property_item.gd" id="1_fk3j5"]
+[ext_resource type="Theme" uid="uid://cixie5v1vsdec" path="res://Data/main-theme.tres" id="1_fvka8"]
+
+[node name="Property" type="HBoxContainer" node_paths=PackedStringArray("property_name_label", "property_value_control_dict")]
+offset_right = 215.0
+offset_bottom = 31.0
+script = ExtResource("1_fk3j5")
+property_name_label = NodePath("Name Label")
+property_value_control_dict = {
+0: NodePath("Number"),
+1: NodePath("Vector2"),
+2: NodePath("Boolean"),
+3: NodePath("String")
+}
+
+[node name="Name Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+theme = ExtResource("1_fvka8")
+theme_override_font_sizes/font_size = 16
+text = "Position"
+
+[node name="Number" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="num" type="LineEdit" parent="Number"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme = ExtResource("1_fvka8")
+text = "0.0"
+alignment = 1
+emoji_menu_enabled = false
+virtual_keyboard_type = 3
+
+[node name="String" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="str" type="LineEdit" parent="String"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme = ExtResource("1_fvka8")
+text = "Text"
+alignment = 1
+emoji_menu_enabled = false
+
+[node name="Boolean" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="num" type="LineEdit" parent="Boolean"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme = ExtResource("1_fvka8")
+text = "0.0"
+alignment = 1
+virtual_keyboard_type = 3
+
+[node name="CheckBox" type="CheckBox" parent="Boolean"]
+layout_mode = 2
+
+[node name="Vector2" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="x" type="LineEdit" parent="Vector2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme = ExtResource("1_fvka8")
+text = "0.0"
+alignment = 1
+emoji_menu_enabled = false
+virtual_keyboard_type = 3
+
+[node name="y" type="LineEdit" parent="Vector2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme = ExtResource("1_fvka8")
+text = "0.0"
+alignment = 1
+emoji_menu_enabled = false
+virtual_keyboard_type = 3

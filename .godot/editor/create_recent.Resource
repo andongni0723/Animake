@@ -1,2 +1,6 @@
+SettingDetail
+SettingProperty
+ObjectDetail
+TextDetail
 Resource
 Shader

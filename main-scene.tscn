@@ -1,7 +1,7 @@
-[gd_scene load_steps=22 format=3 uid="uid://ddnwwsvd0y3jm"]
+[gd_scene load_steps=25 format=3 uid="uid://ddnwwsvd0y3jm"]
 
 [ext_resource type="Script" uid="uid://w85ki6lxi3eo" path="res://Scripts/OtherObject/ui_manager.gd" id="1_g86mt"]
-[ext_resource type="Script" uid="uid://bhae2k1rp6e5i" path="res://Scripts/hint-manager.gd" id="1_i1fv3"]
+[ext_resource type="Script" uid="uid://bhae2k1rp6e5i" path="res://Scripts/Manager/hint-manager.gd" id="1_i1fv3"]
 [ext_resource type="FontFile" uid="uid://cjwnxrcj433s5" path="res://Font/JetBrainsMono-Regular.ttf" id="2_q2uwy"]
 [ext_resource type="Texture2D" uid="uid://bxk7e5117ua8o" path="res://white.png" id="3_5ulvj"]
 [ext_resource type="Script" uid="uid://806ifmr2fpdq" path="res://Scripts/OtherObject/pointer_position_label.gd" id="4_g86mt"]
@@ -11,9 +11,12 @@
 [ext_resource type="Script" uid="uid://c6f0p3ybhm3dp" path="res://Scripts/OtherObject/current_tool_label.gd" id="7_p0wft"]
 [ext_resource type="PackedScene" uid="uid://2cea68gkwesg" path="res://Prefabs/error_hint_bar.tscn" id="8_ikad4"]
 [ext_resource type="Script" uid="uid://h6bfv4ois6dq" path="res://Scripts/OtherObject/mouse_line.gd" id="8_t871u"]
+[ext_resource type="Theme" uid="uid://cixie5v1vsdec" path="res://Data/main-theme.tres" id="9_r7pl7"]
 [ext_resource type="Script" uid="uid://k185mhxc8slw" path="res://Scripts/Tool System/rect-tool.gd" id="10_libv1"]
 [ext_resource type="PackedScene" uid="uid://c7xn57xcmpm0a" path="res://Prefabs/rect_tool_square.tscn" id="11_pc8c5"]
-[ext_resource type="PackedScene" uid="uid://cgm82wpkrhmlj" path="res://Prefabs/rect_tool_ui_square.tscn" id="12_p0wft"]
+[ext_resource type="Script" uid="uid://b3ay2p3dbd01t" path="res://Scripts/OtherObject/anime_object_tree.gd" id="12_kudqo"]
+[ext_resource type="PackedScene" uid="uid://cgm82wpkrhmlj" path="res://Prefabs/rect_tool_example_square.tscn" id="12_p0wft"]
+[ext_resource type="PackedScene" uid="uid://du77iuaovi1m1" path="res://Prefabs/Data Panel/data_panel.tscn" id="13_5k8xk"]
 
 [sub_resource type="Environment" id="Environment_e304g"]
 background_mode = 3
@@ -33,10 +36,6 @@ shader_parameter/view_height = 43.0
 shader_parameter/border_width = 0.0
 shader_parameter/border_color = Vector4(1, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_g86mt"]
-font = ExtResource("2_q2uwy")
-font_size = 40
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jvpjp"]
 shader = ExtResource("5_g86mt")
 shader_parameter/rounded_radius = 10.0
@@ -44,6 +43,10 @@ shader_parameter/view_width = 150.0
 shader_parameter/view_height = 43.0
 shader_parameter/border_width = 0.0
 shader_parameter/border_color = Vector4(1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_g86mt"]
+font = ExtResource("2_q2uwy")
+font_size = 40
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e304g"]
 shader = ExtResource("5_g86mt")
@@ -113,8 +116,11 @@ metadata/_edit_lock_ = true
 
 [node name="Control" type="Control" parent="Canvas"]
 layout_mode = 3
-anchors_preset = 0
+anchor_right = 1.01181
+anchor_bottom = 1.03858
+offset_right = 6.4
 metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
 [node name="Pointer Position Label" type="Label" parent="Canvas/Control"]
 layout_mode = 0
@@ -148,6 +154,7 @@ offset_left = 24.0
 offset_top = 80.0
 offset_right = 174.0
 offset_bottom = 123.46
+theme = ExtResource("9_r7pl7")
 texture_normal = ExtResource("3_5ulvj")
 ignore_texture_size = true
 stretch_mode = 0
@@ -163,8 +170,8 @@ offset_bottom = 44.29
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
+theme = ExtResource("9_r7pl7")
 text = "Read File"
-label_settings = SubResource("LabelSettings_g86mt")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -249,6 +256,36 @@ pivot_offset = Vector2(161.782, 30.678)
 texture = ExtResource("6_e304g")
 metadata/_edit_lock_ = true
 
+[node name="VSplitContainer" type="VSplitContainer" parent="Canvas/Control"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -309.0
+offset_top = 37.0
+offset_right = -45.0
+offset_bottom = -51.0001
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("9_r7pl7")
+split_offset = 292
+
+[node name="Node Tree" type="Tree" parent="Canvas/Control/VSplitContainer"]
+layout_mode = 2
+theme = ExtResource("9_r7pl7")
+hide_root = true
+script = ExtResource("12_kudqo")
+
+[node name="Data Panel" parent="Canvas/Control/VSplitContainer" instance=ExtResource("13_5k8xk")]
+layout_mode = 2
+
+[node name="Tree" type="Tree" parent="Canvas/Control"]
+layout_mode = 0
+theme = ExtResource("9_r7pl7")
+hide_root = true
+script = ExtResource("12_kudqo")
+
 [node name="Anime Node" type="Node2D" parent="."]
 
 [node name="Rect Tool Manager" type="Node2D" parent="." node_paths=PackedStringArray("horizontal_line", "vertical_line", "second_line_parent", "size_x_label", "size_y_label")]
@@ -322,3 +359,6 @@ follow_viewport_enabled = true
 
 [node name="TextureRect" parent="World Canvas" instance=ExtResource("12_p0wft")]
 visible = false
+
+[connection signal="button_clicked" from="Canvas/Control/VSplitContainer/Node Tree" to="Canvas/Control/VSplitContainer/Node Tree" method="_on_button_clicked"]
+[connection signal="item_selected" from="Canvas/Control/VSplitContainer/Node Tree" to="Canvas/Control/VSplitContainer/Node Tree" method="_on_item_selected"]

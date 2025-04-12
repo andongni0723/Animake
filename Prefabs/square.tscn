@@ -101,5 +101,6 @@ shader_parameter/border_color = Vector4(1, 0, 0, 1)
 
 [node name="Square" type="Sprite2D"]
 material = SubResource("ShaderMaterial_a4qxm")
+position = Vector2(1, 1)
 texture = ExtResource("1_64vei")
 script = ExtResource("2_r6ij7")

@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="SettingDetail" load_steps=7 format=3 uid="uid://dw642utbjbndx"]
+
+[ext_resource type="Script" uid="uid://c178p6kbo1u3q" path="res://Scripts/Resources/setting_property.gd" id="1_id6a1"]
+[ext_resource type="Script" uid="uid://bddtlgisx3afg" path="res://Scripts/Resources/setting_detail.gd" id="2_xr2gd"]
+
+[sub_resource type="Resource" id="Resource_id6a1"]
+script = ExtResource("1_id6a1")
+name = "Position"
+type = 1
+metadata/_custom_type_script = "uid://c178p6kbo1u3q"
+
+[sub_resource type="Resource" id="Resource_xr2gd"]
+script = ExtResource("1_id6a1")
+name = "Rotation"
+type = 0
+metadata/_custom_type_script = "uid://c178p6kbo1u3q"
+
+[sub_resource type="Resource" id="Resource_feaod"]
+script = ExtResource("1_id6a1")
+name = "Size"
+type = 1
+metadata/_custom_type_script = "uid://c178p6kbo1u3q"
+
+[sub_resource type="Resource" id="Resource_uqry4"]
+script = ExtResource("1_id6a1")
+name = "Border"
+type = 0
+metadata/_custom_type_script = "uid://c178p6kbo1u3q"
+
+[resource]
+script = ExtResource("2_xr2gd")
+properties = Array[ExtResource("1_id6a1")]([SubResource("Resource_id6a1"), SubResource("Resource_xr2gd"), SubResource("Resource_feaod"), SubResource("Resource_uqry4")])
+metadata/_custom_type_script = "uid://bddtlgisx3afg"

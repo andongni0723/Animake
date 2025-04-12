@@ -1,0 +1,21 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://cixie5v1vsdec"]
+
+[ext_resource type="FontFile" uid="uid://cjwnxrcj433s5" path="res://Font/JetBrainsMono-Regular.ttf" id="1_u1qfm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l85k6"]
+bg_color = Color(0.164706, 0.176471, 0.235294, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u1qfm"]
+bg_color = Color(0.176471, 0.192157, 0.25098, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gp6gw"]
+bg_color = Color(0.103995, 0.110188, 0.133412, 1)
+
+[resource]
+default_font = ExtResource("1_u1qfm")
+Label/font_sizes/font_size = 40
+Label/fonts/font = ExtResource("1_u1qfm")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_l85k6")
+Tree/styles/panel = SubResource("StyleBoxFlat_u1qfm")
+VBoxContainer/constants/separation = 11
+VSplitContainer/styles/split_bar_background = SubResource("StyleBoxFlat_gp6gw")
