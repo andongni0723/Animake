@@ -1,27 +1,19 @@
-res://main-scene.tscn
+res://Scripts/Data Panel/data_panel.gd
+res://Scripts/Data Panel/property_item.gd
+res://Scripts/Resources/setting_property.gd
+res://Prefabs/Data Panel/property_item.tscn
 res://Shader/rounded.gdshader
 res://Data/main-theme.tres
 res://Scripts/OtherObject/rect_tool_square.gd
-res://Data/object_detail.tres
-res://Prefabs/text.tscn
-res://Prefabs/square.tscn
-res://Prefabs/Data Panel/property_item.tscn
-res://Prefabs/Data Panel/data_panel.tscn
-res://Prefabs/Data Panel/property_item.gd
-res://Scripts/Resources/setting_detail.gd
-res://Scripts/Resources/setting_property.gd
-res://Data/setting_detail.tres
-res://Scripts/OtherObject/hint-bar.gd
-res://Scripts/Data Panel/data_panel.gd
-res://Scripts/Data Panel/property_item.gd
-res://Scripts/Development/Base/base_object.gd
-res://Scripts/Development/Base/base_sprite.gd
-res://Scripts/Development/square.gd
-res://Scripts/Development/text.gd
-res://Data/Object Data/base-object-data.tres
+res://Data/Object Data/base_object_data.tres
+res://Data/Object Data/text_data.tres
 res://Data/Object Data/base_sprite_data.tres
 res://Data/Object Data/square_data.tres
-res://Scripts/OtherObject/anime_object_tree.gd
-res://Scripts/Tool System/tool-signal.gd
-res://Scripts/Development/API/core.gd
-res://Data/Object Data/text_data.tres
+res://Data/object_detail.tres
+res://Scripts/Development/property_id_transformer.gd
+res://main-scene.tscn
+res://Prefabs/text.tscn
+res://Prefabs/square.tscn
+res://Prefabs/Data Panel/data_panel.tscn
+res://Scripts/Data Panel/property_input.gd
+res://anime_script.gd

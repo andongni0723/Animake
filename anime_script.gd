@@ -18,7 +18,8 @@ func main():
 	player.add_style("rounded-/10/ scale-/0/-/0/")
 	player.change_parent(player_group)
 	player_group.add_style("pos-/-520/-/165/")
-	await player.fade_size(Vector2(0.5, 0.5), 0.3).wait()
+	player.fade_size(Vector2(0.5, 0.5), 0.3)
+
 
 	# Player Text
 	var player_text := Create.make_text("player_text", Vector2(0, -110))

@@ -7,6 +7,7 @@
 script = ExtResource("1_oeemi")
 name = "Border Radius"
 type = 0
+id = "border_radius"
 metadata/_custom_type_script = "uid://c178p6kbo1u3q"
 
 [resource]

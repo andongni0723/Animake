@@ -37,5 +37,6 @@ layout_mode = 2
 property_value_control_dict = {
 0: NodePath("Number"),
 1: NodePath("Vector2"),
-2: NodePath("Boolean")
+2: NodePath("Boolean"),
+3: NodePath("String")
 }

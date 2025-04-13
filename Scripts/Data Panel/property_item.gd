@@ -8,20 +8,26 @@ enum PropertyType {
 }
 
 @export	var	property_name_label: Label
-@export	var	property_value_control_dict: Dictionary[PropertyType, Control]
+@export	var	property_value_control_dict: Dictionary[PropertyType, PropertyInput]
 
-var	property_name: String =	"Text" :
-	set(value):
-		property_name_label.text = value
-		property_name =	value
+var	property: SettingProperty =	null
+var	object:	BaseObject = null
 
-var	property_type: PropertyType	= PropertyType.NUMBER
-
-
-func initialize(_name: String, _type: PropertyType)	-> void:
-	property_name =	_name
-	property_type =	_type
-	if(_type == PropertyType.NUMBER or _type == PropertyType.STRING):
-		property_name_label.size_flags_stretch_ratio = 1.3
-	property_value_control_dict[_type].visible = true
+## Call by data_panel.gd
+func initialize(_object: BaseObject, _property:	SettingProperty) -> void:
+	property = _property
+	object = _object
+	property_name_label.text = _property.name
+	# if(property.type == PropertyType.NUMBER	or property.type == PropertyType.STRING):
+		# property_name_label.size_flags_stretch_ratio = 1.3
+	_initial_property_value()
 	pass
+
+func _initial_property_value() -> void:
+	if not object: return
+
+	# Set input field value 
+	var property_value: Variant = PropertyIdTransformer.property_id_to_variable(object, property.id)
+	property_value_control_dict[property.type].initialize(property.id, property_value)
+
+	#TODO: change panel value and set object value

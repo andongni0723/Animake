@@ -16,13 +16,13 @@ func _show_property_detail(_item: TreeItem):
 	var	node: Node = get_node(NodePath(node_path_str))
 	var object: BaseObject = node as BaseObject
 
-	if object: _create_property_node(SettingDetail.new(object.get_data()))
+	if object: _create_property_node(SettingDetail.new(object.get_data()), object)
 
-func _create_property_node(data: SettingDetail):
+func _create_property_node(data: SettingDetail, object: BaseObject):
 	for	property : SettingProperty in data.properties:
-		var	property_node := property_prefab.instantiate()
+		var	property_node: PropertyItem = property_prefab.instantiate()
 		v_box.add_child(property_node)
-		property_node.initialize(property.name,	property.type)
+		property_node.initialize(object, property)
 
 func _clear_v_box():
 	for	child in v_box.get_children().duplicate():

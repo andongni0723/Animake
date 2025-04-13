@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cyjnpnf03bar7"]
+[gd_scene load_steps=4 format=3 uid="uid://cyjnpnf03bar7"]
 
 [ext_resource type="Script" uid="uid://bye3q8bixmkbc" path="res://Scripts/Data Panel/property_item.gd" id="1_fk3j5"]
 [ext_resource type="Theme" uid="uid://cixie5v1vsdec" path="res://Data/main-theme.tres" id="1_fvka8"]
+[ext_resource type="Script" uid="uid://4icp457ui0b1" path="res://Scripts/Data Panel/property_input.gd" id="3_17t3b"]
 
 [node name="Property" type="HBoxContainer" node_paths=PackedStringArray("property_name_label", "property_value_control_dict")]
 offset_right = 215.0
@@ -18,15 +19,17 @@ property_value_control_dict = {
 [node name="Name Label" type="Label" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 3.0
+size_flags_stretch_ratio = 0.8
 theme = ExtResource("1_fvka8")
 theme_override_font_sizes/font_size = 16
 text = "Position"
 
-[node name="Number" type="HBoxContainer" parent="."]
+[node name="Number" type="HBoxContainer" parent="." node_paths=PackedStringArray("value_field")]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
+script = ExtResource("3_17t3b")
+value_field = [NodePath("num")]
 
 [node name="num" type="LineEdit" parent="Number"]
 layout_mode = 2
@@ -34,14 +37,18 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 theme = ExtResource("1_fvka8")
 text = "0.0"
-alignment = 1
+alignment = 3
 emoji_menu_enabled = false
 virtual_keyboard_type = 3
+select_all_on_focus = true
 
-[node name="String" type="HBoxContainer" parent="."]
+[node name="String" type="HBoxContainer" parent="." node_paths=PackedStringArray("value_field")]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
+script = ExtResource("3_17t3b")
+type = 3
+value_field = [NodePath("str")]
 
 [node name="str" type="LineEdit" parent="String"]
 layout_mode = 2
@@ -49,48 +56,55 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 theme = ExtResource("1_fvka8")
 text = "Text"
-alignment = 1
+alignment = 3
 emoji_menu_enabled = false
+select_all_on_focus = true
 
-[node name="Boolean" type="HBoxContainer" parent="."]
+[node name="Boolean" type="HBoxContainer" parent="." node_paths=PackedStringArray("value_field")]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
-
-[node name="num" type="LineEdit" parent="Boolean"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.0
-theme = ExtResource("1_fvka8")
-text = "0.0"
-alignment = 1
-virtual_keyboard_type = 3
+script = ExtResource("3_17t3b")
+type = 2
+value_field = [NodePath("CheckBox")]
 
 [node name="CheckBox" type="CheckBox" parent="Boolean"]
 layout_mode = 2
 
-[node name="Vector2" type="HBoxContainer" parent="."]
+[node name="Vector2" type="HBoxContainer" parent="." node_paths=PackedStringArray("value_field")]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
+script = ExtResource("3_17t3b")
+type = 1
+value_field = [NodePath("x"), NodePath("y")]
 
 [node name="x" type="LineEdit" parent="Vector2"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 theme = ExtResource("1_fvka8")
-text = "0.0"
-alignment = 1
+theme_override_font_sizes/font_size = 12
+text = "0"
+alignment = 3
 emoji_menu_enabled = false
 virtual_keyboard_type = 3
+select_all_on_focus = true
 
 [node name="y" type="LineEdit" parent="Vector2"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 theme = ExtResource("1_fvka8")
-text = "0.0"
-alignment = 1
+theme_override_font_sizes/font_size = 12
+text = "0"
+alignment = 3
 emoji_menu_enabled = false
 virtual_keyboard_type = 3
+select_all_on_focus = true
+
+[connection signal="text_changed" from="Number/num" to="Number" method="_on_text_changed"]
+[connection signal="text_changed" from="String/str" to="String" method="_on_text_changed"]
+[connection signal="toggled" from="Boolean/CheckBox" to="Boolean" method="_on_toggled"]
+[connection signal="text_changed" from="Vector2/x" to="Vector2" method="_on_text_changed"]
+[connection signal="text_changed" from="Vector2/y" to="Vector2" method="_on_text_changed"]
