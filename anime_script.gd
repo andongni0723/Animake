@@ -2,7 +2,7 @@ extends	Node2D
 
 var	player : Node2D;
 
-func main():
+func main() -> Error:
 	# Ground
 	var	ground := Create.make_square("ground")
 	ground.add_style("rounded-/10/ scale-/2/-/1/")
@@ -11,7 +11,7 @@ func main():
 	await ground.fade_size(Vector2(6, 0.5), 0.5).wait()
 
 	# Player Group
-	var player_group := Create.make_object("player_group")
+	var player_group: EmptyObject = Create.make_object("player_group")
 
 	# Player 
 	player = Create.make_square("player")
@@ -35,9 +35,13 @@ func main():
 
 	# Player Jump
 	await _player_move_and_jump(player_group)
+	return Error.OK
 
 func _player_move_and_jump(_player: BaseObject):
 	await _player.tween_pos_x(-350, 1).wait()
 	_player.tween_pos_x(0, 1, Tween.TRANS_LINEAR)
 	await _player.tween_pos_y(-250, 0.5, Tween.TRANS_QUART, Tween.EASE_OUT).wait()
 	await _player.tween_pos_y(-140, 0.5, Tween.TRANS_QUART, Tween.EASE_IN).wait()
+
+func empty_func():
+	print()

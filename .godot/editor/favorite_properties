@@ -1,6 +1,6 @@
 [Control]
 
-properties=PackedStringArray("size", "rotation", "scale", "position")
+properties=PackedStringArray("size", "rotation", "scale", "position", "size_flags_stretch_ratio", "custom_minimum_size")
 
 [CanvasItem]
 

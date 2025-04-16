@@ -1,8 +1,7 @@
-extends	Control
+class_name HintBar extends Control
 
 # @onready var hint_text_label: Label	= $"Bottom/Hint Label"
 @export var hint_text_label: Label
-
 
 ## Call	this function to show a	hint bar with the given	text
 func show_hint_bar(_hint_text: String) -> void:

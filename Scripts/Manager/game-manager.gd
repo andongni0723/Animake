@@ -8,7 +8,7 @@ var is_playing: bool = false
 
 func _ready():
 	_create_file_dialog()
-	_open_file_dialog()
+	# _open_file_dialog()
 	UIManager.read_file_button.pressed.connect(_open_file_dialog)
 	UIManager.reload_file_button.pressed.connect(_reload_file)
 
@@ -49,6 +49,7 @@ func _open_file_dialog():
 
 # 當檔案被選擇時的處理函數
 func _on_file_selected(path):
+	ToolSignal.emit_signal("select_file", path)
 	# check	path is .gd	file
 	if not path.ends_with(".gd"):
 		HintManager.call_error_hint("file is not .gd")

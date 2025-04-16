@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://yjrwbca2uemi"]
 
-[ext_resource type="Texture2D" uid="uid://bxk7e5117ua8o" path="res://white.png" id="1_64vei"]
+[ext_resource type="Texture2D" uid="uid://bxk7e5117ua8o" path="res://_Assets/white.png" id="1_64vei"]
 [ext_resource type="Script" uid="uid://cesukmnowo3pu" path="res://Scripts/Development/square.gd" id="2_r6ij7"]
 
 [sub_resource type="Shader" id="Shader_r6ij7"]

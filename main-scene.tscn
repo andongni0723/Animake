@@ -1,22 +1,27 @@
-[gd_scene load_steps=25 format=3 uid="uid://ddnwwsvd0y3jm"]
+[gd_scene load_steps=27 format=3 uid="uid://ddnwwsvd0y3jm"]
 
 [ext_resource type="Script" uid="uid://w85ki6lxi3eo" path="res://Scripts/OtherObject/ui_manager.gd" id="1_g86mt"]
 [ext_resource type="Script" uid="uid://bhae2k1rp6e5i" path="res://Scripts/Manager/hint-manager.gd" id="1_i1fv3"]
 [ext_resource type="FontFile" uid="uid://cjwnxrcj433s5" path="res://Font/JetBrainsMono-Regular.ttf" id="2_q2uwy"]
-[ext_resource type="Texture2D" uid="uid://bxk7e5117ua8o" path="res://white.png" id="3_5ulvj"]
+[ext_resource type="Texture2D" uid="uid://bxk7e5117ua8o" path="res://_Assets/white.png" id="3_5ulvj"]
+[ext_resource type="PackedScene" uid="uid://6hpbnqov48b" path="res://Prefabs/normal_hint_bar.tscn" id="3_es55r"]
 [ext_resource type="Script" uid="uid://806ifmr2fpdq" path="res://Scripts/OtherObject/pointer_position_label.gd" id="4_g86mt"]
-[ext_resource type="Shader" uid="uid://bala7s070by83" path="res://Shader/rounded.gdshader" id="5_g86mt"]
 [ext_resource type="Texture2D" uid="uid://c3cb14wy82v0w" path="res://_Assets/Animake-v2/Animake-v2-white.svg" id="6_e304g"]
 [ext_resource type="Texture2D" uid="uid://f3lkte1vv623" path="res://out square.png" id="6_jvpjp"]
 [ext_resource type="Script" uid="uid://c6f0p3ybhm3dp" path="res://Scripts/OtherObject/current_tool_label.gd" id="7_p0wft"]
 [ext_resource type="PackedScene" uid="uid://2cea68gkwesg" path="res://Prefabs/error_hint_bar.tscn" id="8_ikad4"]
 [ext_resource type="Script" uid="uid://h6bfv4ois6dq" path="res://Scripts/OtherObject/mouse_line.gd" id="8_t871u"]
 [ext_resource type="Theme" uid="uid://cixie5v1vsdec" path="res://Data/main-theme.tres" id="9_r7pl7"]
+[ext_resource type="PackedScene" uid="uid://drlvata8ay1as" path="res://Prefabs/base_tool_button.tscn" id="9_slrkl"]
 [ext_resource type="Script" uid="uid://k185mhxc8slw" path="res://Scripts/Tool System/rect-tool.gd" id="10_libv1"]
 [ext_resource type="PackedScene" uid="uid://c7xn57xcmpm0a" path="res://Prefabs/rect_tool_square.tscn" id="11_pc8c5"]
+[ext_resource type="Texture2D" uid="uid://dwbivcb8bn8rv" path="res://_Assets/code_icon.svg" id="11_qh5v2"]
 [ext_resource type="Script" uid="uid://b3ay2p3dbd01t" path="res://Scripts/OtherObject/anime_object_tree.gd" id="12_kudqo"]
 [ext_resource type="PackedScene" uid="uid://cgm82wpkrhmlj" path="res://Prefabs/rect_tool_example_square.tscn" id="12_p0wft"]
 [ext_resource type="PackedScene" uid="uid://du77iuaovi1m1" path="res://Prefabs/Data Panel/data_panel.tscn" id="13_5k8xk"]
+[ext_resource type="CodeHighlighter" uid="uid://beuswjyc16n3l" path="res://Data/Editor/gdscript_code_highlight.tres" id="14_m2hq8"]
+[ext_resource type="Script" uid="uid://dqwxl6qc117o6" path="res://Scripts/Script Panel/script_panel.gd" id="15_351bi"]
+[ext_resource type="Script" uid="uid://c86sdoebbenpk" path="res://Scripts/Script Panel/code_edit.gd" id="16_slrkl"]
 
 [sub_resource type="Environment" id="Environment_e304g"]
 background_mode = 3
@@ -28,33 +33,8 @@ glow_bloom = 1.0
 [sub_resource type="LabelSettings" id="LabelSettings_qetym"]
 font = ExtResource("2_q2uwy")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_t871u"]
-shader = ExtResource("5_g86mt")
-shader_parameter/rounded_radius = 10.0
-shader_parameter/view_width = 150.0
-shader_parameter/view_height = 43.0
-shader_parameter/border_width = 0.0
-shader_parameter/border_color = Vector4(1, 0, 0, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jvpjp"]
-shader = ExtResource("5_g86mt")
-shader_parameter/rounded_radius = 10.0
-shader_parameter/view_width = 150.0
-shader_parameter/view_height = 43.0
-shader_parameter/border_width = 0.0
-shader_parameter/border_color = Vector4(1, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_g86mt"]
-font = ExtResource("2_q2uwy")
-font_size = 40
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_e304g"]
-shader = ExtResource("5_g86mt")
-shader_parameter/rounded_radius = 10.0
-shader_parameter/view_width = 60.0
-shader_parameter/view_height = 60.0
-shader_parameter/border_width = 0.0
-shader_parameter/border_color = Vector4(1, 0, 0, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5k8xk"]
+bg_color = Color(0.168627, 0.176471, 0.235294, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_p0wft"]
 font = ExtResource("2_q2uwy")
@@ -68,14 +48,17 @@ environment = SubResource("Environment_e304g")
 [node name="Hint Manager" type="Node2D" parent="."]
 script = ExtResource("1_i1fv3")
 
-[node name="UI Manager" type="Node2D" parent="." node_paths=PackedStringArray("_read_file_button", "_reload_file_button", "_canvas", "_world_canvas", "_rect_tool_button")]
+[node name="UI Manager" type="Node2D" parent="." node_paths=PackedStringArray("_read_file_button", "_reload_file_button", "_canvas", "_world_canvas", "_script_panel", "_rect_tool_button", "_script_tool_button")]
 script = ExtResource("1_g86mt")
-_read_file_button = NodePath("../Canvas/Control/Read File Button")
-_reload_file_button = NodePath("../Canvas/Control/Reload File Button")
+_read_file_button = NodePath("../Canvas/Control/Left Panel/V Box/Read File Button")
+_reload_file_button = NodePath("../Canvas/Control/Left Panel/V Box/Reload File Button")
 _canvas = NodePath("../Canvas")
 _world_canvas = NodePath("../World Canvas")
-_hint_bar = ExtResource("8_ikad4")
-_rect_tool_button = NodePath("../Canvas/Control/Rect Line Button")
+_normal_hint_bar = ExtResource("3_es55r")
+_error_hint_bar = ExtResource("8_ikad4")
+_script_panel = NodePath("../Canvas/Control/Script Panel")
+_rect_tool_button = NodePath("../Canvas/Control/Left Panel/V Box/GridContainer/Rect Line Button")
+_script_tool_button = NodePath("../Canvas/Control/Left Panel/V Box/GridContainer/Script Button")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
@@ -122,6 +105,123 @@ offset_right = 6.4
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
+[node name="Left Panel" type="MarginContainer" parent="Canvas/Control"]
+layout_mode = 0
+offset_right = 190.0
+offset_bottom = 653.0
+theme = ExtResource("9_r7pl7")
+
+[node name="V Box" type="VBoxContainer" parent="Canvas/Control/Left Panel"]
+layout_mode = 2
+theme = ExtResource("9_r7pl7")
+
+[node name="Logo Background" type="TextureRect" parent="Canvas/Control/Left Panel/V Box"]
+self_modulate = Color(0.154, 0.169333, 0.2, 0)
+custom_minimum_size = Vector2(0, 43.45)
+layout_mode = 2
+texture = ExtResource("3_5ulvj")
+expand_mode = 1
+
+[node name="LOGO" type="TextureRect" parent="Canvas/Control/Left Panel/V Box/Logo Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -161.0
+offset_top = -30.0
+offset_right = 161.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.48, 0.48)
+pivot_offset = Vector2(161.782, 30.678)
+texture = ExtResource("6_e304g")
+metadata/_edit_lock_ = true
+
+[node name="Read File Button" parent="Canvas/Control/Left Panel/V Box" instance=ExtResource("9_slrkl")]
+custom_minimum_size = Vector2(80, 60)
+layout_mode = 2
+toggle_mode = false
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Canvas/Control/Left Panel/V Box/Read File Button"]
+self_modulate = Color(1.2, 0.6, 1, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_r7pl7")
+theme_override_font_sizes/font_size = 20
+text = "Read File"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Reload File Button" parent="Canvas/Control/Left Panel/V Box" instance=ExtResource("9_slrkl")]
+custom_minimum_size = Vector2(80, 60)
+layout_mode = 2
+toggle_mode = false
+
+[node name="Label2" type="Label" parent="Canvas/Control/Left Panel/V Box/Reload File Button"]
+self_modulate = Color(0.361, 0.647, 1.2, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_r7pl7")
+theme_override_font_sizes/font_size = 20
+text = "Reload File"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="GridContainer" type="GridContainer" parent="Canvas/Control/Left Panel/V Box"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+size_flags_stretch_ratio = 10.0
+theme = ExtResource("9_r7pl7")
+columns = 2
+
+[node name="Rect Line Button" parent="Canvas/Control/Left Panel/V Box/GridContainer" instance=ExtResource("9_slrkl")]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Canvas/Control/Left Panel/V Box/GridContainer/Rect Line Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Canvas/Control/Left Panel/V Box/GridContainer/Rect Line Button/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("6_jvpjp")
+expand_mode = 1
+
+[node name="Script Button" parent="Canvas/Control/Left Panel/V Box/GridContainer" instance=ExtResource("9_slrkl")]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Canvas/Control/Left Panel/V Box/GridContainer/Script Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Canvas/Control/Left Panel/V Box/GridContainer/Script Button/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("11_qh5v2")
+expand_mode = 1
+
 [node name="Pointer Position Label" type="Label" parent="Canvas/Control"]
 layout_mode = 0
 offset_left = 192.0
@@ -134,7 +234,7 @@ label_settings = SubResource("LabelSettings_qetym")
 vertical_alignment = 1
 script = ExtResource("4_g86mt")
 
-[node name="Pointer Position Label2" type="Label" parent="Canvas/Control"]
+[node name="Current Tool Label" type="Label" parent="Canvas/Control"]
 layout_mode = 0
 offset_left = 192.0
 offset_top = 64.0
@@ -146,117 +246,7 @@ label_settings = SubResource("LabelSettings_qetym")
 vertical_alignment = 1
 script = ExtResource("7_p0wft")
 
-[node name="Read File Button" type="TextureButton" parent="Canvas/Control"]
-self_modulate = Color(0.1863, 0.204435, 0.27, 1)
-material = SubResource("ShaderMaterial_t871u")
-layout_mode = 0
-offset_left = 24.0
-offset_top = 80.0
-offset_right = 174.0
-offset_bottom = 123.46
-theme = ExtResource("9_r7pl7")
-texture_normal = ExtResource("3_5ulvj")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="Label" type="Label" parent="Canvas/Control/Read File Button"]
-self_modulate = Color(1.2, 0.6, 1, 1)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 150.0
-offset_bottom = 44.29
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.5, 0.5)
-theme = ExtResource("9_r7pl7")
-text = "Read File"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Reload File Button" type="TextureButton" parent="Canvas/Control"]
-self_modulate = Color(0.1863, 0.204435, 0.27, 1)
-material = SubResource("ShaderMaterial_jvpjp")
-layout_mode = 0
-offset_left = 24.0
-offset_top = 144.0
-offset_right = 174.0
-offset_bottom = 187.46
-pivot_offset = Vector2(195, 49)
-texture_normal = ExtResource("3_5ulvj")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="Label" type="Label" parent="Canvas/Control/Reload File Button"]
-self_modulate = Color(0.361, 0.647, 1.2, 1)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 150.0
-offset_bottom = 44.29
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.5, 0.5)
-text = "Reload File"
-label_settings = SubResource("LabelSettings_g86mt")
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_lock_ = true
-
-[node name="Rect Line Button" type="TextureButton" parent="Canvas/Control"]
-self_modulate = Color(0.1863, 0.204435, 0.27, 1)
-material = SubResource("ShaderMaterial_e304g")
-layout_mode = 0
-offset_left = 26.0
-offset_top = 206.0
-offset_right = 86.0
-offset_bottom = 266.0
-texture_normal = ExtResource("3_5ulvj")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="TextureRect" type="TextureRect" parent="Canvas/Control/Rect Line Button"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.65, 0.65)
-pivot_offset = Vector2(30, 29)
-texture = ExtResource("6_jvpjp")
-expand_mode = 1
-
-[node name="Logo Background" type="TextureRect" parent="Canvas/Control"]
-self_modulate = Color(0.154, 0.169333, 0.2, 0)
-layout_mode = 0
-offset_left = 8.0
-offset_top = 16.0
-offset_right = 376.0
-offset_bottom = 97.0
-scale = Vector2(0.48, 0.48)
-texture = ExtResource("3_5ulvj")
-expand_mode = 1
-
-[node name="LOGO" type="TextureRect" parent="Canvas/Control/Logo Background"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 23.0
-offset_top = 13.0
-offset_right = -23.0
-offset_bottom = -8.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.88, 0.88)
-pivot_offset = Vector2(161.782, 30.678)
-texture = ExtResource("6_e304g")
-metadata/_edit_lock_ = true
-
-[node name="VSplitContainer" type="VSplitContainer" parent="Canvas/Control"]
+[node name="Right Data Panel" type="VSplitContainer" parent="Canvas/Control"]
 layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
@@ -271,20 +261,89 @@ grow_vertical = 2
 theme = ExtResource("9_r7pl7")
 split_offset = 292
 
-[node name="Node Tree" type="Tree" parent="Canvas/Control/VSplitContainer"]
+[node name="Node Tree" type="Tree" parent="Canvas/Control/Right Data Panel"]
 layout_mode = 2
 theme = ExtResource("9_r7pl7")
 hide_root = true
 script = ExtResource("12_kudqo")
 
-[node name="Data Panel" parent="Canvas/Control/VSplitContainer" instance=ExtResource("13_5k8xk")]
+[node name="Data Panel" parent="Canvas/Control/Right Data Panel" instance=ExtResource("13_5k8xk")]
 layout_mode = 2
 
-[node name="Tree" type="Tree" parent="Canvas/Control"]
+[node name="Script Panel" type="Panel" parent="Canvas/Control"]
+visible = false
 layout_mode = 0
+offset_left = 189.0
+offset_top = 25.0
+offset_right = 1112.0
+offset_bottom = 618.0
 theme = ExtResource("9_r7pl7")
-hide_root = true
-script = ExtResource("12_kudqo")
+script = ExtResource("15_351bi")
+
+[node name="V Box" type="VBoxContainer" parent="Canvas/Control/Script Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_r7pl7")
+
+[node name="Script Menu Panel" type="PanelContainer" parent="Canvas/Control/Script Panel/V Box"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.88
+theme = ExtResource("9_r7pl7")
+theme_override_styles/panel = SubResource("StyleBoxFlat_5k8xk")
+
+[node name="MenuBar" type="MenuBar" parent="Canvas/Control/Script Panel/V Box/Script Menu Panel"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+theme = ExtResource("9_r7pl7")
+
+[node name="File" type="PopupMenu" parent="Canvas/Control/Script Panel/V Box/Script Menu Panel/MenuBar"]
+size = Vector2i(193, 100)
+theme = ExtResource("9_r7pl7")
+hide_on_item_selection = false
+item_count = 3
+item_0/text = "Create Script File"
+item_0/id = 0
+item_1/text = "Save Script File"
+item_1/id = 1
+item_2/text = "Save As ..."
+item_2/id = 2
+
+[node name="Edit" type="PopupMenu" parent="Canvas/Control/Script Panel/V Box/Script Menu Panel/MenuBar"]
+auto_translate_mode = 1
+size = Vector2i(193, 100)
+theme = ExtResource("9_r7pl7")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Canvas/Control/Script Panel/V Box"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 20.0
+split_offset = 170
+
+[node name="Data Panel" parent="Canvas/Control/Script Panel/V Box/HSplitContainer" instance=ExtResource("13_5k8xk")]
+layout_mode = 2
+
+[node name="CodeEdit" type="CodeEdit" parent="Canvas/Control/Script Panel/V Box/HSplitContainer"]
+layout_mode = 2
+theme = ExtResource("9_r7pl7")
+theme_override_font_sizes/font_size = 13
+syntax_highlighter = ExtResource("14_m2hq8")
+highlight_all_occurrences = true
+highlight_current_line = true
+gutters_draw_executing_lines = true
+gutters_draw_line_numbers = true
+gutters_zero_pad_line_numbers = true
+gutters_draw_fold_gutter = true
+code_completion_enabled = true
+indent_automatic = true
+auto_brace_completion_enabled = true
+auto_brace_completion_highlight_matching = true
+script = ExtResource("16_slrkl")
 
 [node name="Anime Node" type="Node2D" parent="."]
 
@@ -360,5 +419,8 @@ follow_viewport_enabled = true
 [node name="TextureRect" parent="World Canvas" instance=ExtResource("12_p0wft")]
 visible = false
 
-[connection signal="button_clicked" from="Canvas/Control/VSplitContainer/Node Tree" to="Canvas/Control/VSplitContainer/Node Tree" method="_on_button_clicked"]
-[connection signal="item_selected" from="Canvas/Control/VSplitContainer/Node Tree" to="Canvas/Control/VSplitContainer/Node Tree" method="_on_item_selected"]
+[connection signal="button_clicked" from="Canvas/Control/Right Data Panel/Node Tree" to="Canvas/Control/Right Data Panel/Node Tree" method="_on_button_clicked"]
+[connection signal="item_selected" from="Canvas/Control/Right Data Panel/Node Tree" to="Canvas/Control/Right Data Panel/Node Tree" method="_on_item_selected"]
+[connection signal="id_pressed" from="Canvas/Control/Script Panel/V Box/Script Menu Panel/MenuBar/File" to="Canvas/Control/Script Panel" method="_on_file_id_pressed"]
+[connection signal="code_completion_requested" from="Canvas/Control/Script Panel/V Box/HSplitContainer/CodeEdit" to="Canvas/Control/Script Panel/V Box/HSplitContainer/CodeEdit" method="_on_code_completion_requested"]
+[connection signal="text_changed" from="Canvas/Control/Script Panel/V Box/HSplitContainer/CodeEdit" to="Canvas/Control/Script Panel/V Box/HSplitContainer/CodeEdit" method="_on_code_completion_requested"]
