@@ -22,6 +22,9 @@ static var error_hint_bar: PackedScene
 @export var _script_panel: Control
 static var script_panel: Control
 
+@export var _file_dialog_prefab: PackedScene
+static var file_dialog_prefab: PackedScene
+
 @export_category("Tool Buttons")
 @export var _rect_tool_button: BaseButton
 static var rect_tool_button: BaseButton
@@ -39,6 +42,7 @@ func _enter_tree() -> void:
 	rect_tool_button = _rect_tool_button
 	script_tool_button = _script_tool_button
 	script_panel = _script_panel
+	file_dialog_prefab = _file_dialog_prefab
 	ToolSignal.connect("script_panel_action", _open_script_panel)
 
 func _open_script_panel(open: bool) -> void:

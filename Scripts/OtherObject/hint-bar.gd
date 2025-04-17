@@ -4,8 +4,8 @@ class_name HintBar extends Control
 @export var hint_text_label: Label
 
 ## Call	this function to show a	hint bar with the given	text
-func show_hint_bar(_hint_text: String) -> void:
-	hint_text_label.text = "ERROR: " + _hint_text
+func show_hint_bar(_title_text: String, _hint_text: String) -> void:
+	hint_text_label.text = _title_text + ": " + _hint_text
 	var	fade_in	= Core.new_tween()
 	fade_in.set_parallel()
 	fade_in.tween_property(self, "modulate", Color(1, 1, 1, 1),	0.3)

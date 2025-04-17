@@ -13,6 +13,7 @@ var	file: FileAccess = null
 var path: String = ""
 
 func _enter_tree() -> void:
+	ToolSignal.connect("select_folder", _initialize)
 	ToolSignal.connect("select_file", _open_file)
 	ToolSignal.connect("script_file_menu_pressed", _file_menu_action)
 
@@ -21,8 +22,11 @@ func _exit_tree() -> void:
 	ToolSignal.disconnect("script_file_menu_pressed", _file_menu_action)
 
 func _ready():
-	# class_names = ClassDB.get_class_list()
 	pass
+
+func _initialize(_path: String) -> void:
+	file = null
+	text = ""
 
 func _on_code_completion_requested():		
 	for	each in function_names:
@@ -34,6 +38,8 @@ func _on_code_completion_requested():
 	update_code_completion_options(true)
 
 func _open_file(_path: String) -> void:
+	print("open file: ", _path)
+	if file: _save_file()
 	if not _path.ends_with(".gd"): return
 	file = FileAccess.open(_path, FileAccess.READ)
 	path = _path
@@ -41,11 +47,19 @@ func _open_file(_path: String) -> void:
 	pass
 
 func _file_menu_action(id: int):
+	if id == 0: # Create
+		_create_new_file()
 	if id == 1: # Save
-		if not file: return
-		file = FileAccess.open(path, FileAccess.WRITE)
-		file.store_string(text)
-		HintManager.call_normal_hint("NORMAL: File saved")
+		_save_file()
+
+func _create_new_file() -> void:
+	pass
+
+func _save_file() -> void:
+	if not file: return
+	file = FileAccess.open(path, FileAccess.WRITE)
+	file.store_string(text)
+	HintManager.call_normal_hint("File saved")
 
 func print_custom_classes()	-> void:
 	var	custom_classes = ProjectSettings.get_setting("application/config/script_classes")

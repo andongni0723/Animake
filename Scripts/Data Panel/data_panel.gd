@@ -4,9 +4,11 @@ extends	PanelContainer
 @export	var	v_box: VBoxContainer
 
 func _enter_tree() -> void:
+	ToolSignal.select_folder.connect(_on_select_folder)
 	ToolSignal.anime_object_tree_item_click.connect(_show_property_detail)
 
 func _exit_tree() -> void:
+	ToolSignal.select_folder.disconnect(_clear_v_box)
 	ToolSignal.anime_object_tree_item_click.disconnect(_show_property_detail)
 
 func _show_property_detail(_item: TreeItem):
@@ -28,6 +30,9 @@ func _clear_v_box():
 	for	child in v_box.get_children().duplicate():
 		v_box.remove_child(child)
 		child.queue_free()
+
+func _on_select_folder(_path: String):
+	_clear_v_box()
 
 func _get_full_tree_item_path(item: TreeItem) -> String:
 	var result: String = ""

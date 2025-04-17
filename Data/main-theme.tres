@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=13 format=3 uid="uid://cixie5v1vsdec"]
+[gd_resource type="Theme" load_steps=15 format=3 uid="uid://cixie5v1vsdec"]
 
 [ext_resource type="FontFile" uid="uid://cjwnxrcj433s5" path="res://Font/JetBrainsMono-Regular.ttf" id="1_u1qfm"]
 
@@ -28,6 +28,25 @@ corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iesvv"]
 bg_color = Color(0.156863, 0.172549, 0.203922, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pp4c7"]
+bg_color = Color(0.180392, 0.192157, 0.235294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 30.0
+expand_margin_top = 30.0
+expand_margin_right = 30.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fg6th"]
+bg_color = Color(0.12385, 0.131528, 0.167356, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cfjqo"]
 bg_color = Color(0.117647, 0.121569, 0.160784, 1)
@@ -68,9 +87,13 @@ Button/styles/normal = SubResource("StyleBoxFlat_hkm1m")
 Button/styles/pressed = SubResource("StyleBoxFlat_a5cyw")
 CodeEdit/colors/current_line_color = Color(0.172549, 0.192157, 0.235294, 1)
 CodeEdit/styles/normal = SubResource("StyleBoxFlat_iesvv")
+FileDialog/font_sizes/font_size = 15
+FileDialog/font_sizes/title_font_size = 16
+FileDialog/styles/embedded_border = SubResource("StyleBoxFlat_pp4c7")
+FileDialog/styles/panel = SubResource("StyleBoxFlat_fg6th")
 GridContainer/constants/h_separation = 10
 GridContainer/constants/v_separation = 10
-Label/font_sizes/font_size = 40
+Label/font_sizes/font_size = 18
 Label/fonts/font = ExtResource("1_u1qfm")
 MarginContainer/constants/margin_bottom = 10
 MarginContainer/constants/margin_left = 10

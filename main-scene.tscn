@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ddnwwsvd0y3jm"]
+[gd_scene load_steps=25 format=3 uid="uid://ddnwwsvd0y3jm"]
 
 [ext_resource type="Script" uid="uid://w85ki6lxi3eo" path="res://Scripts/OtherObject/ui_manager.gd" id="1_g86mt"]
 [ext_resource type="Script" uid="uid://bhae2k1rp6e5i" path="res://Scripts/Manager/hint-manager.gd" id="1_i1fv3"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bxk7e5117ua8o" path="res://_Assets/white.png" id="3_5ulvj"]
 [ext_resource type="PackedScene" uid="uid://6hpbnqov48b" path="res://Prefabs/normal_hint_bar.tscn" id="3_es55r"]
 [ext_resource type="Script" uid="uid://806ifmr2fpdq" path="res://Scripts/OtherObject/pointer_position_label.gd" id="4_g86mt"]
+[ext_resource type="PackedScene" uid="uid://rner2aytek3r" path="res://Prefabs/ile_dialog.tscn" id="6_351bi"]
 [ext_resource type="Texture2D" uid="uid://c3cb14wy82v0w" path="res://_Assets/Animake-v2/Animake-v2-white.svg" id="6_e304g"]
 [ext_resource type="Texture2D" uid="uid://f3lkte1vv623" path="res://out square.png" id="6_jvpjp"]
 [ext_resource type="Script" uid="uid://c6f0p3ybhm3dp" path="res://Scripts/OtherObject/current_tool_label.gd" id="7_p0wft"]
@@ -19,9 +20,7 @@
 [ext_resource type="Script" uid="uid://b3ay2p3dbd01t" path="res://Scripts/OtherObject/anime_object_tree.gd" id="12_kudqo"]
 [ext_resource type="PackedScene" uid="uid://cgm82wpkrhmlj" path="res://Prefabs/rect_tool_example_square.tscn" id="12_p0wft"]
 [ext_resource type="PackedScene" uid="uid://du77iuaovi1m1" path="res://Prefabs/Data Panel/data_panel.tscn" id="13_5k8xk"]
-[ext_resource type="CodeHighlighter" uid="uid://beuswjyc16n3l" path="res://Data/Editor/gdscript_code_highlight.tres" id="14_m2hq8"]
-[ext_resource type="Script" uid="uid://dqwxl6qc117o6" path="res://Scripts/Script Panel/script_panel.gd" id="15_351bi"]
-[ext_resource type="Script" uid="uid://c86sdoebbenpk" path="res://Scripts/Script Panel/code_edit.gd" id="16_slrkl"]
+[ext_resource type="PackedScene" uid="uid://dckk8tgh51sgj" path="res://Prefabs/Script Panel/script_panel.tscn" id="16_slrkl"]
 
 [sub_resource type="Environment" id="Environment_e304g"]
 background_mode = 3
@@ -32,9 +31,6 @@ glow_bloom = 1.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_qetym"]
 font = ExtResource("2_q2uwy")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5k8xk"]
-bg_color = Color(0.168627, 0.176471, 0.235294, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_p0wft"]
 font = ExtResource("2_q2uwy")
@@ -57,6 +53,7 @@ _world_canvas = NodePath("../World Canvas")
 _normal_hint_bar = ExtResource("3_es55r")
 _error_hint_bar = ExtResource("8_ikad4")
 _script_panel = NodePath("../Canvas/Control/Script Panel")
+_file_dialog_prefab = ExtResource("6_351bi")
 _rect_tool_button = NodePath("../Canvas/Control/Left Panel/V Box/GridContainer/Rect Line Button")
 _script_tool_button = NodePath("../Canvas/Control/Left Panel/V Box/GridContainer/Script Button")
 
@@ -270,80 +267,13 @@ script = ExtResource("12_kudqo")
 [node name="Data Panel" parent="Canvas/Control/Right Data Panel" instance=ExtResource("13_5k8xk")]
 layout_mode = 2
 
-[node name="Script Panel" type="Panel" parent="Canvas/Control"]
+[node name="Script Panel" parent="Canvas/Control" instance=ExtResource("16_slrkl")]
 visible = false
 layout_mode = 0
-offset_left = 189.0
-offset_top = 25.0
-offset_right = 1112.0
-offset_bottom = 618.0
-theme = ExtResource("9_r7pl7")
-script = ExtResource("15_351bi")
-
-[node name="V Box" type="VBoxContainer" parent="Canvas/Control/Script Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("9_r7pl7")
-
-[node name="Script Menu Panel" type="PanelContainer" parent="Canvas/Control/Script Panel/V Box"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 1.88
-theme = ExtResource("9_r7pl7")
-theme_override_styles/panel = SubResource("StyleBoxFlat_5k8xk")
-
-[node name="MenuBar" type="MenuBar" parent="Canvas/Control/Script Panel/V Box/Script Menu Panel"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 6
-theme = ExtResource("9_r7pl7")
-
-[node name="File" type="PopupMenu" parent="Canvas/Control/Script Panel/V Box/Script Menu Panel/MenuBar"]
-size = Vector2i(193, 100)
-theme = ExtResource("9_r7pl7")
-hide_on_item_selection = false
-item_count = 3
-item_0/text = "Create Script File"
-item_0/id = 0
-item_1/text = "Save Script File"
-item_1/id = 1
-item_2/text = "Save As ..."
-item_2/id = 2
-
-[node name="Edit" type="PopupMenu" parent="Canvas/Control/Script Panel/V Box/Script Menu Panel/MenuBar"]
-auto_translate_mode = 1
-size = Vector2i(193, 100)
-theme = ExtResource("9_r7pl7")
-
-[node name="HSplitContainer" type="HSplitContainer" parent="Canvas/Control/Script Panel/V Box"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 20.0
-split_offset = 170
-
-[node name="Data Panel" parent="Canvas/Control/Script Panel/V Box/HSplitContainer" instance=ExtResource("13_5k8xk")]
-layout_mode = 2
-
-[node name="CodeEdit" type="CodeEdit" parent="Canvas/Control/Script Panel/V Box/HSplitContainer"]
-layout_mode = 2
-theme = ExtResource("9_r7pl7")
-theme_override_font_sizes/font_size = 13
-syntax_highlighter = ExtResource("14_m2hq8")
-highlight_all_occurrences = true
-highlight_current_line = true
-gutters_draw_executing_lines = true
-gutters_draw_line_numbers = true
-gutters_zero_pad_line_numbers = true
-gutters_draw_fold_gutter = true
-code_completion_enabled = true
-indent_automatic = true
-auto_brace_completion_enabled = true
-auto_brace_completion_highlight_matching = true
-script = ExtResource("16_slrkl")
+offset_left = 191.0
+offset_top = 26.0
+offset_right = 1114.0
+offset_bottom = 619.0
 
 [node name="Anime Node" type="Node2D" parent="."]
 
@@ -421,6 +351,3 @@ visible = false
 
 [connection signal="button_clicked" from="Canvas/Control/Right Data Panel/Node Tree" to="Canvas/Control/Right Data Panel/Node Tree" method="_on_button_clicked"]
 [connection signal="item_selected" from="Canvas/Control/Right Data Panel/Node Tree" to="Canvas/Control/Right Data Panel/Node Tree" method="_on_item_selected"]
-[connection signal="id_pressed" from="Canvas/Control/Script Panel/V Box/Script Menu Panel/MenuBar/File" to="Canvas/Control/Script Panel" method="_on_file_id_pressed"]
-[connection signal="code_completion_requested" from="Canvas/Control/Script Panel/V Box/HSplitContainer/CodeEdit" to="Canvas/Control/Script Panel/V Box/HSplitContainer/CodeEdit" method="_on_code_completion_requested"]
-[connection signal="text_changed" from="Canvas/Control/Script Panel/V Box/HSplitContainer/CodeEdit" to="Canvas/Control/Script Panel/V Box/HSplitContainer/CodeEdit" method="_on_code_completion_requested"]

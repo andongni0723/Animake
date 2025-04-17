@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://rner2aytek3r"]
+
+[ext_resource type="Theme" uid="uid://cixie5v1vsdec" path="res://Data/main-theme.tres" id="1_accpg"]
+
+[node name="FileDialog" type="FileDialog"]
+auto_translate_mode = 1
+title = "Open a Directory"
+position = Vector2i(200, 96)
+size = Vector2i(700, 500)
+visible = true
+theme = ExtResource("1_accpg")
+ok_button_text = "Select Current Folder"
+file_mode = 2
+access = 2
+filters = PackedStringArray(".gd")
+use_native_dialog = true

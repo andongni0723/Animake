@@ -1,14 +1,19 @@
 extends	Tree
 
 func _enter_tree() -> void:
+	ToolSignal.select_folder.connect(_clear_tree)
 	ToolSignal.anime_object_add_group_done.connect(_refresh_node_tree)
 
 func _exit_tree() -> void:
+	ToolSignal.select_folder.disconnect(_clear_tree)
 	ToolSignal.anime_object_add_group_done.disconnect(_refresh_node_tree)
 	clear()
 
 func _on_item_selected() -> void:
 	ToolSignal.anime_object_tree_item_click.emit(get_selected())
+
+func _clear_tree(_path: String) -> void:
+	clear()
 
 func _refresh_node_tree() -> void:
 	clear()

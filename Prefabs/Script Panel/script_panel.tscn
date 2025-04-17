@@ -1,0 +1,194 @@
+[gd_scene load_steps=7 format=3 uid="uid://dckk8tgh51sgj"]
+
+[ext_resource type="Theme" uid="uid://cixie5v1vsdec" path="res://Data/main-theme.tres" id="1_qm5it"]
+[ext_resource type="Script" uid="uid://dqwxl6qc117o6" path="res://Scripts/Script Panel/script_panel.gd" id="2_jb7rj"]
+[ext_resource type="PackedScene" uid="uid://dugn57d57x7u2" path="res://Prefabs/Script Panel/file_item.tscn" id="3_64cbv"]
+[ext_resource type="Script" uid="uid://c86sdoebbenpk" path="res://Scripts/Script Panel/code_edit.gd" id="4_170jv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5k8xk"]
+bg_color = Color(0.168627, 0.176471, 0.235294, 1)
+
+[sub_resource type="CodeHighlighter" id="CodeHighlighter_ngrk5"]
+number_color = Color(0.819608, 0.603922, 0.4, 1)
+symbol_color = Color(0.333333, 0.701961, 0.745098, 1)
+function_color = Color(0.380392, 0.686275, 0.937255, 1)
+member_variable_color = Color(0.878431, 0.419608, 0.458824, 1)
+keyword_colors = {
+"AABB": Color(0.847059, 0.709804, 0.462745, 1),
+"AnimationPlayer": Color(0.847059, 0.709804, 0.462745, 1),
+"AudioStreamPlayer": Color(0.847059, 0.709804, 0.462745, 1),
+"BaseObject": Color(0.847059, 0.709804, 0.462745, 1),
+"BaseSprite": Color(0.847059, 0.709804, 0.462745, 1),
+"Basis": Color(0.847059, 0.709804, 0.462745, 1),
+"Button": Color(0.847059, 0.709804, 0.462745, 1),
+"Camera2D": Color(0.847059, 0.709804, 0.462745, 1),
+"CanvasItem": Color(0.847059, 0.709804, 0.462745, 1),
+"Color": Color(0.847059, 0.709804, 0.462745, 1),
+"Control": Color(0.847059, 0.709804, 0.462745, 1),
+"Core": Color(0.847059, 0.709804, 0.462745, 1),
+"Create": Color(0.847059, 0.709804, 0.462745, 1),
+"FileAccess": Color(0.847059, 0.709804, 0.462745, 1),
+"InputEvent": Color(0.847059, 0.709804, 0.462745, 1),
+"Label": Color(0.847059, 0.709804, 0.462745, 1),
+"Node": Color(0.847059, 0.709804, 0.462745, 1),
+"Node2D": Color(0.847059, 0.709804, 0.462745, 1),
+"Node3D": Color(0.847059, 0.709804, 0.462745, 1),
+"Object": Color(0.847059, 0.709804, 0.462745, 1),
+"PackedScene": Color(0.847059, 0.709804, 0.462745, 1),
+"Plane": Color(0.847059, 0.709804, 0.462745, 1),
+"Quat": Color(0.847059, 0.709804, 0.462745, 1),
+"RID": Color(0.847059, 0.709804, 0.462745, 1),
+"Rect2": Color(0.847059, 0.709804, 0.462745, 1),
+"Resource": Color(0.847059, 0.709804, 0.462745, 1),
+"Script": Color(0.847059, 0.709804, 0.462745, 1),
+"Signal": Color(0.847059, 0.709804, 0.462745, 1),
+"Sprite2D": Color(0.847059, 0.709804, 0.462745, 1),
+"Square": Color(0.847059, 0.709804, 0.462745, 1),
+"Text": Color(0.847059, 0.709804, 0.462745, 1),
+"Texture2D": Color(0.847059, 0.709804, 0.462745, 1),
+"Timer": Color(0.847059, 0.709804, 0.462745, 1),
+"Transform2D": Color(0.847059, 0.709804, 0.462745, 1),
+"Transform3D": Color(0.847059, 0.709804, 0.462745, 1),
+"Tween": Color(0.847059, 0.709804, 0.462745, 1),
+"Vector2": Color(0.847059, 0.709804, 0.462745, 1),
+"Vector3": Color(0.847059, 0.709804, 0.462745, 1),
+"and": Color(0.9, 0.6, 1, 1),
+"as": Color(0.9, 0.6, 1, 1),
+"await": Color(0.9, 0.6, 1, 1),
+"break": Color(0.9, 0.6, 1, 1),
+"class_name": Color(0.9, 0.6, 1, 1),
+"const": Color(0.9, 0.6, 1, 1),
+"continue": Color(0.9, 0.6, 1, 1),
+"elif": Color(0.9, 0.6, 1, 1),
+"else": Color(0.9, 0.6, 1, 1),
+"export": Color(0.9, 0.6, 1, 1),
+"extends": Color(0.9, 0.6, 1, 1),
+"false": Color(0.9, 0.6, 1, 1),
+"for": Color(0.9, 0.6, 1, 1),
+"func": Color(0.9, 0.6, 1, 1),
+"if": Color(0.9, 0.6, 1, 1),
+"in": Color(0.9, 0.6, 1, 1),
+"is": Color(0.9, 0.6, 1, 1),
+"match": Color(0.9, 0.6, 1, 1),
+"not": Color(0.9, 0.6, 1, 1),
+"null": Color(0.9, 0.6, 1, 1),
+"onready": Color(0.9, 0.6, 1, 1),
+"or": Color(0.9, 0.6, 1, 1),
+"pass": Color(0.9, 0.6, 1, 1),
+"return": Color(0.9, 0.6, 1, 1),
+"signal": Color(0.9, 0.6, 1, 1),
+"static": Color(0.9, 0.6, 1, 1),
+"tool": Color(0.9, 0.6, 1, 1),
+"true": Color(0.9, 0.6, 1, 1),
+"var": Color(0.9, 0.6, 1, 1),
+"while": Color(0.9, 0.6, 1, 1),
+"yield": Color(0.9, 0.6, 1, 1)
+}
+color_regions = {
+"\" \"": Color(0.596078, 0.764706, 0.47451, 1),
+"#": Color(0.453051, 0.471907, 0.52376, 1)
+}
+
+[node name="Script Panel" type="Panel" node_paths=PackedStringArray("file_item_container")]
+offset_left = 189.0
+offset_top = 25.0
+offset_right = 1112.0
+offset_bottom = 618.0
+theme = ExtResource("1_qm5it")
+script = ExtResource("2_jb7rj")
+file_item_prefab = ExtResource("3_64cbv")
+file_item_container = NodePath("V Box/HSplitContainer/Data Panel/Slider Panel/MarginContainer/V Box")
+
+[node name="V Box" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_qm5it")
+
+[node name="Script Menu Panel" type="PanelContainer" parent="V Box"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.88
+theme = ExtResource("1_qm5it")
+theme_override_styles/panel = SubResource("StyleBoxFlat_5k8xk")
+
+[node name="MenuBar" type="MenuBar" parent="V Box/Script Menu Panel"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+theme = ExtResource("1_qm5it")
+
+[node name="File" type="PopupMenu" parent="V Box/Script Menu Panel/MenuBar"]
+auto_translate_mode = 1
+size = Vector2i(193, 100)
+theme = ExtResource("1_qm5it")
+hide_on_item_selection = false
+item_count = 3
+item_0/text = "Create Script File"
+item_0/id = 0
+item_1/text = "Save Script File"
+item_1/id = 1
+item_2/text = "Save As ..."
+item_2/id = 2
+
+[node name="Edit" type="PopupMenu" parent="V Box/Script Menu Panel/MenuBar"]
+auto_translate_mode = 1
+size = Vector2i(193, 100)
+theme = ExtResource("1_qm5it")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="V Box"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 20.0
+split_offset = 170
+
+[node name="Data Panel" type="PanelContainer" parent="V Box/HSplitContainer"]
+layout_mode = 2
+theme = ExtResource("1_qm5it")
+
+[node name="Slider Panel" type="ScrollContainer" parent="V Box/HSplitContainer/Data Panel"]
+layout_mode = 2
+vertical_scroll_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="V Box/HSplitContainer/Data Panel/Slider Panel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 0
+
+[node name="V Box" type="VBoxContainer" parent="V Box/HSplitContainer/Data Panel/Slider Panel/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_qm5it")
+
+[node name="File Item" parent="V Box/HSplitContainer/Data Panel/Slider Panel/MarginContainer/V Box" instance=ExtResource("3_64cbv")]
+visible = false
+layout_mode = 2
+
+[node name="CodeEdit" type="CodeEdit" parent="V Box/HSplitContainer"]
+layout_mode = 2
+theme = ExtResource("1_qm5it")
+theme_override_font_sizes/font_size = 13
+syntax_highlighter = SubResource("CodeHighlighter_ngrk5")
+highlight_all_occurrences = true
+highlight_current_line = true
+gutters_draw_executing_lines = true
+gutters_draw_line_numbers = true
+gutters_zero_pad_line_numbers = true
+gutters_draw_fold_gutter = true
+code_completion_enabled = true
+indent_automatic = true
+auto_brace_completion_enabled = true
+auto_brace_completion_highlight_matching = true
+script = ExtResource("4_170jv")
+
+[connection signal="id_pressed" from="V Box/Script Menu Panel/MenuBar/File" to="." method="_on_file_id_pressed"]
+[connection signal="code_completion_requested" from="V Box/HSplitContainer/CodeEdit" to="V Box/HSplitContainer/CodeEdit" method="_on_code_completion_requested"]
+[connection signal="text_changed" from="V Box/HSplitContainer/CodeEdit" to="V Box/HSplitContainer/CodeEdit" method="_on_code_completion_requested"]
