@@ -9,8 +9,12 @@ func _on_file_id_pressed(id:int) -> void:
 	ToolSignal.emit_signal("script_file_menu_pressed", id)
 
 func _enter_tree() -> void:
-	ToolSignal.connect("select_folder",	_create_file_item)
+	ToolSignal.select_folder.connect(_create_file_item)
+	ToolSignal._create_new_file_done.connect(_update_file_item)
 	pass
+
+func _update_file_item(_new_file_path: String):
+	_create_file_item(GameManager.current_project_path)
 
 func _create_file_item(_path: String):
 	_delete_all_file_items()

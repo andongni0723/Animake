@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvj6wyd1u2lq7"]
+
+[ext_resource type="Theme" uid="uid://cixie5v1vsdec" path="res://Data/main-theme.tres" id="1_3qimx"]
+[ext_resource type="Script" uid="uid://dw1coiu41h1hl" path="res://Scripts/Timeline Panel/animation_rect.gd" id="2_fs2so"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fs2so"]
+bg_color = Color(0.218756, 0.218756, 0.218756, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="Animation Rect" type="Panel" node_paths=PackedStringArray("label")]
+offset_right = 60.0
+offset_bottom = 30.0
+pivot_offset = Vector2(174, 78)
+theme = ExtResource("1_3qimx")
+theme_override_styles/panel = SubResource("StyleBoxFlat_fs2so")
+script = ExtResource("2_fs2so")
+label = NodePath("Label")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_3qimx")
+text = "posisition:x"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true

@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=15 format=3 uid="uid://cixie5v1vsdec"]
+[gd_resource type="Theme" load_steps=16 format=3 uid="uid://cixie5v1vsdec"]
 
 [ext_resource type="FontFile" uid="uid://cjwnxrcj433s5" path="res://Font/JetBrainsMono-Regular.ttf" id="1_u1qfm"]
 
@@ -48,6 +48,12 @@ expand_margin_bottom = 10.0
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fg6th"]
 bg_color = Color(0.12385, 0.131528, 0.167356, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nlal0"]
+bg_color = Color(0.133333, 0.145098, 0.168627, 1)
+border_width_top = 10
+border_width_bottom = 10
+border_color = Color(0.156863, 0.172549, 0.203922, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cfjqo"]
 bg_color = Color(0.117647, 0.121569, 0.160784, 1)
 border_width_left = 20
@@ -81,6 +87,8 @@ bg_color = Color(0.103995, 0.110188, 0.133412, 1)
 
 [resource]
 default_font = ExtResource("1_u1qfm")
+Button/colors/icon_hover_color = Color(0.595041, 0.595041, 0.595041, 1)
+Button/colors/icon_hover_pressed_color = Color(0.420476, 0.420476, 0.420476, 1)
 Button/styles/focus = SubResource("StyleBoxFlat_3oue0")
 Button/styles/hover = SubResource("StyleBoxFlat_ynajl")
 Button/styles/normal = SubResource("StyleBoxFlat_hkm1m")
@@ -93,6 +101,7 @@ FileDialog/styles/embedded_border = SubResource("StyleBoxFlat_pp4c7")
 FileDialog/styles/panel = SubResource("StyleBoxFlat_fg6th")
 GridContainer/constants/h_separation = 10
 GridContainer/constants/v_separation = 10
+HSlider/styles/slider = SubResource("StyleBoxFlat_nlal0")
 Label/font_sizes/font_size = 18
 Label/fonts/font = ExtResource("1_u1qfm")
 MarginContainer/constants/margin_bottom = 10

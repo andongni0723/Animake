@@ -1,8 +1,26 @@
-res://Data/SquareDetail.tres::fab631c8ad4ec25c9764f8ee707de0a0::1742552948::res://.godot/exported/133200997/export-a015d768a2626e7708007c03579a4ac5-SquareDetail.res
-res://Font/JetbrainMono.tres::35416dd14fc6de3b97b678494f453276::1742547034::res://.godot/exported/133200997/export-221481049d8e5eb895e0d0d154709ea2-JetbrainMono.res
-res://Prefabs/error_hint_bar.tscn::738fba29a88694f849b6fa7c479f5333::1743325929::res://.godot/exported/133200997/export-ec615d0e22cb34c4c36f8310ba0d6018-error_hint_bar.scn
-res://Prefabs/rect_tool_square.tscn::60fcdb4109ab7ac0b6f164ffdd45fb19::1743325929::res://.godot/exported/133200997/export-20d069379f0110fbe6ebb57207ad7fb4-rect_tool_square.scn
-res://Prefabs/rect_tool_ui_square.tscn::4b0419ae506c6e274156b3614dfe0a97::1743217496::res://.godot/exported/133200997/export-e2c2c6794eed9246747d2a0c350c22a7-rect_tool_ui_square.scn
-res://Prefabs/square.tscn::459dea29f7b2e02b2378f8ffe5479ee5::1743325929::res://.godot/exported/133200997/export-102bf466175943b8e5a4864cf4cd3f7f-square.scn
+res://Font/JetbrainMono.tres::35416dd14fc6de3b97b678494f453276::1743676719::res://.godot/exported/133200997/export-221481049d8e5eb895e0d0d154709ea2-JetbrainMono.res
+res://Prefabs/error_hint_bar.tscn::738fba29a88694f849b6fa7c479f5333::1743762719::res://.godot/exported/133200997/export-ec615d0e22cb34c4c36f8310ba0d6018-error_hint_bar.scn
+res://Prefabs/rect_tool_square.tscn::2aaa4be210b7aedb7e5fe58395d62918::1744712157::res://.godot/exported/133200997/export-20d069379f0110fbe6ebb57207ad7fb4-rect_tool_square.scn
+res://Prefabs/square.tscn::aa2cd77d930e79aa3db596be8611d5a8::1744879163::res://.godot/exported/133200997/export-102bf466175943b8e5a4864cf4cd3f7f-square.scn
 res://Shader/square_material.tres::aabf9e69b11bfe233a2adb9ee0678510::1743151700::res://.godot/exported/133200997/export-444c850972831e2bb1d83be2544afabe-square_material.res
-res://main-scene.tscn::357e2f4b0522884d43326352cac639e6::1743325929::res://.godot/exported/133200997/export-01db13608a3df57edd064cfaa3b78de2-main-scene.scn
+res://main-scene.tscn::73a0c49bce31987e634f585633c76bbe::1745049392::res://.godot/exported/133200997/export-01db13608a3df57edd064cfaa3b78de2-main-scene.scn
+res://Data/Editor/gdscript_code_highlight.tres::56dd7b516934853370562903ecb368b9::1744794956::res://.godot/exported/133200997/export-57b554c7bd022d8a05ae4d616dbe8007-gdscript_code_highlight.res
+res://Data/Object Data/base_object_data.tres::2dcb3fe6df56103187b8348c4736c82b::1745029882::res://.godot/exported/133200997/export-ab9e5d8a76013a08032a9201e530181c-base_object_data.res
+res://Data/Object Data/base_sprite_data.tres::2a9478eb98edb52970e12c69a70d7c7a::1745029882::res://.godot/exported/133200997/export-4af8a230a08314119d6ec72008375906-base_sprite_data.res
+res://Data/Object Data/square_data.tres::a11972eb40a3fa772e8a6eef0e25b3ba::1745029882::res://.godot/exported/133200997/export-e9d818da79222953785f39c6a9ff76f4-square_data.res
+res://Data/Object Data/text_data.tres::1dc1b42fdbedd256435935bd4deab628::1745029882::res://.godot/exported/133200997/export-a125ddacd1c3377ff20704a45859889e-text_data.res
+res://Data/main-theme.tres::dc43a174854bc1a614ef03bf07d3f6af::1745029882::res://.godot/exported/133200997/export-3ff793ef5262b108a49af727cd2fcd8f-main-theme.res
+res://Data/object_detail.tres::9abe51ceae46295df0300d212c7794bc::1745029882::res://.godot/exported/133200997/export-1d5714617656898cdc254bee7ffbe5b1-object_detail.res
+res://Data/setting_detail.tres::da02cb788c21397100cbf21bd135819d::1744368163::res://.godot/exported/133200997/export-44e838c83a04341cf87916cdf32ec913-setting_detail.res
+res://Data/square_detail.tres::412185676651218a744ce348c60c49a1::1743850215::res://.godot/exported/133200997/export-69a813a94c7e8a1cd2d1c9c0518cd0ed-square_detail.res
+res://Data/text_detail.tres::0764b51588cbbbe19d18108e73e8687f::1743850135::res://.godot/exported/133200997/export-9b85166a0fa55c3efaf81aa0476d2911-text_detail.res
+res://Prefabs/Data Panel/data_panel.tscn::73db64a671128b18d3e4447f9ac8b7db::1744879163::res://.godot/exported/133200997/export-7706720066a6594002e5451058eb59b9-data_panel.scn
+res://Prefabs/Data Panel/property_item.tscn::72c1a87a06f671fc24ef3ea1a67c3dac::1744879163::res://.godot/exported/133200997/export-977d06fe957d342d8d60b81ec04c1ed4-property_item.scn
+res://Prefabs/Script Panel/file_item.tscn::74c84f0a2ad6b3c8e0bd3bf5a02ffc84::1745049392::res://.godot/exported/133200997/export-0f2d10e9ada4d3d5ca0663802d316e7c-file_item.scn
+res://Prefabs/Script Panel/script_panel.tscn::63a57b628167fee653f1e263a0413a98::1745049513::res://.godot/exported/133200997/export-8843e6b4c53ed35d6dae5a6100aa180c-script_panel.scn
+res://Prefabs/base_tool_button.tscn::e5c0ba203906a560131559c860d308ec::1744879163::res://.godot/exported/133200997/export-8d0e46f4f57b4a50bba32356bc79d9a9-base_tool_button.scn
+res://Prefabs/empty_object.tscn::e63187e622db58e6deaa9d89f2274893::1743851571::res://.godot/exported/133200997/export-34bdb9226c7cf3ef91657a8505581ff6-empty_object.scn
+res://Prefabs/ile_dialog.tscn::d7f23775b927c053db0c6847f6275aed::1745049392::res://.godot/exported/133200997/export-985fae4d4af5f64e098bf49f4c170221-ile_dialog.scn
+res://Prefabs/normal_hint_bar.tscn::961bbf0d1edf15ce83b86d1e221f5b03::1744802001::res://.godot/exported/133200997/export-32ae1743f117c8526305382f1955f695-normal_hint_bar.scn
+res://Prefabs/rect_tool_example_square.tscn::bf3e2965ef0394c3d33350fbf4de6c72::1744712157::res://.godot/exported/133200997/export-b433d083b03f54f6608ec0c32422b8f9-rect_tool_example_square.scn
+res://Prefabs/text.tscn::458f41f7cee93c3509a0e930bfa9a215::1744879162::res://.godot/exported/133200997/export-37a3ed0612c3c315659aebed106e3d81-text.scn

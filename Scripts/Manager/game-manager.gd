@@ -1,10 +1,10 @@
 extends	Node2D
 
 var	mouse_position:	Vector2	= Vector2.ZERO
-
 var	dialog:	FileDialog
-
 var is_playing: bool = false
+var current_project_path: String = ""
+var play_node: Node2D = null
 
 func _ready():
 	dialog = UIManager.file_dialog_prefab.instantiate()
@@ -16,27 +16,6 @@ func _ready():
 
 func _physics_process(_delta):
 	mouse_position = get_global_mouse_position()
-
-# 創建檔案對話框
-# func _create_file_dialog():
-# 	# dialog = FileDialog.new()
-# 	add_child(dialog)
-# 	dialog.visible = false
-	
-# 	# 設定對話框屬性
-# 	# dialog.file_mode = FileDialog.FILE_MODE_OPEN_FILE  # 使用 file_mode 而不是 mode
-# 	dialog.file_mode = FileDialog.FILE_MODE_OPEN_DIR
-# 	dialog.access =	FileDialog.ACCESS_FILESYSTEM
-# 	dialog.current_path	= "/"
-
-# 	dialog.title = "Select a folder which have \"main.gd\""
-# 	dialog.filters = ["*.gd"]  # 只顯示 .gd 檔案
-	
-# 	# 連接信號
-# 	dialog.file_selected.connect(_on_folder_selected)
-	
-# 	# 設定對話框大小
-# 	dialog.popup_centered(Vector2(800, 600))
 
 func _open_folder_dialog():
 	if is_playing:
@@ -54,23 +33,38 @@ func _open_folder_dialog():
 
 # 當檔案被選擇時的處理函數
 func _on_folder_selected(path):
-	print("On folder selected")
 	ToolSignal.emit_signal("select_folder", path)
+	if play_node: 
+		play_node.queue_free()
+		play_node = null
+	current_project_path = ""
 	var main_script_path = get_main_script_path(path)
 	if main_script_path == "":
 		HintManager.call_error_hint("Please make sure \"main.gd\" is located in the top-level folder.")
 		return
 
-	var	script = load(main_script_path).new()
-	if script:
-		if script.has_method("main"):
-			is_playing = true
-			await script.main()
-			is_playing = false
-		else:
-			HintManager.call_error_hint("don't have	main() function	in main	script")	
-	else:
-		HintManager.call_error_hint("can't load	script file")
+	# var	script = load(main_script_path).new()
+	var script = load(main_script_path)
+	current_project_path = path
+
+	if not play_node:
+		play_node = Node2D.new()
+		get_tree().root.add_child(play_node)
+		play_node.name = "Play Node"
+	
+	play_node.set_script(script)
+	play_node.call_deferred("_ready")
+	# play_node.call_deferred("_enter_tree")
+
+	# if script:
+	# 	if script.has_method("main"):
+	# 		is_playing = true
+	# 		await script.main()
+	# 		is_playing = false
+	# 	else:
+	# 		HintManager.call_error_hint("don't have	main() function	in main	script")	
+	# else:
+	# 	HintManager.call_error_hint("can't load	script file")
 
 ## If not get main script path, return empty string ""
 func get_main_script_path(_path: String) -> String:

@@ -2,6 +2,9 @@ extends	Node2D
 
 var	player : Node2D;
 
+func _ready() -> void:
+	main()
+
 func main():
 	# Ground
 	var	ground := Create.make_square("ground")

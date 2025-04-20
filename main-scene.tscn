@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ddnwwsvd0y3jm"]
+[gd_scene load_steps=26 format=3 uid="uid://ddnwwsvd0y3jm"]
 
 [ext_resource type="Script" uid="uid://w85ki6lxi3eo" path="res://Scripts/OtherObject/ui_manager.gd" id="1_g86mt"]
 [ext_resource type="Script" uid="uid://bhae2k1rp6e5i" path="res://Scripts/Manager/hint-manager.gd" id="1_i1fv3"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://cgm82wpkrhmlj" path="res://Prefabs/rect_tool_example_square.tscn" id="12_p0wft"]
 [ext_resource type="PackedScene" uid="uid://du77iuaovi1m1" path="res://Prefabs/Data Panel/data_panel.tscn" id="13_5k8xk"]
 [ext_resource type="PackedScene" uid="uid://dckk8tgh51sgj" path="res://Prefabs/Script Panel/script_panel.tscn" id="16_slrkl"]
+[ext_resource type="PackedScene" uid="uid://cvwjw6yvb3tmg" path="res://Prefabs/Timeline Panel/timeline.tscn" id="18_es55r"]
 
 [sub_resource type="Environment" id="Environment_e304g"]
 background_mode = 3
@@ -101,6 +102,13 @@ anchor_bottom = 1.03858
 offset_right = 6.4
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
+
+[node name="Timeline" parent="Canvas/Control" instance=ExtResource("18_es55r")]
+layout_mode = 0
+offset_left = 194.0
+offset_top = 371.0
+offset_right = 853.0
+offset_bottom = 625.0
 
 [node name="Left Panel" type="MarginContainer" parent="Canvas/Control"]
 layout_mode = 0

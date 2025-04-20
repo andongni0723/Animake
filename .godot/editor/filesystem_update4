@@ -1,4 +1,6 @@
-res://main-scene.tscn
+res://Scripts/Script Panel/code_edit.gd
+res://Scripts/Script Panel/menu_bar.gd
+res://Prefabs/Script Panel/script_panel.tscn
 res://Data/main-theme.tres
 res://Scripts/OtherObject/rect_tool_square.gd
 res://Data/Object Data/base_object_data.tres
@@ -7,23 +9,18 @@ res://Data/Object Data/base_sprite_data.tres
 res://Data/Object Data/square_data.tres
 res://Data/object_detail.tres
 res://Shader/rounded.gdshader
-res://Prefabs/text.tscn
-res://Prefabs/square.tscn
-res://Prefabs/Data Panel/data_panel.tscn
-res://Prefabs/Data Panel/property_item.tscn
-res://Prefabs/base_tool_button.tscn
-res://anime_script.gd
-res://Scripts/Script Panel/code_edit.gd
+res://main-scene.tscn
 res://Prefabs/Script Panel/file_item.tscn
-res://Scripts/Script Panel/file_item.gd
-res://Scripts/Script Panel/script_panel.gd
-res://Prefabs/Script Panel/script_panel.tscn
-res://Scripts/Tool System/tool-signal.gd
-res://Scripts/Manager/game-manager.gd
 res://Prefabs/ile_dialog.tscn
-res://Scripts/OtherObject/ui_manager.gd
-res://Scripts/Manager/hint-manager.gd
 res://User/main.gd
-res://Scripts/OtherObject/hint-bar.gd
-res://Scripts/OtherObject/anime_object_tree.gd
-res://Scripts/Data Panel/data_panel.gd
+res://Scripts/Manager/game-manager.gd
+res://Scripts/Development/API/create.gd
+res://Scripts/Development/API/core.gd
+res://Prefabs/Timeline Panel/timeline.tscn
+res://Scripts/Timeline Panel/timeline_panel.gd
+res://Scripts/Development/Base/base_sprite.gd
+res://Scripts/Timeline Panel/timeline_canvas.gd
+res://Font/JetbrainMono.tres
+res://Scripts/Timeline Panel/time_point.gd
+res://Prefabs/Timeline Panel/animation_rect.tscn
+res://Scripts/Timeline Panel/animation_rect.gd

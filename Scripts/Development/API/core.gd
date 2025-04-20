@@ -16,6 +16,7 @@ func timer(_time: float) -> SceneTreeTimer:
 	return get_tree().create_timer(_time)
 
 func tween(target: Object, property: String, final_value, duration:	float,	_trans:	int	= Tween.TRANS_QUART,	_ease: int = Tween.EASE_OUT) -> TweenWrapper:
+	if not target: return null
 	var	t := new_tween(_trans, _ease)
 	t.tween_property(target, property, final_value,	duration)
 	var	wrapper	:= TweenWrapper.new()
