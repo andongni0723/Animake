@@ -1,26 +1,22 @@
-res://Scripts/Script Panel/code_edit.gd
-res://Scripts/Script Panel/menu_bar.gd
-res://Prefabs/Script Panel/script_panel.tscn
+res://Prefabs/Timeline Panel/timeline.tscn
 res://Data/main-theme.tres
 res://Scripts/OtherObject/rect_tool_square.gd
 res://Data/Object Data/base_object_data.tres
+res://Data/object_detail.tres
 res://Data/Object Data/text_data.tres
 res://Data/Object Data/base_sprite_data.tres
 res://Data/Object Data/square_data.tres
-res://Data/object_detail.tres
 res://Shader/rounded.gdshader
+res://Scripts/Timeline Panel/timeline_canvas.gd
 res://main-scene.tscn
+res://Prefabs/Script Panel/script_panel.tscn
 res://Prefabs/Script Panel/file_item.tscn
 res://Prefabs/ile_dialog.tscn
-res://User/main.gd
-res://Scripts/Manager/game-manager.gd
-res://Scripts/Development/API/create.gd
-res://Scripts/Development/API/core.gd
-res://Prefabs/Timeline Panel/timeline.tscn
-res://Scripts/Timeline Panel/timeline_panel.gd
-res://Scripts/Development/Base/base_sprite.gd
-res://Scripts/Timeline Panel/timeline_canvas.gd
-res://Font/JetbrainMono.tres
-res://Scripts/Timeline Panel/time_point.gd
 res://Prefabs/Timeline Panel/animation_rect.tscn
-res://Scripts/Timeline Panel/animation_rect.gd
+res://Scripts/Manager/camera.gd
+res://Scripts/Timeline Panel/timeline_panel.gd
+res://Scripts/OtherObject/pointer_position_label.gd
+res://Scripts/Development/API/core.gd
+res://Scripts/Development/Base/base_sprite.gd
+res://Scripts/Development/Base/tween_wrapper.gd
+res://Scripts/Timeline Panel/time_point.gd

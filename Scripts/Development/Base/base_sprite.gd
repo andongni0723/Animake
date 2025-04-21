@@ -2,7 +2,13 @@ extends	BaseObject
 class_name BaseSprite
 
 @onready var sprite: Sprite2D =	$".";
-var	color: Color;
+
+var	color: Color = Color.WHITE:
+	set(value):
+		sprite.modulate = value
+		color = value
+	get():
+		return color;
 
 @export	var	size: Vector2 =	Vector2.ONE:
 	set(value):
@@ -19,7 +25,7 @@ func _update_material_size(_w: float, _h: float):
 	sprite.material.set_shader_parameter("view_height",	_h * 100)
 
 
-## Tool function 
+#region Tool function
 
 func get_data() -> Array[SettingProperty]:
 	var result = super.get_data()
@@ -31,3 +37,5 @@ func fade_alpha(_value:float, _time: float)	-> TweenWrapper:
 
 func fade_size(_value: Vector2, _time: float) -> TweenWrapper:
 	return Core.tween(self, "size", _value, _time)
+
+#endregion

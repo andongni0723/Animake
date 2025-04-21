@@ -5,6 +5,10 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fs2so"]
 bg_color = Color(0.218756, 0.218756, 0.218756, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -14,6 +18,7 @@ corner_radius_bottom_left = 5
 offset_right = 60.0
 offset_bottom = 30.0
 pivot_offset = Vector2(174, 78)
+mouse_filter = 2
 theme = ExtResource("1_3qimx")
 theme_override_styles/panel = SubResource("StyleBoxFlat_fs2so")
 script = ExtResource("2_fs2so")
@@ -27,6 +32,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_3qimx")
+theme_override_font_sizes/font_size = 12
 text = "posisition:x"
 horizontal_alignment = 1
 vertical_alignment = 1

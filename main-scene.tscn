@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://ddnwwsvd0y3jm"]
+[gd_scene load_steps=28 format=3 uid="uid://ddnwwsvd0y3jm"]
 
 [ext_resource type="Script" uid="uid://w85ki6lxi3eo" path="res://Scripts/OtherObject/ui_manager.gd" id="1_g86mt"]
 [ext_resource type="Script" uid="uid://bhae2k1rp6e5i" path="res://Scripts/Manager/hint-manager.gd" id="1_i1fv3"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bxk7e5117ua8o" path="res://_Assets/white.png" id="3_5ulvj"]
 [ext_resource type="PackedScene" uid="uid://6hpbnqov48b" path="res://Prefabs/normal_hint_bar.tscn" id="3_es55r"]
 [ext_resource type="Script" uid="uid://806ifmr2fpdq" path="res://Scripts/OtherObject/pointer_position_label.gd" id="4_g86mt"]
+[ext_resource type="Script" uid="uid://bna7iq5wj6r56" path="res://Scripts/Manager/camera.gd" id="6_5ug5c"]
 [ext_resource type="PackedScene" uid="uid://rner2aytek3r" path="res://Prefabs/ile_dialog.tscn" id="6_351bi"]
 [ext_resource type="Texture2D" uid="uid://c3cb14wy82v0w" path="res://_Assets/Animake-v2/Animake-v2-white.svg" id="6_e304g"]
 [ext_resource type="Texture2D" uid="uid://f3lkte1vv623" path="res://out square.png" id="6_jvpjp"]
@@ -24,11 +25,17 @@
 [ext_resource type="PackedScene" uid="uid://cvwjw6yvb3tmg" path="res://Prefabs/Timeline Panel/timeline.tscn" id="18_es55r"]
 
 [sub_resource type="Environment" id="Environment_e304g"]
-background_mode = 3
 glow_enabled = true
 glow_normalized = true
 glow_strength = 1.2
 glow_bloom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ug5c"]
+bg_color = Color(0.136046, 0.149792, 0.197905, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="LabelSettings" id="LabelSettings_qetym"]
 font = ExtResource("2_q2uwy")
@@ -59,7 +66,11 @@ _rect_tool_button = NodePath("../Canvas/Control/Left Panel/V Box/GridContainer/R
 _script_tool_button = NodePath("../Canvas/Control/Left Panel/V Box/GridContainer/Script Button")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+skew = 0.31765
 zoom = Vector2(0.5, 0.5)
+script = ExtResource("6_5ug5c")
+zoom_speed = 0.01
+min_zoom = 0.1
 
 [node name="Bounds" type="Node2D" parent="."]
 z_index = -999
@@ -227,15 +238,26 @@ layout_mode = 2
 texture = ExtResource("11_qh5v2")
 expand_mode = 1
 
-[node name="Pointer Position Label" type="Label" parent="Canvas/Control"]
+[node name="Panel" type="Panel" parent="Canvas/Control"]
 layout_mode = 0
-offset_left = 192.0
-offset_top = 24.0
-offset_right = 710.0
-offset_bottom = 67.0
-scale = Vector2(0.72, 0.72)
-text = "Pointer Position: (20, 100)"
-label_settings = SubResource("LabelSettings_qetym")
+offset_left = 195.0
+offset_top = 16.0
+offset_right = 320.0
+offset_bottom = 50.0
+theme = ExtResource("9_r7pl7")
+theme_override_styles/panel = SubResource("StyleBoxFlat_5ug5c")
+
+[node name="Pointer Position Label" type="Label" parent="Canvas/Control/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_r7pl7")
+theme_override_font_sizes/font_size = 14
+text = "(20, 100)"
+horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("4_g86mt")
 
@@ -257,10 +279,10 @@ anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -309.0
+offset_left = -229.005
 offset_top = 37.0
-offset_right = -45.0
-offset_bottom = -51.0001
+offset_right = -45.0051
+offset_bottom = -50.9998
 grow_horizontal = 0
 grow_vertical = 2
 theme = ExtResource("9_r7pl7")

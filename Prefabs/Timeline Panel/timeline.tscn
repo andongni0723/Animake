@@ -140,7 +140,7 @@ theme = ExtResource("1_63kco")
 horizontal_scroll_mode = 2
 vertical_scroll_mode = 0
 
-[node name="Timeline Canvas" type="Panel" parent="Margin/VBoxContainer/Main Panel/Timeline Scroll Container" node_paths=PackedStringArray("canvas", "time_point")]
+[node name="Timeline Canvas" type="Panel" parent="Margin/VBoxContainer/Main Panel/Timeline Scroll Container" node_paths=PackedStringArray("canvas", "time_point", "animation_rect_parent")]
 custom_minimum_size = Vector2(2000, 0)
 layout_mode = 2
 size_flags_vertical = 3
@@ -151,9 +151,15 @@ font = ExtResource("9_qicbp")
 canvas = NodePath(".")
 frame_per_px = 5.0
 interval_frame = 10
-keyframes = Array[Vector2]([Vector2(0, 30), Vector2(10, 40), Vector2(20, 60)])
+keyframes = Array[Vector2]([Vector2(20, 30), Vector2(20, 50), Vector2(30, 50), Vector2(40, 60)])
 time_point = NodePath("Time Point")
 animation_rect_prefab = ExtResource("10_55381")
+animation_rect_parent = NodePath("Animation Rect Parent")
+
+[node name="Animation Rect Parent" type="Control" parent="Margin/VBoxContainer/Main Panel/Timeline Scroll Container/Timeline Canvas"]
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 0
 
 [node name="Time Point" type="Control" parent="Margin/VBoxContainer/Main Panel/Timeline Scroll Container/Timeline Canvas" node_paths=PackedStringArray("frame_label")]
 z_index = 10
@@ -217,6 +223,7 @@ libraries = {
 
 [node name="Panel" type="MarginContainer" parent="."]
 visible = false
+layout_mode = 0
 theme = ExtResource("1_63kco")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel"]

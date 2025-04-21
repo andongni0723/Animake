@@ -9,6 +9,7 @@ class_name TimelineCanvas extends Control
 @export	var	keyframes: Array[Vector2]
 @export var time_point: TimePoint
 @export var animation_rect_prefab: PackedScene
+@export var animation_rect_parent: Control
 
 signal frame_changed(new_time: float)
 
@@ -19,8 +20,8 @@ func _ready():
 	total_width = frame_rate * (duration + 1) * frame_per_px
 	custom_minimum_size.x = total_width
 
-	for i in keyframes:
-		_add_animation_rect(i)
+	_update_time_point(0)
+	_update_animation_rect(keyframes)
 
 func _draw() -> void:
 	print("draw")
@@ -33,13 +34,6 @@ func _draw() -> void:
 		var text_w = font.get_string_size(text).x
 		draw_string(font, Vector2(x - (text_w / 2), 20), text)
 		draw_line(Vector2(x, 20), Vector2(x, h), Color(0.2, 0.2, 0.2), 1)
-
-	# var	steps =	int(duration * frame_rate /	interval_frame)
-	# for	i in range(steps + 1):
-	# 	var	x =	float(i) * frame_per_px	* interval_frame
-	# 	var frame = int(i * interval_frame)
-	# 	draw_string(font, Vector2(x- (str(frame).length()-1) * 16, 20), str(frame))
-	# 	draw_line(Vector2(x, 20),Vector2(x, h), Color(0.2, 0.2, 0.2), 1)
 
 func _gui_input(event):
 	if event is InputEventMouseMotion:
@@ -58,23 +52,33 @@ func _update_time_point(new_x: float):
 	frame_changed.emit(cur_time)
 	time_point._set_frame_label(f)
 
-var layer = 0
-func _add_animation_rect(frame_vector: Vector2):
-	layer += 1
-	print(frame_vector)
+func _add_animation_rect(_keyframe: Vector2, _layer: int = 0):
 	var animation_rect: AnimationRect = animation_rect_prefab.instantiate()
-	add_child(animation_rect)
-	animation_rect.position.x = frame_vector.x * frame_per_px
-	animation_rect.position.y = layer * 35
-	animation_rect.initialize(frame_vector.y * frame_per_px, "position:x")
+	animation_rect_parent.add_child(animation_rect)
+	animation_rect.position.x = _keyframe.x * frame_per_px
+	animation_rect.position.y = (_layer + 1) * 35
+	animation_rect.initialize((_keyframe.y - _keyframe.x) * frame_per_px, "position:x")
 
+func _update_animation_rect(_keyframes: Array[Vector2]):
+	var track_ends := []
 
-	
+	for section in keyframes:
+		var start = section.x
+		var end = section.y
+		var placed = false
+		var result_layer = 0
 
-# func _update_time_point(new_x: float):
-# 	var cur_frame: int = int(new_x / frame_per_px) + 1
-# 	var cur_time: float = float(cur_frame) / frame_rate
+		# Check if the current section can be placed in an existing layer
+		for i in range(track_ends.size()):
+			if start >= track_ends[i]:
+				track_ends[i] = end
+				placed = true
+				result_layer = i
+				break
+		
+		# If not, add a new layer
+		if not placed:
+			track_ends.append(end)
+			result_layer = track_ends.size() - 1
 
-# 	frame_changed.emit(cur_time)
-# 	time_point.position.x = (cur_frame-1) * frame_per_px
-# 	time_point._set_frame_label(cur_frame)
+		_add_animation_rect(section, result_layer)
