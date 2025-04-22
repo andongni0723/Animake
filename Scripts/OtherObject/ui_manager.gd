@@ -19,6 +19,9 @@ static var normal_hint_bar: PackedScene
 @export var _error_hint_bar: PackedScene
 static var error_hint_bar: PackedScene
 
+@export var _timeline_panel: TimelinePanel
+static var timeline_panel: TimelinePanel
+
 @export var _script_panel: Control
 static var script_panel: Control
 
@@ -41,6 +44,7 @@ func _enter_tree() -> void:
 	error_hint_bar = _error_hint_bar
 	rect_tool_button = _rect_tool_button
 	script_tool_button = _script_tool_button
+	timeline_panel = _timeline_panel
 	script_panel = _script_panel
 	file_dialog_prefab = _file_dialog_prefab
 	ToolSignal.connect("script_panel_action", _open_script_panel)

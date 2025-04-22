@@ -22,3 +22,10 @@ func tween(target: Object, property: String, final_value, duration:	float,	_tran
 	var	wrapper	:= TweenWrapper.new()
 	wrapper.tween =	t
 	return wrapper
+
+func n_tween(target: BaseObject, property: String, start_value, final_value, duration: float, interpolation: Animation.InterpolationType = Animation.INTERPOLATION_LINEAR, _ease: float = 1) -> AnimationData:
+	if not target: return null
+	var _path := target.get_path().get_concatenated_names().trim_prefix("root/")
+	var data: AnimationData = AnimationData.new(_path + ':' + property, duration, start_value, final_value, interpolation, _ease)
+	UIManager.timeline_panel.add_animation_data(data)
+	return data

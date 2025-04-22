@@ -52,7 +52,7 @@ environment = SubResource("Environment_e304g")
 [node name="Hint Manager" type="Node2D" parent="."]
 script = ExtResource("1_i1fv3")
 
-[node name="UI Manager" type="Node2D" parent="." node_paths=PackedStringArray("_read_file_button", "_reload_file_button", "_canvas", "_world_canvas", "_script_panel", "_rect_tool_button", "_script_tool_button")]
+[node name="UI Manager" type="Node2D" parent="." node_paths=PackedStringArray("_read_file_button", "_reload_file_button", "_canvas", "_world_canvas", "_timeline_panel", "_script_panel", "_rect_tool_button", "_script_tool_button")]
 script = ExtResource("1_g86mt")
 _read_file_button = NodePath("../Canvas/Control/Left Panel/V Box/Read File Button")
 _reload_file_button = NodePath("../Canvas/Control/Left Panel/V Box/Reload File Button")
@@ -60,6 +60,7 @@ _canvas = NodePath("../Canvas")
 _world_canvas = NodePath("../World Canvas")
 _normal_hint_bar = ExtResource("3_es55r")
 _error_hint_bar = ExtResource("8_ikad4")
+_timeline_panel = NodePath("../Canvas/Control/Timeline Panel")
 _script_panel = NodePath("../Canvas/Control/Script Panel")
 _file_dialog_prefab = ExtResource("6_351bi")
 _rect_tool_button = NodePath("../Canvas/Control/Left Panel/V Box/GridContainer/Rect Line Button")
@@ -114,7 +115,7 @@ offset_right = 6.4
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
-[node name="Timeline" parent="Canvas/Control" instance=ExtResource("18_es55r")]
+[node name="Timeline Panel" parent="Canvas/Control" instance=ExtResource("18_es55r")]
 layout_mode = 0
 offset_left = 194.0
 offset_top = 371.0
@@ -299,6 +300,7 @@ layout_mode = 2
 
 [node name="Script Panel" parent="Canvas/Control" instance=ExtResource("16_slrkl")]
 visible = false
+z_index = 10
 layout_mode = 0
 offset_left = 191.0
 offset_top = 26.0

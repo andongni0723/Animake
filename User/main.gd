@@ -4,14 +4,17 @@ var	player : Node2D;
 
 func _ready() -> void:
 	main()
-
+	
 func main():
 	# Ground
 	var	ground := Create.make_square("ground")
+	print(ground.get_path())
+	print(ground.get_path().get_concatenated_names().trim_prefix("root/"))
 	ground.add_style("rounded-/10/ scale-/2/-/1/")
 	ground.modulate	= Color.GRAY
-	ground.tween_pos(Vector2(0, 300), 0.5)
-	await ground.fade_size(Vector2(6, 0.5), 0.5).wait()
+	UIManager.timeline_panel.call_add_animation("Node2D/Anime Node/ground:position:y", Vector2(0, 1), 0, -200)
+	# ground.tween_pos(Vector2(0, 300), 0.5)
+	# await ground.fade_size(Vector2(6, 0.5), 0.5).wait()
 
 	# Player Group
 	var player_group: EmptyObject = Create.make_object("player_group")

@@ -31,15 +31,16 @@ corner_radius_bottom_left = 5
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r3wms"]
 
-[node name="Timeline Panel" type="Panel" node_paths=PackedStringArray("animation_player", "slider", "timeline_canvas")]
+[node name="Timeline Panel" type="Panel" node_paths=PackedStringArray("animation_player", "timeline_canvas", "play_button", "stop_button")]
 offset_right = 700.0
 offset_bottom = 250.0
 theme = ExtResource("1_63kco")
 theme_override_styles/panel = SubResource("StyleBoxFlat_r3wms")
 script = ExtResource("1_rd1yn")
 animation_player = NodePath("AnimationPlayer")
-slider = NodePath("HSlider")
 timeline_canvas = NodePath("Margin/VBoxContainer/Main Panel/Timeline Scroll Container/Timeline Canvas")
+play_button = NodePath("Margin/VBoxContainer/Tool Bar Panel/Tool Bar Margin/Tool Bar VBox/Play Start")
+stop_button = NodePath("Margin/VBoxContainer/Tool Bar Panel/Tool Bar Margin/Tool Bar VBox/Stop Button")
 
 [node name="Margin" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -79,7 +80,7 @@ theme_override_constants/margin_bottom = 5
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 
-[node name="Tool Button" type="Button" parent="Margin/VBoxContainer/Tool Bar Panel/Tool Bar Margin/Tool Bar VBox"]
+[node name="Play Backward" type="Button" parent="Margin/VBoxContainer/Tool Bar Panel/Tool Bar Margin/Tool Bar VBox"]
 custom_minimum_size = Vector2(18.54, -6.36)
 layout_mode = 2
 theme = ExtResource("1_63kco")
@@ -87,7 +88,7 @@ icon = ExtResource("3_hndo6")
 flat = true
 expand_icon = true
 
-[node name="Tool Button2" type="Button" parent="Margin/VBoxContainer/Tool Bar Panel/Tool Bar Margin/Tool Bar VBox"]
+[node name="Play Start Back" type="Button" parent="Margin/VBoxContainer/Tool Bar Panel/Tool Bar Margin/Tool Bar VBox"]
 custom_minimum_size = Vector2(18.54, 0)
 layout_mode = 2
 theme = ExtResource("1_63kco")
@@ -95,7 +96,7 @@ icon = ExtResource("4_u5mtt")
 flat = true
 expand_icon = true
 
-[node name="Tool Button3" type="Button" parent="Margin/VBoxContainer/Tool Bar Panel/Tool Bar Margin/Tool Bar VBox"]
+[node name="Stop Button" type="Button" parent="Margin/VBoxContainer/Tool Bar Panel/Tool Bar Margin/Tool Bar VBox"]
 custom_minimum_size = Vector2(18.54, 0)
 layout_mode = 2
 theme = ExtResource("1_63kco")
@@ -103,7 +104,7 @@ icon = ExtResource("5_qicbp")
 flat = true
 expand_icon = true
 
-[node name="Tool Button5" type="Button" parent="Margin/VBoxContainer/Tool Bar Panel/Tool Bar Margin/Tool Bar VBox"]
+[node name="Play Start" type="Button" parent="Margin/VBoxContainer/Tool Bar Panel/Tool Bar Margin/Tool Bar VBox"]
 custom_minimum_size = Vector2(18.54, 0)
 layout_mode = 2
 theme = ExtResource("1_63kco")
@@ -111,7 +112,7 @@ icon = ExtResource("6_k3ybp")
 flat = true
 expand_icon = true
 
-[node name="Tool Button4" type="Button" parent="Margin/VBoxContainer/Tool Bar Panel/Tool Bar Margin/Tool Bar VBox"]
+[node name="Play" type="Button" parent="Margin/VBoxContainer/Tool Bar Panel/Tool Bar Margin/Tool Bar VBox"]
 custom_minimum_size = Vector2(18.54, 0)
 layout_mode = 2
 theme = ExtResource("1_63kco")
@@ -162,8 +163,7 @@ layout_mode = 1
 anchors_preset = 0
 
 [node name="Time Point" type="Control" parent="Margin/VBoxContainer/Main Panel/Timeline Scroll Container/Timeline Canvas" node_paths=PackedStringArray("frame_label")]
-z_index = 10
-z_as_relative = false
+z_index = 1
 custom_minimum_size = Vector2(10.05, 0)
 layout_mode = 1
 anchors_preset = 9

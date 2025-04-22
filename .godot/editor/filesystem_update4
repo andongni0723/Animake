@@ -1,4 +1,4 @@
-res://Prefabs/Timeline Panel/timeline.tscn
+res://main-scene.tscn
 res://Data/main-theme.tres
 res://Scripts/OtherObject/rect_tool_square.gd
 res://Data/Object Data/base_object_data.tres
@@ -7,16 +7,17 @@ res://Data/Object Data/text_data.tres
 res://Data/Object Data/base_sprite_data.tres
 res://Data/Object Data/square_data.tres
 res://Shader/rounded.gdshader
-res://Scripts/Timeline Panel/timeline_canvas.gd
-res://main-scene.tscn
 res://Prefabs/Script Panel/script_panel.tscn
 res://Prefabs/Script Panel/file_item.tscn
 res://Prefabs/ile_dialog.tscn
+res://Prefabs/Timeline Panel/timeline.tscn
 res://Prefabs/Timeline Panel/animation_rect.tscn
-res://Scripts/Manager/camera.gd
 res://Scripts/Timeline Panel/timeline_panel.gd
-res://Scripts/OtherObject/pointer_position_label.gd
+res://User/main.gd
+res://Scripts/Manager/hint-manager.gd
+res://Scripts/OtherObject/ui_manager.gd
+res://Scripts/Manager/camera.gd
 res://Scripts/Development/API/core.gd
-res://Scripts/Development/Base/base_sprite.gd
-res://Scripts/Development/Base/tween_wrapper.gd
-res://Scripts/Timeline Panel/time_point.gd
+res://Scripts/Timeline Panel/animation_data.gd
+res://Scripts/Development/Base/base_object.gd
+res://New User/main.gd

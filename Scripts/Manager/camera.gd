@@ -4,8 +4,8 @@ extends	Camera2D
 @export	var	min_zoom: float	= 0.2
 @export	var	max_zoom: float	= 3.0
 
-var dragging := false
-var last_mouse_position := Vector2.ZERO
+var	dragging := false
+var	last_mouse_position	:= Vector2.ZERO
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
@@ -13,6 +13,11 @@ func _unhandled_input(event):
 			zoom_camera(-zoom_speed)
 		elif event.button_index	== MOUSE_BUTTON_WHEEL_DOWN:
 			zoom_camera(zoom_speed)
+	if event is InputEventPanGesture:
+		if event.delta.y > 0:
+			zoom_camera(zoom_speed)
+		elif event.delta.y < 0:
+			zoom_camera(-zoom_speed)
 
 func _input(event):
 	if event is InputEventMouseButton:
@@ -20,11 +25,19 @@ func _input(event):
 			dragging = event.pressed
 			last_mouse_position	= get_viewport().get_mouse_position()
 	
-	elif event is InputEventMouseMotion and dragging:
-		var current_pos = get_viewport().get_mouse_position()
-		var delta = current_pos - last_mouse_position
-		position -= delta / zoom  # 考慮 zoom 比例
-		last_mouse_position = current_pos
+	# Two-finger pan
+	if event is InputEventPanGesture:
+		position -= event.delta	/ zoom
+	elif event is InputEventMagnifyGesture:
+		zoom *= event.factor
+		zoom.x = clamp(zoom.x, min_zoom, max_zoom)
+		zoom.y = clamp(zoom.y, min_zoom, max_zoom)
+	
+	elif event is InputEventMouseMotion	and	dragging:
+		var	current_pos	= get_viewport().get_mouse_position()
+		var	delta =	current_pos	- last_mouse_position
+		position -= delta /	zoom  # 考慮 zoom	  比例
+		last_mouse_position	= current_pos
 
 func zoom_camera(amount: float):
 	var	old_zoom = zoom

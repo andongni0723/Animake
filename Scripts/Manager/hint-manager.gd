@@ -10,5 +10,6 @@ func call_normal_hint(_text: String):
 func _show_hint_action(prefab: PackedScene, head_text: String, text: String):
 	var hint_bar_instance: HintBar = prefab.instantiate()
 	hint_bar_instance.position = Vector2(20, 570)
+	hint_bar_instance.z_index = 100
 	hint_bar_instance.show_hint_bar(head_text, text)
 	UIManager.canvas.add_child(hint_bar_instance)

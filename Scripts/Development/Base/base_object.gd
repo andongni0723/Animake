@@ -48,8 +48,9 @@ func add_style(style_string: String) -> void:
 			position = NodeStyleInterpreter.position_interpret(style)
 
 
-func tween_pos_x(final_value, duration:	float,	trans: int = Tween.TRANS_QUART,	_ease: int = Tween.EASE_OUT) -> TweenWrapper:
-	return Core.tween(self,	"pos_x", final_value, duration,	trans, _ease)
+func tween_pos_x(final_value, duration:	float,	trans: int = Tween.TRANS_QUART,	_ease: int = Tween.EASE_OUT) -> AnimationData:
+	# return Core.tween(self,	"pos_x", final_value, duration,	trans, _ease)
+	return Core.n_tween(self, "position:x", position.x, final_value, duration)
 
 func tween_pos_y(final_value, duration:	float,	trans: int = Tween.TRANS_QUART,	_ease: int = Tween.EASE_OUT) -> TweenWrapper:
 	return Core.tween(self,	"pos_y", final_value, duration,	trans, _ease)
