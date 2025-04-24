@@ -1,32 +1,30 @@
-extends Node
+extends Node 
 
-func _ready() -> void:
-	var obj = Create.make_square("object", Vector2(-200, 0))
-	obj.add_style("rounded-/10/ scale-/0.5/-/0.5/")
-	obj.tween_pos_x(200, 1)
-	obj.tween_pos_x(-200, 1).wait()
-	obj.tween_pos_x(400, 1)
+func _ready():
+  main()
+  pass
 
+func main():
+  var panel := Create.make_square("panel")
+  panel.add_style("rounded-/10/ scale-/0/-/0/ color-/GRAY/ z-/-1/")
+  panel.self_modulate = Color.GRAY
 
-# func f():
-#     var object = Create.make_square("object", Vector2(-200, 0))
-#     var seq = Flow.sequence()
-#     seq.tween(obj.tween_pos_x(200, 1))
-#     seq.tween(obj.tween_pos_x(-200, 1))
-#     seq.end().wait()
+  var button := Create.make_square("button")
+  button.add_style("rounded-/10/ scale-/0.9/-/0.3/ alpha-/0/")
+  button.size = Vector2(0.9, 0.3)
+  button.color.a = 0
+  button.change_parent(panel)
 
-#     var player = Create.make_square("player", Vector2(-200, 0))
-#     player.add_style("rounded-/10/ scale-/0/-/0/")
-#     var emp = Create.make_object("player_group")
+  var text := Create.make_text("button_text")
+  text.label.text = "Button"
+  text.modulate = Color.BLACK
+  text.change_parent(button)
 
-#     player.change_parent(emp)
-	
-#     var all = Flow.all()
-#     all.tween(emp.tween_pos_x(200, 1))
-#     all.tween(emp.tween_pos_y(-200, 1))
-#     all.end().wait()
-
-#     delay(2).wait()
-
-#     var lp = Flow.loop(3)
-#     lp.tween(obj.tween_pos_x(200, 1))
+  var s = Flow.step()
+  s.add(panel.tween.size.to(Vector2(1.2, 1.2)).span(0.4))
+  s.add(panel.tween.size.to(Vector2(1, 1)).span(0.2))
+  s.add(button.tween.color.a.to(1).span(0.5))
+  s.add(button.tween.position.y.to(-100).span(0.2))
+  s.add(button.tween.position.y.to(0).span(0.2))
+#   s.add(Core.delay(0.5))
+  s.end().wait()

@@ -1,15 +1,14 @@
-extends	Node2D
+extends Node2D
 
-var	mouse_position:	Vector2	= Vector2.ZERO
-var	dialog:	FileDialog
+var mouse_position: Vector2 = Vector2.ZERO
+var dialog: FileDialog
 var is_playing: bool = false
 var current_project_path: String = ""
 var play_node: Node2D = null
 
 func _ready():
-	dialog = UIManager.file_dialog_prefab.instantiate()
-	add_child(dialog)
-	dialog.visible = false
+	# get_tree().node_added.connect(_on_node_added)
+	_dialog_initialize()
 	dialog.dir_selected.connect(_on_folder_selected)
 	UIManager.read_file_button.pressed.connect(_open_folder_dialog)
 	UIManager.reload_file_button.pressed.connect(_reload_file)
@@ -17,14 +16,25 @@ func _ready():
 func _physics_process(_delta):
 	mouse_position = get_global_mouse_position()
 
+# func _on_node_added(node):
+#     if node is Node2D and not node.has_meta("has_tween"):
+#         node.tween = TweenProxy.new(node)
+#         node.set_mata("has_tween", true)
+#     pass
+
+func _dialog_initialize():
+	dialog = UIManager.file_dialog_prefab.instantiate()
+	add_child(dialog)
+	dialog.visible = false
+
 func _open_folder_dialog():
 	if is_playing:
 		HintManager.call_error_hint("script is playing, please stop it first")
 		return
 	
 	dialog.file_mode = FileDialog.FILE_MODE_OPEN_DIR
-	dialog.access =	FileDialog.ACCESS_FILESYSTEM
-	dialog.current_path	= "/"
+	dialog.access = FileDialog.ACCESS_FILESYSTEM
+	dialog.current_path = "/"
 	dialog.visible = true
 	dialog.title = "Select a folder which have \"main.gd\""
 	dialog.filters = ["*.gd"]
@@ -43,7 +53,7 @@ func _on_folder_selected(path):
 		HintManager.call_error_hint("Please make sure \"main.gd\" is located in the top-level folder.")
 		return
 
-	# var	script = load(main_script_path).new()
+	# var   script = load(main_script_path).new()
 	var script = load(main_script_path)
 	current_project_path = path
 
@@ -57,14 +67,14 @@ func _on_folder_selected(path):
 	# play_node.call_deferred("_enter_tree")
 
 	# if script:
-	# 	if script.has_method("main"):
-	# 		is_playing = true
-	# 		await script.main()
-	# 		is_playing = false
-	# 	else:
-	# 		HintManager.call_error_hint("don't have	main() function	in main	script")	
+	#   if script.has_method("main"):
+	#       is_playing = true
+	#       await script.main()
+	#       is_playing = false
+	#   else:
+	#       HintManager.call_error_hint("don't have main() function in main script")    
 	# else:
-	# 	HintManager.call_error_hint("can't load	script file")
+	#   HintManager.call_error_hint("can't load script file")
 
 ## If not get main script path, return empty string ""
 func get_main_script_path(_path: String) -> String:
@@ -94,14 +104,14 @@ func _reload_file():
 	_on_folder_selected(dialog.current_path)
 	
 func _get_anime_node() -> Node2D:
-	var	anime_node := get_node_or_null("/root/Node2D/Anime Node")
+	var anime_node := get_node_or_null("/root/Node2D/Anime Node")
 	if not anime_node:
 		anime_node = Node2D.new()
 		get_node("/root/Node2D").add_child(anime_node)
-		anime_node.name	= "Anime Node"
+		anime_node.name = "Anime Node"
 		
 	return anime_node
 
 func _delete_anime_node() -> void:
-	var	anime_node := get_node_or_null("/root/Node2D/Anime Node")
+	var anime_node := get_node_or_null("/root/Node2D/Anime Node")
 	if anime_node: anime_node.queue_free()

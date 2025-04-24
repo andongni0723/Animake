@@ -7,15 +7,19 @@ class_name TimelinePanel extends Control
 
 var _animation_data_array: Array[AnimationData]
 
-var	_anim_name := "timeline_anim"
+var _anim_name := "timeline_anim"
 var _library: AnimationLibrary
 var _anim: Animation = Animation.new()
 
 func _enter_tree() -> void:
 	timeline_canvas.frame_changed.connect(_on_frame_changed)
+	ToolSignal.select_folder.connect(_clear_array)
 	play_button.pressed.connect(play_animation)
 	stop_button.pressed.connect(stop_animation)
 	animation_player.root_node = get_tree().root.get_path()
+
+func _exit_tree() -> void:
+	ToolSignal.select_folder.disconnect(_clear_array)
 
 func _ready():
 	# var node = Create.make_square("square")
@@ -37,8 +41,17 @@ func _ready():
 func _animation_initialize():
 	_library.add_animation(_anim_name, _anim)
 
+func _clear_array(_p):
+	_animation_data_array.clear()
+	animation_player.stop()
+	_anim.clear()
+
+var time := 0.0
 func add_animation_data(_animation_data: AnimationData):
 	_animation_data_array.append(_animation_data)
+	call_add_animation(_animation_data.key_path, Vector2(time, _animation_data.duration), _animation_data.from, _animation_data.to)
+	time += _animation_data.duration if _animation_data.wait else 0.0
+	timeline_canvas._update_animation_rect(_animation_data_array)
 
 func call_add_animation(_path: String, _time: Vector2, _start_value: Variant, _end_value: Variant):
 	print("ADD")
@@ -53,8 +66,8 @@ func stop_animation():
 
 func play_animation():
 	animation_player.play(_anim_name, 0.0)
-	for i in _animation_data_array:
-		print("AnimationData:", i.key_path, " ", i.duration, " ", i.start_value, " ", i.end_value," ", i._wait)
+	# for i in _animation_data_array:
+		# print("AnimationData:", i.key_path, " ", i.duration, " ", i.from, " ", i.to," ", i.wait)
 
 func _on_frame_changed(new_time: float):
 	animation_player.seek(new_time, true)
