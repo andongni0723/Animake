@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="SquareDetail" load_steps=3 format=3 uid="uid://o7c3rr1jknh4"]
-
-[ext_resource type="PackedScene" uid="uid://yjrwbca2uemi" path="res://Prefabs/square.tscn" id="1_rbfva"]
-[ext_resource type="Script" uid="uid://b4f1q526j0d6h" path="res://Scripts/Resources/square_detail.gd" id="2_hyj5q"]
-
-[resource]
-script = ExtResource("2_hyj5q")
-basic_square = ExtResource("1_rbfva")

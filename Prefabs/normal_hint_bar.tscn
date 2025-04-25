@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://6hpbnqov48b"]
 
-[ext_resource type="Script" uid="uid://cm6og5cewvs8m" path="res://Scripts/OtherObject/hint-bar.gd" id="1_ly1xl"]
+[ext_resource type="Script" uid="uid://cm6og5cewvs8m" path="res://Scripts/Objects/hint-bar.gd" id="1_ly1xl"]
 [ext_resource type="FontFile" uid="uid://cjwnxrcj433s5" path="res://Font/JetBrainsMono-Regular.ttf" id="2_3jfnp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t871u"]

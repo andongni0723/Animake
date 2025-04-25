@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://sp4krtx4rym1"]
+
+[ext_resource type="Theme" uid="uid://cixie5v1vsdec" path="res://Data/main-theme.tres" id="1_1udep"]
+[ext_resource type="Script" uid="uid://bijrqlrm6n2yy" path="res://Scripts/Animake Objects/text.gd" id="2_aqmo6"]
+
+[node name="Text" type="Node2D"]
+script = ExtResource("2_aqmo6")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 44.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_1udep")
+text = "Text"
+horizontal_alignment = 1
+vertical_alignment = 1

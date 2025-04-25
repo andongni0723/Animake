@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="ObjectDetail" load_steps=3 format=3 uid="uid://wo7b4wruyojb"]
-
-[ext_resource type="Script" uid="uid://duneobu7gmk3i" path="res://Scripts/Resources/object_detail.gd" id="1_1lsgs"]
-[ext_resource type="PackedScene" uid="uid://ndgogsf27663" path="res://Prefabs/empty_object.tscn" id="1_8orna"]
-
-[resource]
-script = ExtResource("1_1lsgs")
-empty_object = ExtResource("1_8orna")

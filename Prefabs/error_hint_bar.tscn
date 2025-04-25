@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://2cea68gkwesg"]
 
 [ext_resource type="FontFile" uid="uid://cjwnxrcj433s5" path="res://Font/JetBrainsMono-Regular.ttf" id="1_bdwg2"]
-[ext_resource type="Script" uid="uid://cm6og5cewvs8m" path="res://Scripts/OtherObject/hint-bar.gd" id="1_e7al2"]
+[ext_resource type="Script" uid="uid://cm6og5cewvs8m" path="res://Scripts/Objects/hint-bar.gd" id="1_e7al2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t871u"]
 bg_color = Color(1, 1, 1, 1)

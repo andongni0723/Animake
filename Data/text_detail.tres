@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="TextDetail" load_steps=3 format=3 uid="uid://d1r7sytnt38r2"]
-
-[ext_resource type="PackedScene" uid="uid://sp4krtx4rym1" path="res://Prefabs/text.tscn" id="1_hbg57"]
-[ext_resource type="Script" uid="uid://bbdumlosrsdlk" path="res://Scripts/Resources/text_detail.gd" id="1_ycgb8"]
-
-[resource]
-script = ExtResource("1_ycgb8")
-basic_text = ExtResource("1_hbg57")

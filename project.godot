@@ -15,15 +15,15 @@ config/version="0.5.A"
 config/tags=PackedStringArray("animake")
 run/main_scene="res://main-scene.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="uid://celwn3yeh6ij"
+config/icon="uid://xmb1prqjb03a"
 
 [autoload]
 
-HintManager="*res://Scripts/Manager/hint-manager.gd"
-GameManager="*res://Scripts/Manager/game-manager.gd"
+HintManager="*res://Scripts/Managers/hint-manager.gd"
+GameManager="*res://Scripts/Managers/game-manager.gd"
 ToolManager="*res://Scripts/Tool System/tool-manager.gd"
-ToolSignal="*res://Scripts/Tool System/tool-signal.gd"
-Core="*res://Scripts/Development/API/core.gd"
+ToolSignal="*res://Scripts/Managers/tool-signal.gd"
+Core="*res://Scripts/Core/core.gd"
 
 [debug]
 

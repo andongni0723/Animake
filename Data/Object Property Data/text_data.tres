@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="SettingDetail" load_steps=5 format=3 uid="uid://qt8ks728dsu3"]
+
+[ext_resource type="Script" uid="uid://c178p6kbo1u3q" path="res://Scripts/Resources/setting_property.gd" id="1_tirsq"]
+[ext_resource type="Script" uid="uid://bddtlgisx3afg" path="res://Scripts/Resources/setting_detail.gd" id="2_jxugw"]
+
+[sub_resource type="Resource" id="Resource_vghub"]
+script = ExtResource("1_tirsq")
+name = "Size"
+type = 1
+id = "size"
+metadata/_custom_type_script = "uid://c178p6kbo1u3q"
+
+[sub_resource type="Resource" id="Resource_fv05c"]
+script = ExtResource("1_tirsq")
+name = "Text"
+type = 3
+id = "text"
+metadata/_custom_type_script = "uid://c178p6kbo1u3q"
+
+[resource]
+script = ExtResource("2_jxugw")
+properties = Array[ExtResource("1_tirsq")]([SubResource("Resource_vghub"), SubResource("Resource_fv05c")])
+metadata/_custom_type_script = "uid://bddtlgisx3afg"

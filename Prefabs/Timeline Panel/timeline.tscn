@@ -1,16 +1,16 @@
 [gd_scene load_steps=16 format=3 uid="uid://cvwjw6yvb3tmg"]
 
 [ext_resource type="Theme" uid="uid://cixie5v1vsdec" path="res://Data/main-theme.tres" id="1_63kco"]
-[ext_resource type="Script" uid="uid://5bhraaj75e2d" path="res://Scripts/Timeline Panel/timeline_panel.gd" id="1_rd1yn"]
+[ext_resource type="Script" uid="uid://5bhraaj75e2d" path="res://Scripts/UI/Timeline Panel/timeline_panel.gd" id="1_rd1yn"]
 [ext_resource type="Texture2D" uid="uid://bh7v1dpcmoe83" path="res://_Assets/icon/PlayBackwards.svg" id="3_hndo6"]
 [ext_resource type="Texture2D" uid="uid://7y0wx5nvovpp" path="res://_Assets/icon/PlayStartBackwards.svg" id="4_u5mtt"]
 [ext_resource type="Texture2D" uid="uid://bcbfjjovw5nm3" path="res://_Assets/icon/Stop.svg" id="5_qicbp"]
 [ext_resource type="Texture2D" uid="uid://32iklegek8wp" path="res://_Assets/icon/PlayStart.svg" id="6_k3ybp"]
 [ext_resource type="Texture2D" uid="uid://ds6hymrdu22lu" path="res://_Assets/icon/Play.svg" id="7_55381"]
-[ext_resource type="Script" uid="uid://bbf5r1bln03c4" path="res://Scripts/Timeline Panel/timeline_canvas.gd" id="8_u5mtt"]
+[ext_resource type="Script" uid="uid://bbf5r1bln03c4" path="res://Scripts/UI/Timeline Panel/timeline_canvas.gd" id="8_u5mtt"]
 [ext_resource type="FontFile" uid="uid://cjwnxrcj433s5" path="res://Font/JetBrainsMono-Regular.ttf" id="9_qicbp"]
 [ext_resource type="PackedScene" uid="uid://dvj6wyd1u2lq7" path="res://Prefabs/Timeline Panel/animation_rect.tscn" id="10_55381"]
-[ext_resource type="Script" uid="uid://bbs5s6jwd3pwr" path="res://Scripts/Timeline Panel/time_point.gd" id="10_k3ybp"]
+[ext_resource type="Script" uid="uid://bbs5s6jwd3pwr" path="res://Scripts/UI/Timeline Panel/time_point.gd" id="10_k3ybp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r3wms"]
 bg_color = Color(0.136046, 0.149792, 0.197905, 1)
@@ -33,7 +33,7 @@ corner_radius_bottom_left = 5
 
 [node name="Timeline Panel" type="Panel" node_paths=PackedStringArray("animation_player", "timeline_canvas", "play_button", "stop_button")]
 offset_right = 700.0
-offset_bottom = 250.0
+offset_bottom = 156.0
 theme = ExtResource("1_63kco")
 theme_override_styles/panel = SubResource("StyleBoxFlat_r3wms")
 script = ExtResource("1_rd1yn")
@@ -139,9 +139,9 @@ theme = ExtResource("1_63kco")
 layout_mode = 2
 theme = ExtResource("1_63kco")
 horizontal_scroll_mode = 2
-vertical_scroll_mode = 0
 
 [node name="Timeline Canvas" type="Panel" parent="Margin/VBoxContainer/Main Panel/Timeline Scroll Container" node_paths=PackedStringArray("canvas", "time_point", "animation_rect_parent")]
+self_modulate = Color(0.972549, 0.956863, 0.941176, 1)
 custom_minimum_size = Vector2(2000, 0)
 layout_mode = 2
 size_flags_vertical = 3
@@ -186,16 +186,17 @@ color = Color(1, 0.666667, 0.231373, 1)
 
 [node name="Panel" type="Panel" parent="Margin/VBoxContainer/Main Panel/Timeline Scroll Container/Timeline Canvas/Time Point/ColorRect"]
 z_index = 1
-custom_minimum_size = Vector2(0, 40)
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 40.0
+offset_left = -14.0
+offset_right = 16.0
+offset_bottom = 30.0
 grow_horizontal = 2
 theme = ExtResource("1_63kco")
 theme_override_styles/panel = SubResource("StyleBoxFlat_qicbp")
 
 [node name="Frame Label" type="Label" parent="Margin/VBoxContainer/Main Panel/Timeline Scroll Container/Timeline Canvas/Time Point/ColorRect/Panel"]
+self_modulate = Color(0.2, 0.2, 0.2, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -203,7 +204,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_63kco")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 16
 text = "13"
 horizontal_alignment = 1
 vertical_alignment = 1

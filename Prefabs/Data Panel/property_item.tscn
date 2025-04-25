@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://cyjnpnf03bar7"]
 
-[ext_resource type="Script" uid="uid://bye3q8bixmkbc" path="res://Scripts/Data Panel/property_item.gd" id="1_fk3j5"]
+[ext_resource type="Script" uid="uid://bye3q8bixmkbc" path="res://Scripts/UI/Data Panel/property_item.gd" id="1_fk3j5"]
 [ext_resource type="Theme" uid="uid://cixie5v1vsdec" path="res://Data/main-theme.tres" id="1_fvka8"]
-[ext_resource type="Script" uid="uid://4icp457ui0b1" path="res://Scripts/Data Panel/property_input.gd" id="3_17t3b"]
+[ext_resource type="Script" uid="uid://4icp457ui0b1" path="res://Scripts/UI/Data Panel/property_input.gd" id="3_17t3b"]
 
 [node name="Property" type="HBoxContainer" node_paths=PackedStringArray("property_name_label", "property_value_control_dict")]
 offset_right = 215.0

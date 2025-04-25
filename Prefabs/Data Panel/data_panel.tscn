@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://cixie5v1vsdec" path="res://Data/main-theme.tres" id="1_u26gu"]
 [ext_resource type="PackedScene" uid="uid://cyjnpnf03bar7" path="res://Prefabs/Data Panel/property_item.tscn" id="2_243th"]
-[ext_resource type="Script" uid="uid://qelukrmebf4n" path="res://Scripts/Data Panel/data_panel.gd" id="2_xekh5"]
+[ext_resource type="Script" uid="uid://qelukrmebf4n" path="res://Scripts/UI/Data Panel/data_panel.gd" id="2_xekh5"]
 
 [node name="Data Panel" type="PanelContainer" node_paths=PackedStringArray("v_box")]
 offset_right = 344.0

@@ -1,6 +1,7 @@
-Node
-Panel
 Control
+Node2D
+Panel
+Node
 Label
 ColorRect
 VBoxContainer
@@ -11,5 +12,3 @@ SpinBox
 LineEdit
 ReferenceRect
 MarginContainer
-Button
-HSlider

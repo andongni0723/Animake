@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AnimakeObjectDetail" load_steps=3 format=3 uid="uid://l0322urtm41w"]
+
+[ext_resource type="PackedScene" uid="uid://ndgogsf27663" path="res://Prefabs/Animake Objects/empty_object.tscn" id="1_1fwi0"]
+[ext_resource type="Script" uid="uid://24avmcmb3b7v" path="res://Scripts/Resources/animake_object_detail.gd" id="1_pj101"]
+
+[resource]
+script = ExtResource("1_pj101")
+prefab = ExtResource("1_1fwi0")
+metadata/_custom_type_script = "uid://24avmcmb3b7v"

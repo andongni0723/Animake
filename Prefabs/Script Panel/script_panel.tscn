@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://dckk8tgh51sgj"]
 
 [ext_resource type="Theme" uid="uid://cixie5v1vsdec" path="res://Data/main-theme.tres" id="1_qm5it"]
-[ext_resource type="Script" uid="uid://dqwxl6qc117o6" path="res://Scripts/Script Panel/script_panel.gd" id="2_jb7rj"]
+[ext_resource type="Script" uid="uid://dqwxl6qc117o6" path="res://Scripts/UI/Script Panel/script_panel.gd" id="2_jb7rj"]
 [ext_resource type="PackedScene" uid="uid://dugn57d57x7u2" path="res://Prefabs/Script Panel/file_item.tscn" id="3_64cbv"]
-[ext_resource type="Script" uid="uid://c86sdoebbenpk" path="res://Scripts/Script Panel/code_edit.gd" id="4_170jv"]
-[ext_resource type="Script" uid="uid://dcw8tagfx25t7" path="res://Scripts/Script Panel/menu_bar.gd" id="4_jb7rj"]
+[ext_resource type="Script" uid="uid://c86sdoebbenpk" path="res://Scripts/UI/Script Panel/code_edit.gd" id="4_170jv"]
+[ext_resource type="Script" uid="uid://dcw8tagfx25t7" path="res://Scripts/UI/Script Panel/menu_bar.gd" id="4_jb7rj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5k8xk"]
 bg_color = Color(0.168627, 0.176471, 0.235294, 1)
@@ -188,6 +188,7 @@ gutters_draw_line_numbers = true
 gutters_zero_pad_line_numbers = true
 gutters_draw_fold_gutter = true
 code_completion_enabled = true
+indent_use_spaces = true
 indent_automatic = true
 auto_brace_completion_enabled = true
 auto_brace_completion_highlight_matching = true

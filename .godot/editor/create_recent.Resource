@@ -1,3 +1,4 @@
+AnimakeObjectDetail
 SettingDetail
 SettingProperty
 ObjectDetail

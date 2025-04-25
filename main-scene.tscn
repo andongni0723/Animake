@@ -1,24 +1,24 @@
 [gd_scene load_steps=28 format=3 uid="uid://ddnwwsvd0y3jm"]
 
-[ext_resource type="Script" uid="uid://w85ki6lxi3eo" path="res://Scripts/OtherObject/ui_manager.gd" id="1_g86mt"]
-[ext_resource type="Script" uid="uid://bhae2k1rp6e5i" path="res://Scripts/Manager/hint-manager.gd" id="1_i1fv3"]
+[ext_resource type="Script" uid="uid://w85ki6lxi3eo" path="res://Scripts/Managers/ui_manager.gd" id="1_g86mt"]
+[ext_resource type="Script" uid="uid://bhae2k1rp6e5i" path="res://Scripts/Managers/hint-manager.gd" id="1_i1fv3"]
 [ext_resource type="FontFile" uid="uid://cjwnxrcj433s5" path="res://Font/JetBrainsMono-Regular.ttf" id="2_q2uwy"]
 [ext_resource type="Texture2D" uid="uid://bxk7e5117ua8o" path="res://_Assets/white.png" id="3_5ulvj"]
 [ext_resource type="PackedScene" uid="uid://6hpbnqov48b" path="res://Prefabs/normal_hint_bar.tscn" id="3_es55r"]
-[ext_resource type="Script" uid="uid://806ifmr2fpdq" path="res://Scripts/OtherObject/pointer_position_label.gd" id="4_g86mt"]
-[ext_resource type="Script" uid="uid://bna7iq5wj6r56" path="res://Scripts/Manager/camera.gd" id="6_5ug5c"]
+[ext_resource type="Script" uid="uid://806ifmr2fpdq" path="res://Scripts/Objects/pointer_position_label.gd" id="4_g86mt"]
+[ext_resource type="Script" uid="uid://bna7iq5wj6r56" path="res://Scripts/Managers/camera.gd" id="6_5ug5c"]
 [ext_resource type="PackedScene" uid="uid://rner2aytek3r" path="res://Prefabs/ile_dialog.tscn" id="6_351bi"]
 [ext_resource type="Texture2D" uid="uid://c3cb14wy82v0w" path="res://_Assets/Animake-v2/Animake-v2-white.svg" id="6_e304g"]
 [ext_resource type="Texture2D" uid="uid://f3lkte1vv623" path="res://out square.png" id="6_jvpjp"]
-[ext_resource type="Script" uid="uid://c6f0p3ybhm3dp" path="res://Scripts/OtherObject/current_tool_label.gd" id="7_p0wft"]
+[ext_resource type="Script" uid="uid://c6f0p3ybhm3dp" path="res://Scripts/Objects/current_tool_label.gd" id="7_p0wft"]
 [ext_resource type="PackedScene" uid="uid://2cea68gkwesg" path="res://Prefabs/error_hint_bar.tscn" id="8_ikad4"]
-[ext_resource type="Script" uid="uid://h6bfv4ois6dq" path="res://Scripts/OtherObject/mouse_line.gd" id="8_t871u"]
+[ext_resource type="Script" uid="uid://h6bfv4ois6dq" path="res://Scripts/Objects/mouse_line.gd" id="8_t871u"]
 [ext_resource type="Theme" uid="uid://cixie5v1vsdec" path="res://Data/main-theme.tres" id="9_r7pl7"]
 [ext_resource type="PackedScene" uid="uid://drlvata8ay1as" path="res://Prefabs/base_tool_button.tscn" id="9_slrkl"]
 [ext_resource type="Script" uid="uid://k185mhxc8slw" path="res://Scripts/Tool System/rect-tool.gd" id="10_libv1"]
 [ext_resource type="PackedScene" uid="uid://c7xn57xcmpm0a" path="res://Prefabs/rect_tool_square.tscn" id="11_pc8c5"]
 [ext_resource type="Texture2D" uid="uid://dwbivcb8bn8rv" path="res://_Assets/code_icon.svg" id="11_qh5v2"]
-[ext_resource type="Script" uid="uid://b3ay2p3dbd01t" path="res://Scripts/OtherObject/anime_object_tree.gd" id="12_kudqo"]
+[ext_resource type="Script" uid="uid://b3ay2p3dbd01t" path="res://Scripts/Objects/anime_object_tree.gd" id="12_kudqo"]
 [ext_resource type="PackedScene" uid="uid://cgm82wpkrhmlj" path="res://Prefabs/rect_tool_example_square.tscn" id="12_p0wft"]
 [ext_resource type="PackedScene" uid="uid://du77iuaovi1m1" path="res://Prefabs/Data Panel/data_panel.tscn" id="13_5k8xk"]
 [ext_resource type="PackedScene" uid="uid://dckk8tgh51sgj" path="res://Prefabs/Script Panel/script_panel.tscn" id="16_slrkl"]
@@ -44,7 +44,7 @@ font = ExtResource("2_q2uwy")
 font = ExtResource("2_q2uwy")
 font_size = 25
 
-[node name="Node2D" type="Node2D"]
+[node name="Main Scene" type="Node2D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_e304g")
@@ -118,7 +118,7 @@ metadata/_edit_lock_ = true
 [node name="Timeline Panel" parent="Canvas/Control" instance=ExtResource("18_es55r")]
 layout_mode = 0
 offset_left = 194.0
-offset_top = 371.0
+offset_top = 477.0
 offset_right = 853.0
 offset_bottom = 625.0
 
