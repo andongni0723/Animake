@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cvwjw6yvb3tmg"]
+[gd_scene load_steps=18 format=3 uid="uid://cvwjw6yvb3tmg"]
 
 [ext_resource type="Theme" uid="uid://cixie5v1vsdec" path="res://Data/main-theme.tres" id="1_63kco"]
 [ext_resource type="Script" uid="uid://5bhraaj75e2d" path="res://Scripts/UI/Timeline Panel/timeline_panel.gd" id="1_rd1yn"]
@@ -11,6 +11,7 @@
 [ext_resource type="FontFile" uid="uid://cjwnxrcj433s5" path="res://Font/JetBrainsMono-Regular.ttf" id="9_qicbp"]
 [ext_resource type="PackedScene" uid="uid://dvj6wyd1u2lq7" path="res://Prefabs/Timeline Panel/animation_rect.tscn" id="10_55381"]
 [ext_resource type="Script" uid="uid://bbs5s6jwd3pwr" path="res://Scripts/UI/Timeline Panel/time_point.gd" id="10_k3ybp"]
+[ext_resource type="FontFile" uid="uid://de04ysvmeodi6" path="res://Font/JetBrainsMono[wght].ttf" id="12_0ijl2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r3wms"]
 bg_color = Color(0.136046, 0.149792, 0.197905, 1)
@@ -28,6 +29,12 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
+
+[sub_resource type="FontVariation" id="FontVariation_b3uvr"]
+base_font = ExtResource("12_0ijl2")
+variation_opentype = {
+2003265652: 800
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r3wms"]
 
@@ -204,7 +211,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_63kco")
-theme_override_font_sizes/font_size = 16
+theme_override_fonts/font = SubResource("FontVariation_b3uvr")
+theme_override_font_sizes/font_size = 12
 text = "13"
 horizontal_alignment = 1
 vertical_alignment = 1

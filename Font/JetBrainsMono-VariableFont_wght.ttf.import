@@ -33,7 +33,11 @@ preload=[{
 "chars": [],
 "glyphs": [],
 "name": "新配置",
-"size": Vector2i(16, 0)
+"size": Vector2i(16, 0),
+&"variation_embolden": 0.0,
+&"variation_opentype": {
+2003265652: 400
+}
 }]
 language_support={}
 script_support={}

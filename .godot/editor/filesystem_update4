@@ -1,47 +1,27 @@
-res://Scripts/Development/API/core.gd
-res://Scripts/Development/Base/base_object.gd
-res://Scripts/Development/Base/tween_wrapper.gd
-res://Scripts/Timeline Panel/animation_data.gd
-res://Scripts/Timeline Panel/timeline_panel.gd
-res://main-scene.tscn
-res://Data/Object Data/base_object_data.tres
-res://Data/main-theme.tres
-res://Scripts/OtherObject/rect_tool_square.gd
-res://Data/Object Data/base_sprite_data.tres
-res://Data/Object Data/square_data.tres
-res://Data/object_detail.tres
-res://Data/Object Data/text_data.tres
-res://Shader/rounded.gdshader
-res://Prefabs/Script Panel/script_panel.tscn
-res://Prefabs/Script Panel/file_item.tscn
 res://Prefabs/Timeline Panel/timeline.tscn
-res://Prefabs/Timeline Panel/animation_rect.tscn
-res://Scripts/Base/tween_proxy.gd
-res://Prefabs/ile_dialog.tscn
-res://Scripts/Animake Objects/text.gd
-res://Prefabs/text.tscn
-res://New User/main.gd
-res://Scripts/Base/base_sprite.gd
-res://Scripts/Core/create.gd
-res://Prefabs/square.tscn
-res://Scripts/Base/base_object.gd
-res://Prefabs/Animake Objects/panel.tscn
-res://Scripts/panel.gd
-res://Data/Object Data/panel_data.tres
-res://Scripts/Animake Objects/square.gd
-res://Scripts/Core/property_id_transformer.gd
+res://Data/main-theme.tres
 res://Data/Object Property Data/base_object_data.tres
-res://Data/Object Property Data/base_sprite_data.tres
 res://Data/Object Property Data/panel_data.tres
-res://Data/Object Data/object_detail.tres
+res://Data/Object Property Data/text_data.tres
+res://Data/Object Property Data/base_sprite_data.tres
+res://Data/Object Property Data/square_data.tres
 res://Data/Object Data/panel_detail.tres
-res://Data/Object Data/square_detail.tres
-res://Data/Object Data/text_detail.tres
-res://Scripts/Managers/game-manager.gd
-res://Scripts/Core/core.gd
+res://Shader/rounded.gdshader
+res://main-scene.tscn
+res://Prefabs/Animake Objects/panel.tscn
+res://Prefabs/Animake Objects/text.tscn
+res://Scripts/UI/Timeline Panel/timeline_canvas.gd
+res://New User/main.gd
+res://Scripts/API/Flow/flow.gd
+res://Scripts/API/Flow/all_flow.gd
+res://Scripts/UI/Timeline Panel/timeline_panel.gd
+res://_User/v3/main.gd
+res://Scripts/Base/tween_proxy.gd
+res://Prefabs/Data Panel/property_item.tscn
+res://Scripts/UI/Data Panel/property_input.gd
+res://Scripts/Core/property_id_transformer.gd
 res://Scripts/Objects/anime_object_tree.gd
 res://Scripts/UI/Data Panel/property_item.gd
-res://Prefabs/Animake Objects/text.tscn
-res://Data/Object Property Data/text_data.tres
-res://Scripts/UI/Timeline Panel/timeline_canvas.gd
-res://Font/JetbrainMono.tres
+res://Scripts/panel.gd
+res://Scripts/UI/Data Panel/data_panel.gd
+res://Scripts/Core/node_style_interpreter.gd

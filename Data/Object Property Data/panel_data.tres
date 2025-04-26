@@ -14,14 +14,14 @@ metadata/_custom_type_script = "uid://c178p6kbo1u3q"
 script = ExtResource("1_7p0ha")
 name = "Border Radius"
 type = 0
-id = "border_radius"
+id = "radius"
 metadata/_custom_type_script = "uid://c178p6kbo1u3q"
 
 [sub_resource type="Resource" id="Resource_nxq3m"]
 script = ExtResource("1_7p0ha")
 name = "Rotation"
 type = 0
-id = "rotation"
+id = "center:rotation_degrees"
 metadata/_custom_type_script = "uid://c178p6kbo1u3q"
 
 [resource]

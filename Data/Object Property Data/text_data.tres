@@ -14,7 +14,7 @@ metadata/_custom_type_script = "uid://c178p6kbo1u3q"
 script = ExtResource("1_tirsq")
 name = "Text"
 type = 3
-id = "text"
+id = "label:text"
 metadata/_custom_type_script = "uid://c178p6kbo1u3q"
 
 [resource]

@@ -31,15 +31,16 @@ size_flags_horizontal = 3
 script = ExtResource("3_17t3b")
 value_field = [NodePath("num")]
 
-[node name="num" type="LineEdit" parent="Number"]
+[node name="num" type="SpinBox" parent="Number"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 theme = ExtResource("1_fvka8")
-text = "0.0"
+min_value = -1e+07
+max_value = 1e+07
+allow_greater = true
+allow_lesser = true
 alignment = 3
-emoji_menu_enabled = false
-virtual_keyboard_type = 3
 select_all_on_focus = true
 
 [node name="String" type="HBoxContainer" parent="." node_paths=PackedStringArray("value_field")]
@@ -79,32 +80,32 @@ script = ExtResource("3_17t3b")
 type = 1
 value_field = [NodePath("x"), NodePath("y")]
 
-[node name="x" type="LineEdit" parent="Vector2"]
+[node name="x" type="SpinBox" parent="Vector2"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 theme = ExtResource("1_fvka8")
-theme_override_font_sizes/font_size = 12
-text = "0"
+min_value = -1e+07
+max_value = 1e+07
+allow_greater = true
+allow_lesser = true
 alignment = 3
-emoji_menu_enabled = false
-virtual_keyboard_type = 3
 select_all_on_focus = true
 
-[node name="y" type="LineEdit" parent="Vector2"]
+[node name="y" type="SpinBox" parent="Vector2"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 theme = ExtResource("1_fvka8")
-theme_override_font_sizes/font_size = 12
-text = "0"
+min_value = -1e+07
+max_value = 1e+07
+allow_greater = true
+allow_lesser = true
 alignment = 3
-emoji_menu_enabled = false
-virtual_keyboard_type = 3
 select_all_on_focus = true
 
-[connection signal="text_changed" from="Number/num" to="Number" method="_on_text_changed"]
+[connection signal="value_changed" from="Number/num" to="Number" method="_on_value_changed"]
 [connection signal="text_changed" from="String/str" to="String" method="_on_text_changed"]
 [connection signal="toggled" from="Boolean/CheckBox" to="Boolean" method="_on_toggled"]
-[connection signal="text_changed" from="Vector2/x" to="Vector2" method="_on_text_changed"]
-[connection signal="text_changed" from="Vector2/y" to="Vector2" method="_on_text_changed"]
+[connection signal="value_changed" from="Vector2/x" to="Vector2" method="_on_value_changed"]
+[connection signal="value_changed" from="Vector2/y" to="Vector2" method="_on_value_changed"]

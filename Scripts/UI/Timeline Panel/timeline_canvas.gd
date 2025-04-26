@@ -51,12 +51,12 @@ func _update_time_point(new_x: float):
     frame_changed.emit(cur_time)
     time_point._set_frame_label(f)
 
-func _add_animation_rect(_keyframe: Vector2, _layer: int = 0):
+func _add_animation_rect(_keyframe: Vector2, _title: String, _layer: int = 0):
     var animation_rect: AnimationRect = animation_rect_prefab.instantiate()
     animation_rect_parent.add_child(animation_rect)
     animation_rect.position.x = _keyframe.x * frame_per_px
     animation_rect.position.y = (_layer + 1) * 35
-    animation_rect.initialize((_keyframe.y - _keyframe.x) * frame_per_px, "position:x")
+    animation_rect.initialize((_keyframe.y - _keyframe.x) * frame_per_px, _title)
 
 func clear_animation_rect():
     for child in animation_rect_parent.get_children():
@@ -87,6 +87,6 @@ func _update_animation_rect(_keyframes: Array[AnimationData]):
             track_ends.append(end)
             result_layer = track_ends.size() - 1
 
-        _add_animation_rect(Vector2(start, end), result_layer)
-        print(Vector2(start, end), result_layer)
+        _add_animation_rect(Vector2(start, end), section.key_path, result_layer)
+        print(section.key_path, " " , start, " ", end)
         time += section.duration if section.wait else 0.0

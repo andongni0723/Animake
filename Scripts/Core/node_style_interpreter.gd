@@ -4,6 +4,37 @@ static var POSITION_PATTERN = "pos-\\/((-?\\d+|))\\/-\\/((-?\\d+|))\\/"
 static var SCALE_PATTERN = "scale-\\/((-?\\d+|))\\/-\\/((-?\\d+|))\\/"
 static var ROUNDED_PATTERN = "rounded-\\/(\\d+)\\/"
 
+static var NUMBER_PATTERN := "-\\/(-?\\d+)\\/"
+static var VECTOR2_PATTERN := "-\\/((-?\\d+|))\\/-\\/((-?\\d+|))\\/"
+static var STRING_PATTERN := "-\\/((\\w+|))\\/"
+
+static func number_interpret(begin: String, style: String, default_value: float = 0.0) -> float:
+    _begin_check(begin, style, default_value)
+    var result = _regex_check(style, begin + NUMBER_PATTERN, 1)
+    return _match_check(result.get_string(1), default_value)
+
+static func vector2_interpret(begin: String, style: String, default_value: Vector2 = Vector2.ZERO) -> Vector2:
+    _begin_check(begin, style, default_value)
+    var result = _regex_check(style, begin + VECTOR2_PATTERN, 3)
+    var x = _match_check(result.get_string(1), default_value.x)
+    var y = _match_check(result.get_string(3), default_value.y)
+    return Vector2(x, y)
+
+## Check the style begin with begin
+static func _begin_check(begin: String, style: String, default_value):
+    if not style.begins_with(begin):
+        HintManager.call_error_hint("Invalid " + begin + " style: style not start with: " + begin)
+        return default_value
+
+static func _regex_check(begin: String, pattern: String, group_count: int) -> RegExMatch:
+    var regex = RegEx.new()
+    regex.compile(pattern)
+    var result = regex.search(begin)
+    if not result or result.get_group_count() < group_count:
+        HintManager.call_error_hint("Invalid " + begin + " style: regex not match")
+    return result
+
+
 
 static func position_interpret(regex: String, default_vector: Vector2 = Vector2.ZERO) -> Vector2:
     if not regex.begins_with("pos"):

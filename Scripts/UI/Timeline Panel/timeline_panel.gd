@@ -39,8 +39,14 @@ func _animation_initialize():
 
 func _clear_array(_p):
     _animation_data_array.clear()
-    animation_player.stop()
     _anim.clear()
+    time = 0.0
+    _anim = Animation.new()
+    if _library.has_animation(_anim_name):
+        _library.remove_animation(_anim_name)
+    _library.add_animation(_anim_name, _anim)
+    animation_player.stop()
+    timeline_canvas.clear_animation_rect()
 
 var time := 0.0
 func add_animation_data(_animation_data: AnimationData):

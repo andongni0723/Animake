@@ -1,6 +1,8 @@
-Control
-Node2D
 Panel
+CenterContainer
+Control
+SpinBox
+Node2D
 Node
 Label
 ColorRect
@@ -8,7 +10,5 @@ VBoxContainer
 HBoxContainer
 ScrollContainer
 HSplitContainer
-SpinBox
 LineEdit
 ReferenceRect
-MarginContainer

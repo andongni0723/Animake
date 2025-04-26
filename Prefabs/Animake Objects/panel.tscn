@@ -2,18 +2,16 @@
 
 [ext_resource type="Script" uid="uid://cpcaoknjr4tw4" path="res://Scripts/panel.gd" id="1_smdjv"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xsu4k"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cd2lv"]
 bg_color = Color(1, 1, 1, 1)
 
 [node name="Panel" type="Node2D"]
 script = ExtResource("1_smdjv")
 
-[node name="panel" type="Panel" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+[node name="Center" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 offset_left = -128.0
 offset_top = -128.0
 offset_right = 128.0
@@ -21,4 +19,8 @@ offset_bottom = 128.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(128, 128)
-theme_override_styles/panel = SubResource("StyleBoxFlat_xsu4k")
+
+[node name="panel" type="Panel" parent="Center"]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cd2lv")
