@@ -1,4 +1,6 @@
-res://Prefabs/Timeline Panel/timeline.tscn
+res://Scripts/panel.gd
+res://Scripts/UI/Timeline Panel/timeline_panel.gd
+res://Prefabs/Animake Objects/panel.tscn
 res://Data/main-theme.tres
 res://Data/Object Property Data/base_object_data.tres
 res://Data/Object Property Data/panel_data.tres
@@ -8,20 +10,20 @@ res://Data/Object Property Data/square_data.tres
 res://Data/Object Data/panel_detail.tres
 res://Shader/rounded.gdshader
 res://main-scene.tscn
-res://Prefabs/Animake Objects/panel.tscn
 res://Prefabs/Animake Objects/text.tscn
-res://Scripts/UI/Timeline Panel/timeline_canvas.gd
-res://New User/main.gd
-res://Scripts/API/Flow/flow.gd
-res://Scripts/API/Flow/all_flow.gd
-res://Scripts/UI/Timeline Panel/timeline_panel.gd
+res://Prefabs/Timeline Panel/timeline.tscn
+res://Prefabs/Data Panel/property_item.tscn
 res://_User/v3/main.gd
 res://Scripts/Base/tween_proxy.gd
-res://Prefabs/Data Panel/property_item.tscn
+res://Scripts/Managers/ui_manager.gd
+res://Scripts/UI/Script Panel/menu_bar.gd
 res://Scripts/UI/Data Panel/property_input.gd
-res://Scripts/Core/property_id_transformer.gd
-res://Scripts/Objects/anime_object_tree.gd
 res://Scripts/UI/Data Panel/property_item.gd
-res://Scripts/panel.gd
-res://Scripts/UI/Data Panel/data_panel.gd
-res://Scripts/Core/node_style_interpreter.gd
+res://Scripts/UI/Timeline Panel/timeline_canvas.gd
+res://Scripts/UI/Timeline Panel/time_point.gd
+res://Scripts/Base/tween_wrapper.gd
+res://Scripts/Core/core.gd
+res://Scripts/UI/Timeline Panel/animation_data.gd
+res://Scripts/API/Flow/step_flow.gd
+res://Scripts/Managers/game-manager.gd
+res://_User/v4/main.gd

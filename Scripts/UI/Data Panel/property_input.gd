@@ -7,7 +7,6 @@ var _id: String = ""
 ## Call by property_item.gd
 func initialize(id: String, _value: Variant):
     _set_field_value(type, _value)
-    print(id)
     _id = id
     visible = true
 

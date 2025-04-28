@@ -8,7 +8,9 @@ var interp: Animation.InterpolationType = Animation.INTERPOLATION_CUBIC
 var ease_: float = 1.0
 var wait: bool = false
 
-func _init(_p, _d , _f, _t, _i, _e, _w = false) -> void:
+var null_anim: bool = false
+
+func _init(_p, _d , _f, _t, _i, _e, _w = false, _n = false) -> void:
     key_path = _p
     duration = _d
     from = _f
@@ -16,6 +18,7 @@ func _init(_p, _d , _f, _t, _i, _e, _w = false) -> void:
     interp = _i
     ease_ = _e
     wait = _w
+    null_anim = _n
 
 # func wait() -> AnimationData:
 #     wait = true

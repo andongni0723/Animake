@@ -87,6 +87,7 @@ bg_color = Color(0.103995, 0.110188, 0.133412, 1)
 
 [resource]
 default_font = ExtResource("1_u1qfm")
+default_font_size = 12
 Button/colors/icon_hover_color = Color(0.595041, 0.595041, 0.595041, 1)
 Button/colors/icon_hover_pressed_color = Color(0.420476, 0.420476, 0.420476, 1)
 Button/styles/focus = SubResource("StyleBoxFlat_3oue0")
@@ -112,6 +113,8 @@ MenuBar/styles/normal = SubResource("StyleBoxFlat_cfjqo")
 MenuButton/styles/normal = SubResource("StyleBoxFlat_vssl6")
 Panel/styles/panel = SubResource("StyleBoxFlat_4r42b")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_l85k6")
+SpinBox/constants/buttons_width = 0
+SpinBox/constants/field_and_buttons_separation = -6
 Tree/styles/panel = SubResource("StyleBoxFlat_u1qfm")
 VBoxContainer/constants/separation = 11
 VSplitContainer/styles/split_bar_background = SubResource("StyleBoxFlat_gp6gw")

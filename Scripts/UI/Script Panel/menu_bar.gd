@@ -15,3 +15,4 @@ func _initialize():
 	var sh = Shortcut.new()
 	sh.events.append(ev)
 	_file_menu.set_item_shortcut(1, sh)
+	print(_edit_menu)

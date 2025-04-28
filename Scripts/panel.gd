@@ -4,16 +4,21 @@ class_name ImagePanel extends BaseObject
 @onready var panel: Panel = $"Center/panel"
 @export var panel_data: SettingDetail = preload("res://Data/Object Property Data/panel_data.tres")
 
-var size: Vector2: 
+var size: Vector2:
     set(value):
-        panel.custom_minimum_size = value
-        center.size = value
-        center.pivot_offset = value / 2
-        center.position = -center.size / 2
+        panel.set_deferred("custom_minimum_size", value)
+        center.set_deferred("size", value)
+        center.set_deferred("pivot_offset", value / 2)
+        center.set_deferred("position", -value / 2)
         size = value
+        # panel.custom_minimum_size = value
+        # center.size = value
+        # center.pivot_offset = value / 2
+        # center.position = -center.size / 2
+        # size = value
     get():
         return panel.custom_minimum_size
-    
+
 var radius: float = 0.0:
     set(value):
         radius = value
@@ -29,6 +34,7 @@ var color: Color = Color.WHITE:
         color = value
     get():
         return color;
+
 
 var self_color: Color = Color.WHITE:
     set(value):
@@ -55,7 +61,6 @@ func get_data() -> Array[SettingProperty]:
     var result = super.get_data()
     result.append_array(panel_data.properties.duplicate())
     return result
-
 
 func add_style(style_string: String) -> void:
     var styles = style_string.split(' ')

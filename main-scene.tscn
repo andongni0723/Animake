@@ -54,15 +54,15 @@ script = ExtResource("1_i1fv3")
 
 [node name="UI Manager" type="Node2D" parent="." node_paths=PackedStringArray("_read_file_button", "_reload_file_button", "_canvas", "_world_canvas", "_timeline_panel", "_script_panel", "_rect_tool_button", "_script_tool_button")]
 script = ExtResource("1_g86mt")
+_normal_hint_bar = ExtResource("3_es55r")
+_error_hint_bar = ExtResource("8_ikad4")
+_file_dialog_prefab = ExtResource("6_351bi")
 _read_file_button = NodePath("../Canvas/Control/Left Panel/V Box/Read File Button")
 _reload_file_button = NodePath("../Canvas/Control/Left Panel/V Box/Reload File Button")
 _canvas = NodePath("../Canvas")
 _world_canvas = NodePath("../World Canvas")
-_normal_hint_bar = ExtResource("3_es55r")
-_error_hint_bar = ExtResource("8_ikad4")
 _timeline_panel = NodePath("../Canvas/Control/Timeline Panel")
 _script_panel = NodePath("../Canvas/Control/Script Panel")
-_file_dialog_prefab = ExtResource("6_351bi")
 _rect_tool_button = NodePath("../Canvas/Control/Left Panel/V Box/GridContainer/Rect Line Button")
 _script_tool_button = NodePath("../Canvas/Control/Left Panel/V Box/GridContainer/Script Button")
 
@@ -280,10 +280,10 @@ anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -229.005
-offset_top = 37.0
-offset_right = -45.0051
-offset_bottom = -50.9998
+offset_left = -274.005
+offset_top = 15.0
+offset_right = -44.0051
+offset_bottom = -40.9998
 grow_horizontal = 0
 grow_vertical = 2
 theme = ExtResource("9_r7pl7")

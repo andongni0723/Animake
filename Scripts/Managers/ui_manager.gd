@@ -36,18 +36,18 @@ static var rect_tool_button: BaseButton
 static var script_tool_button: BaseButton
 
 func _enter_tree() -> void:
-	read_file_button = _read_file_button
-	reload_file_button = _reload_file_button
-	canvas = _canvas
-	world_canvas = _world_canvas
-	normal_hint_bar = _normal_hint_bar
-	error_hint_bar = _error_hint_bar
-	rect_tool_button = _rect_tool_button
-	script_tool_button = _script_tool_button
-	timeline_panel = _timeline_panel
-	script_panel = _script_panel
-	file_dialog_prefab = _file_dialog_prefab
-	ToolSignal.connect("script_panel_action", _open_script_panel)
+    read_file_button = _read_file_button
+    reload_file_button = _reload_file_button
+    canvas = _canvas
+    world_canvas = _world_canvas
+    normal_hint_bar = _normal_hint_bar
+    error_hint_bar = _error_hint_bar
+    rect_tool_button = _rect_tool_button
+    script_tool_button = _script_tool_button
+    timeline_panel = _timeline_panel
+    script_panel = _script_panel
+    file_dialog_prefab = _file_dialog_prefab
+    ToolSignal.connect("script_panel_action", _open_script_panel)
 
 func _open_script_panel(open: bool) -> void:
-	script_panel.visible = open
+    script_panel.visible = open

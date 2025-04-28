@@ -5,7 +5,8 @@
 [ext_resource type="Script" uid="uid://4icp457ui0b1" path="res://Scripts/UI/Data Panel/property_input.gd" id="3_17t3b"]
 
 [node name="Property" type="HBoxContainer" node_paths=PackedStringArray("property_name_label", "property_value_control_dict")]
-offset_right = 215.0
+custom_minimum_size = Vector2(210, 0)
+offset_right = 192.0
 offset_bottom = 31.0
 script = ExtResource("1_fk3j5")
 property_name_label = NodePath("Name Label")
@@ -17,36 +18,39 @@ property_value_control_dict = {
 }
 
 [node name="Name Label" type="Label" parent="."]
+custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.8
 theme = ExtResource("1_fvka8")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 9
 text = "Position"
+clip_text = true
 
 [node name="Number" type="HBoxContainer" parent="." node_paths=PackedStringArray("value_field")]
 visible = false
+custom_minimum_size = Vector2(140, 0)
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 4
 script = ExtResource("3_17t3b")
 value_field = [NodePath("num")]
 
 [node name="num" type="SpinBox" parent="Number"]
+custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 theme = ExtResource("1_fvka8")
 min_value = -1e+07
 max_value = 1e+07
+step = 0.01
 allow_greater = true
 allow_lesser = true
-alignment = 3
 select_all_on_focus = true
 
 [node name="String" type="HBoxContainer" parent="." node_paths=PackedStringArray("value_field")]
 visible = false
+custom_minimum_size = Vector2(140, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 script = ExtResource("3_17t3b")
 type = 3
 value_field = [NodePath("str")]
@@ -63,8 +67,8 @@ select_all_on_focus = true
 
 [node name="Boolean" type="HBoxContainer" parent="." node_paths=PackedStringArray("value_field")]
 visible = false
+custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 script = ExtResource("3_17t3b")
 type = 2
 value_field = [NodePath("CheckBox")]
@@ -74,8 +78,9 @@ layout_mode = 2
 
 [node name="Vector2" type="HBoxContainer" parent="." node_paths=PackedStringArray("value_field")]
 visible = false
+custom_minimum_size = Vector2(140, 0)
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.3
 script = ExtResource("3_17t3b")
 type = 1
 value_field = [NodePath("x"), NodePath("y")]
@@ -87,9 +92,9 @@ size_flags_stretch_ratio = 2.0
 theme = ExtResource("1_fvka8")
 min_value = -1e+07
 max_value = 1e+07
+step = 0.01
 allow_greater = true
 allow_lesser = true
-alignment = 3
 select_all_on_focus = true
 
 [node name="y" type="SpinBox" parent="Vector2"]
@@ -99,9 +104,9 @@ size_flags_stretch_ratio = 2.0
 theme = ExtResource("1_fvka8")
 min_value = -1e+07
 max_value = 1e+07
+step = 0.01
 allow_greater = true
 allow_lesser = true
-alignment = 3
 select_all_on_focus = true
 
 [connection signal="value_changed" from="Number/num" to="Number" method="_on_value_changed"]

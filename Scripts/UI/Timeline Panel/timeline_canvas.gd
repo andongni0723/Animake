@@ -1,7 +1,7 @@
 class_name TimelineCanvas extends Control
 
-@export var font: Font 
-@export var canvas: Control 
+@export var font: Font
+@export var canvas: Control
 @export var duration: float = 10
 @export var frame_rate: int = 30
 @export var frame_per_px: float = 20
@@ -41,6 +41,11 @@ func _gui_input(event):
     if event is InputEventMouseButton and event.is_pressed():
         _update_time_point(event.position.x)
 
+
+func time_to_x(_sec: float) -> int:
+    return int(_sec * frame_rate * frame_per_px)
+
+
 func _update_time_point(new_x: float):
     var snapped_x: float = round(new_x / frame_per_px) * frame_per_px
     snapped_x = clamp(snapped_x, 0, total_width)
@@ -51,6 +56,7 @@ func _update_time_point(new_x: float):
     frame_changed.emit(cur_time)
     time_point._set_frame_label(f)
 
+
 func _add_animation_rect(_keyframe: Vector2, _title: String, _layer: int = 0):
     var animation_rect: AnimationRect = animation_rect_prefab.instantiate()
     animation_rect_parent.add_child(animation_rect)
@@ -58,9 +64,11 @@ func _add_animation_rect(_keyframe: Vector2, _title: String, _layer: int = 0):
     animation_rect.position.y = (_layer + 1) * 35
     animation_rect.initialize((_keyframe.y - _keyframe.x) * frame_per_px, _title)
 
+
 func clear_animation_rect():
     for child in animation_rect_parent.get_children():
         child.queue_free()
+
 
 var time := 0.0
 func _update_animation_rect(_keyframes: Array[AnimationData]):
@@ -69,6 +77,12 @@ func _update_animation_rect(_keyframes: Array[AnimationData]):
     var track_ends := []
 
     for section : AnimationData in _keyframes:
+
+        # Null Animation (Delay): Skip and don't draw
+        if section.null_anim:
+            time += section.duration
+            continue
+
         var start = int(time * frame_rate)
         var end = int(start + section.duration * frame_rate)
         var placed = false
@@ -81,7 +95,7 @@ func _update_animation_rect(_keyframes: Array[AnimationData]):
                 placed = true
                 result_layer = i
                 break
-        
+
         # If not, add a new layer
         if not placed:
             track_ends.append(end)
