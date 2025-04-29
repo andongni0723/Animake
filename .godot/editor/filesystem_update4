@@ -27,3 +27,7 @@ res://Scripts/UI/Timeline Panel/animation_data.gd
 res://Scripts/API/Flow/step_flow.gd
 res://Scripts/Managers/game-manager.gd
 res://_User/v4/main.gd
+res://_User/v2/main.gd
+res://Scripts/Animake Objects/text.gd
+res://Scripts/Base/base_object.gd
+res://_User/v1/main.gd

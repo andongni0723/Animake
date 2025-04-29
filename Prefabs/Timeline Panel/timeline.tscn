@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cvwjw6yvb3tmg"]
+[gd_scene load_steps=17 format=3 uid="uid://cvwjw6yvb3tmg"]
 
 [ext_resource type="Theme" uid="uid://cixie5v1vsdec" path="res://Data/main-theme.tres" id="1_63kco"]
 [ext_resource type="Script" uid="uid://5bhraaj75e2d" path="res://Scripts/UI/Timeline Panel/timeline_panel.gd" id="1_rd1yn"]
@@ -35,8 +35,6 @@ base_font = ExtResource("12_0ijl2")
 variation_opentype = {
 2003265652: 800
 }
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_r3wms"]
 
 [node name="Timeline Panel" type="Panel" node_paths=PackedStringArray("animation_player", "timeline_canvas", "play_button", "stop_button")]
 offset_right = 700.0
@@ -226,9 +224,6 @@ size_flags_vertical = 4
 theme = ExtResource("1_63kco")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_r3wms")
-}
 
 [node name="Panel" type="MarginContainer" parent="."]
 visible = false

@@ -102,5 +102,4 @@ func _update_animation_rect(_keyframes: Array[AnimationData]):
             result_layer = track_ends.size() - 1
 
         _add_animation_rect(Vector2(start, end), section.key_path, result_layer)
-        print(section.key_path, " " , start, " ", end)
         time += section.duration if section.wait else 0.0

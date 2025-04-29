@@ -10,19 +10,24 @@ var _animation_data_array: Array[AnimationData]
 var _anim_name := "timeline_anim"
 var _library: AnimationLibrary
 var _anim: Animation = Animation.new()
+var _reset_anim: Animation = Animation.new()
 
 func _enter_tree() -> void:
-    ToolSignal.select_folder.connect(_clear_array)
+    ToolSignal.select_folder.connect(_clear_array_and_initialize)
     timeline_canvas.frame_changed.connect(_on_frame_changed)
     play_button.pressed.connect(play_animation)
     stop_button.pressed.connect(stop_animation)
     animation_player.root_node = get_tree().root.get_path()
 
 func _exit_tree() -> void:
-    ToolSignal.select_folder.disconnect(_clear_array)
+    ToolSignal.select_folder.disconnect(_clear_array_and_initialize)
 
 func _ready():
-    _library = animation_player.get_animation_library("")
+    if animation_player.has_animation_library(""):
+        _library = animation_player.get_animation_library("")
+    else:
+        _library = AnimationLibrary.new()
+        animation_player.add_animation_library("", _library)
 
     _animation_initialize()
     animation_player.play(_anim_name, 0.0)
@@ -35,41 +40,66 @@ func _process(_delta: float) -> void:
         var x = timeline_canvas.time_to_x(animation_player.current_animation_position)
         timeline_canvas._update_time_point(x)
 
-func _animation_initialize():
-    _library.add_animation(_anim_name, _anim)
 
-func _clear_array(_p):
-    _animation_data_array.clear()
-    _anim.clear()
-    time = 0.0
-    _anim = Animation.new()
+func _animation_initialize():
+    # Add main animation
     if _library.has_animation(_anim_name):
         _library.remove_animation(_anim_name)
     _library.add_animation(_anim_name, _anim)
-    animation_player.stop()
+
+    # Add RESET animation
+    if _library.has_animation("RESET"):
+        _library.remove_animation("RESET")
+    _reset_anim.length = 0.0
+    _library.add_animation("RESET", _reset_anim)
+
+
+func _clear_array_and_initialize(_p):
+    # Data clear
+    _animation_data_array.clear()
     timeline_canvas.clear_animation_rect()
+    time = 0.0
+
+    # Animation Delete and Initialize
+    _anim = Animation.new()
+    _reset_anim = Animation.new()
+    animation_player.stop()
+    _animation_initialize()
 
 
 var time := 0.0
-func add_animation_data(_animation_data: AnimationData):
-
+func add_animation_data(_data: AnimationData):
     # Null path: add animation empty space
-    if str(_animation_data.key_path) != "" or not _animation_data.null_anim:
-        call_add_animation(_animation_data.key_path, Vector2(time, time + _animation_data.duration), _animation_data.from, _animation_data.to)
+    if str(_data.key_path) != "" or not _data.null_anim:
+        call_add_animation(_data.key_path, Vector2(time, time + _data.duration), _data.from, _data.to, _data.ease_)
 
-    time += _animation_data.duration if _animation_data.wait else 0.0
+    time += _data.duration if _data.wait else 0.0
     _anim.length = time
-    _animation_data_array.append(_animation_data)
+    _animation_data_array.append(_data)
     timeline_canvas._update_animation_rect(_animation_data_array)
 
 
-func call_add_animation(_path: String, _time: Vector2, _start_value: Variant, _end_value: Variant):
-    print("\nADD   Path:", _path, "\n   Time:", _time, "\n   Start Value:", _start_value, "\n   End Value:", _end_value)
-    var track_id = _anim.add_track(Animation.TYPE_VALUE)
+func call_add_animation(_path: String, _time: Vector2, _start_value, _end_value, _trans: float):
+    var track_id := _anim.find_track(_path, Animation.TYPE_VALUE)
+    if track_id == -1:
+        track_id = _anim.add_track(Animation.TYPE_VALUE)
+        _anim.track_set_path(track_id, _path)
 
-    _anim.track_set_path(track_id, _path)
-    _anim.track_insert_key(track_id, _time.x, _start_value)
-    _anim.track_insert_key(track_id, _time.y, _end_value)
+    _anim.track_insert_key(track_id, _time.x, _start_value, _trans)
+
+    # Setting Transition
+    var start_key_idx := _anim.track_find_key(track_id, _time.x)
+    if start_key_idx != -1:
+        _anim.track_set_key_transition(track_id, start_key_idx, _trans)
+
+    _anim.track_insert_key(track_id, _time.y, _end_value, _trans)
+
+    # Add to RESET animation
+    var reset_tid := _reset_anim.find_track(_path, Animation.TYPE_VALUE)
+    if reset_tid == -1:
+        reset_tid = _reset_anim.add_track(Animation.TYPE_VALUE)
+        _reset_anim.track_set_path(reset_tid, _path)
+        _reset_anim.track_insert_key(reset_tid, 0.0, _start_value)
 
 
 func stop_animation():
@@ -79,6 +109,7 @@ func stop_animation():
 
 func play_animation():
     animation_player.seek(0.0, true)
+    animation_player.play("RESET", 0.0)
     animation_player.play(_anim_name, 0.0)
     print_animation_details()
 

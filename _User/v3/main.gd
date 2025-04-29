@@ -1,7 +1,7 @@
 extends Node
 
 func _ready():
-    main3()
+    main()
     pass
 
 func main():
@@ -13,15 +13,18 @@ func main():
 
     var button: ImagePanel = Create.make_panel("button")
     button.add_style("rounded-/10/ scale-/0.9/-/0.3/ alpha-/0/")
-    button.size = Vector2(200, 10)
+    button.size = Vector2(200, 100)
     button.alpha = 0.0
     button.change_parent(panel.panel)
+    button.to_center(panel)
 
     var text := Create.make_text("button_text")
     text.label.text = "Button"
     text.modulate = Color.BLACK
-    text.size = button.size
+    # text.size = button.size
     text.change_parent(button.panel)
+    print(button.size)
+    text.size = button.size
 
     ToolSignal.anime_object_add_group_done.emit()
 

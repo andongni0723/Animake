@@ -18,7 +18,7 @@ var pos_y: float = 0.0:
     get:
         pos_y = position.y
         return pos_y
-    
+
 var base_object_data: SettingDetail = preload("res://Data/Object Property Data/base_object_data.tres")
 
 func _init() -> void:
@@ -28,12 +28,12 @@ func _init() -> void:
 func get_base_data() -> Array[SettingProperty]:
     return base_object_data.properties.duplicate()
 
-## Override by child class 
-## 
-## @experimental 
+## Override by child class
+##
+## @experimental
 ## [codeblock]
 ## var data_name: SettingDetail =  Datpreload("res://Data/Object Property Data/text_data.tres")
-## 
+##
 ## func get_data() -> Array[SettingProperty]:
 ##     var result = super.get_data()
 ##     result.append_array(data_name.properties.duplicate())
@@ -53,13 +53,4 @@ func add_style(style_string: String) -> void:
         if style.begins_with("pos"):
             position = NodeStyleInterpreter.position_interpret(style)
 
-
-# func tween_pos_x(final_value, duration: float,  trans: int = Tween.TRANS_QUART, _ease: int = Tween.EASE_OUT) -> AnimationData:
-#     # return Core.tween(self,   "pos_x", final_value, duration, trans, _ease)
-#     return Core.n_tween(self, "position:x", position.x, final_value, duration)
-
-# func tween_pos_y(final_value, duration: float,  trans: int = Tween.TRANS_QUART, _ease: int = Tween.EASE_OUT) -> TweenWrapper:
-#     return Core.tween(self, "pos_y", final_value, duration, trans, _ease)
-
-# func tween_pos(final_value, duration:   float,  trans: int = Tween.TRANS_QUART, _ease: int = Tween.EASE_OUT) -> TweenWrapper:
-#     return Core.tween(self, "position", final_value, duration,  trans, _ease)
+func sync_size(): pass

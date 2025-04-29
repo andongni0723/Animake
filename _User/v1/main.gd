@@ -4,7 +4,7 @@
 
 # func _ready() -> void:
 # 	main()
-	
+    
 # func main():
 # 	# Ground
 # 	var	ground := Create.make_square("ground")

@@ -11,18 +11,13 @@ var size: Vector2:
         center.set_deferred("pivot_offset", value / 2)
         center.set_deferred("position", -value / 2)
         size = value
-        # panel.custom_minimum_size = value
-        # center.size = value
-        # center.pivot_offset = value / 2
-        # center.position = -center.size / 2
-        # size = value
     get():
-        return panel.custom_minimum_size
+        return size
 
 var radius: float = 0.0:
     set(value):
         radius = value
-        var style := panel.get_theme_stylebox("panel")  # "panel" 是對應 Panel 預設的 style name
+        var style := panel.get_theme_stylebox("panel")
         if style is StyleBoxFlat:
             style.set_corner_radius_all(value)
     get():
@@ -57,10 +52,15 @@ func _ready():
         Control.PRESET_CENTER,
         Control.PRESET_MODE_KEEP_SIZE)
 
+
 func get_data() -> Array[SettingProperty]:
     var result = super.get_data()
     result.append_array(panel_data.properties.duplicate())
     return result
+
+
+func to_center(container: ImagePanel):
+    position = container.size / 2;
 
 func add_style(style_string: String) -> void:
     var styles = style_string.split(' ')
