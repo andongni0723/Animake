@@ -143,11 +143,11 @@ theme = ExtResource("1_63kco")
 [node name="Timeline Scroll Container" type="ScrollContainer" parent="Margin/VBoxContainer/Main Panel"]
 layout_mode = 2
 theme = ExtResource("1_63kco")
-horizontal_scroll_mode = 2
+vertical_scroll_mode = 2
 
 [node name="Timeline Canvas" type="Panel" parent="Margin/VBoxContainer/Main Panel/Timeline Scroll Container" node_paths=PackedStringArray("canvas", "time_point", "animation_rect_parent")]
 self_modulate = Color(0.972549, 0.956863, 0.941176, 1)
-custom_minimum_size = Vector2(2000, 0)
+custom_minimum_size = Vector2(2000, 100)
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("1_63kco")

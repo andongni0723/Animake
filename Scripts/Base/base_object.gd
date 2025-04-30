@@ -3,21 +3,26 @@ class_name BaseObject
 
 var tween: TweenProxy
 
+var pos: Vector2 = Vector2.ZERO:
+    set(value):
+        pos = value
+        position = value
+    get():
+        return position
+
 var pos_x: float = 0.0:
     set(value):
         pos_x = value
         position.x = value
     get:
-        pos_x = position.x
-        return pos_x
+        return position.x
 
 var pos_y: float = 0.0:
     set(value):
         pos_y = value
         position.y = value
     get:
-        pos_y = position.y
-        return pos_y
+        return position.y
 
 var base_object_data: SettingDetail = preload("res://Data/Object Property Data/base_object_data.tres")
 
@@ -51,6 +56,6 @@ func add_style(style_string: String) -> void:
     var styles = style_string.split(' ')
     for style in styles:
         if style.begins_with("pos"):
-            position = NodeStyleInterpreter.position_interpret(style)
+            position = NodeStyleInterpreter.vector2_interpret("pos", style, position)
 
 func sync_size(): pass

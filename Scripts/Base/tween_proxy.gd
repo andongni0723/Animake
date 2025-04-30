@@ -5,7 +5,7 @@ var property_path := ""
 var start_value
 var final_value
 var duration := 0.0
-var ease_ := 1.0
+var ease_ := -2.0
 var interp := Animation.INTERPOLATION_CUBIC_ANGLE
 var wait_ := false
 
@@ -30,8 +30,7 @@ func to(val) -> TweenProxy:
     final_value = val
     return self
 
-func ease(_interpolation, _ease: float) -> TweenProxy:
-    interp = _interpolation
+func ease(_ease: float) -> TweenProxy:
     ease_ = _ease
     return self
 

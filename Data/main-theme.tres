@@ -1,5 +1,6 @@
-[gd_resource type="Theme" load_steps=16 format=3 uid="uid://cixie5v1vsdec"]
+[gd_resource type="Theme" load_steps=18 format=3 uid="uid://cixie5v1vsdec"]
 
+[ext_resource type="FontFile" uid="uid://de04ysvmeodi6" path="res://Font/JetBrainsMono[wght].ttf" id="1_gp6gw"]
 [ext_resource type="FontFile" uid="uid://cjwnxrcj433s5" path="res://Font/JetBrainsMono-Regular.ttf" id="1_u1qfm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3oue0"]
@@ -54,6 +55,9 @@ border_width_top = 10
 border_width_bottom = 10
 border_color = Color(0.156863, 0.172549, 0.203922, 1)
 
+[sub_resource type="FontVariation" id="FontVariation_l85k6"]
+base_font = ExtResource("1_gp6gw")
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cfjqo"]
 bg_color = Color(0.117647, 0.121569, 0.160784, 1)
 border_width_left = 20
@@ -104,7 +108,7 @@ GridContainer/constants/h_separation = 10
 GridContainer/constants/v_separation = 10
 HSlider/styles/slider = SubResource("StyleBoxFlat_nlal0")
 Label/font_sizes/font_size = 18
-Label/fonts/font = ExtResource("1_u1qfm")
+Label/fonts/font = SubResource("FontVariation_l85k6")
 MarginContainer/constants/margin_bottom = 10
 MarginContainer/constants/margin_left = 10
 MarginContainer/constants/margin_right = 10

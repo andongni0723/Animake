@@ -4,18 +4,25 @@ class_name Text
 var font_size: int = 16:
     set(value):
         font_size = value
-        label.set("theme_override_font_sizes/font_size", value)
+        label.set_deferred("theme_override_font_sizes/font_size", value)
     get():
         return font_size
 
 var size: Vector2:
     set(value):
-        print(value)
-        label.size = value
+        # label.size = value
+        label.set_deferred("size", value)
         label.position = Vector2.ZERO
         size = value
     get():
-        return label.size
+        return size
+
+var alpha: float = 1:
+    set(value):
+        label.self_modulate.a = value
+        alpha = value
+    get():
+        return alpha
 
 @onready var label: Label = $"Label"
 

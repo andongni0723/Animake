@@ -4,11 +4,8 @@
 [ext_resource type="Script" uid="uid://dw1coiu41h1hl" path="res://Scripts/UI/Timeline Panel/animation_rect.gd" id="2_fs2so"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fs2so"]
-bg_color = Color(0.218756, 0.218756, 0.218756, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
+bg_color = Color(0.235297, 0.245673, 0.323495, 1)
+border_blend = true
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -16,7 +13,7 @@ corner_radius_bottom_left = 5
 
 [node name="Animation Rect" type="Panel" node_paths=PackedStringArray("label")]
 offset_right = 60.0
-offset_bottom = 30.0
+offset_bottom = 20.0
 pivot_offset = Vector2(174, 78)
 mouse_filter = 2
 theme = ExtResource("1_3qimx")
@@ -32,7 +29,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_3qimx")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 9
 text = "posisition:x"
 horizontal_alignment = 1
 vertical_alignment = 1

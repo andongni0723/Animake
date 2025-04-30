@@ -31,3 +31,7 @@ res://_User/v2/main.gd
 res://Scripts/Animake Objects/text.gd
 res://Scripts/Base/base_object.gd
 res://_User/v1/main.gd
+res://Scripts/Animake Objects/square.gd
+res://Scripts/Core/node_style_interpreter.gd
+res://Prefabs/Timeline Panel/animation_rect.tscn
+res://_User/v5/main.gd

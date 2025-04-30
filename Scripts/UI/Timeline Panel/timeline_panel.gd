@@ -63,7 +63,7 @@ func _clear_array_and_initialize(_p):
     # Animation Delete and Initialize
     _anim = Animation.new()
     _reset_anim = Animation.new()
-    animation_player.stop()
+    # animation_player.stop()
     _animation_initialize()
 
 
@@ -118,9 +118,6 @@ func _on_frame_changed(new_time: float):
     if animation_player.is_playing(): return
 
     animation_player.seek(new_time, true)
-    if animation_player.current_animation:
-        print(animation_player.current_animation)
-
 
 #region Debug
 func _print_animation_data_array():

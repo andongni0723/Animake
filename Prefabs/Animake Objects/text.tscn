@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://sp4krtx4rym1"]
+[gd_scene load_steps=5 format=3 uid="uid://sp4krtx4rym1"]
 
 [ext_resource type="Theme" uid="uid://cixie5v1vsdec" path="res://Data/main-theme.tres" id="1_1udep"]
 [ext_resource type="Script" uid="uid://bijrqlrm6n2yy" path="res://Scripts/Animake Objects/text.gd" id="2_aqmo6"]
+[ext_resource type="FontFile" uid="uid://de04ysvmeodi6" path="res://Font/JetBrainsMono[wght].ttf" id="3_a8ry1"]
+
+[sub_resource type="FontVariation" id="FontVariation_a8ry1"]
+base_font = ExtResource("3_a8ry1")
+variation_opentype = {
+2003265652: 400
+}
 
 [node name="Text" type="Node2D"]
 script = ExtResource("2_aqmo6")
@@ -15,6 +22,7 @@ offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_1udep")
+theme_override_fonts/font = SubResource("FontVariation_a8ry1")
 text = "Text"
 horizontal_alignment = 1
 vertical_alignment = 1

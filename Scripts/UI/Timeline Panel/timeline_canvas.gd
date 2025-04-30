@@ -23,7 +23,6 @@ func _ready():
     _update_time_point(0)
 
 func _draw() -> void:
-    print("draw")
     var h = canvas.size.y
 
     # Draw the background: frame number and lines
@@ -45,7 +44,6 @@ func _gui_input(event):
 func time_to_x(_sec: float) -> int:
     return int(_sec * frame_rate * frame_per_px)
 
-
 func _update_time_point(new_x: float):
     var snapped_x: float = round(new_x / frame_per_px) * frame_per_px
     snapped_x = clamp(snapped_x, 0, total_width)
@@ -57,12 +55,15 @@ func _update_time_point(new_x: float):
     time_point._set_frame_label(f)
 
 
+var max_layer = 0
 func _add_animation_rect(_keyframe: Vector2, _title: String, _layer: int = 0):
+    max_layer = _layer if _layer > max_layer else max_layer
     var animation_rect: AnimationRect = animation_rect_prefab.instantiate()
     animation_rect_parent.add_child(animation_rect)
     animation_rect.position.x = _keyframe.x * frame_per_px
-    animation_rect.position.y = (_layer + 1) * 35
-    animation_rect.initialize((_keyframe.y - _keyframe.x) * frame_per_px, _title)
+    animation_rect.position.y = 5 + (_layer + 1) * (animation_rect.size.y + 5)
+    animation_rect.initialize((_keyframe.y - _keyframe.x - 1) * frame_per_px, _title)
+    canvas.custom_minimum_size.y = (animation_rect.size.y + 5) * max_layer + 100
 
 
 func clear_animation_rect():
@@ -77,7 +78,6 @@ func _update_animation_rect(_keyframes: Array[AnimationData]):
     var track_ends := []
 
     for section : AnimationData in _keyframes:
-
         # Null Animation (Delay): Skip and don't draw
         if section.null_anim:
             time += section.duration
@@ -101,5 +101,14 @@ func _update_animation_rect(_keyframes: Array[AnimationData]):
             track_ends.append(end)
             result_layer = track_ends.size() - 1
 
-        _add_animation_rect(Vector2(start, end), section.key_path, result_layer)
+        var title := _path_tail_with_props(section.key_path)
+
+        _add_animation_rect(Vector2(start, end), title, result_layer)
         time += section.duration if section.wait else 0.0
+
+
+func _path_tail_with_props(path: NodePath) -> String:
+    var tail: String = path.get_name(path.get_name_count()-1)
+    for i in path.get_subname_count():            # 直接在迴圈累加字串
+        tail += ":" + path.get_subname(i)
+    return tail
