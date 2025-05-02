@@ -127,56 +127,26 @@ func _print_animation_data_array():
 func print_animation_details():
     print("\n=== ANIMATION DETAILS ===")
 
-    # 打印所有动画库
-    var libraries = animation_player.get_animation_library_list()
-    print("Libraries: ", libraries)
+    for lib_name in animation_player.get_animation_library_list():
+        var lib := animation_player.get_animation_library(lib_name)
+        print("\nLibrary: ", str(lib_name) if not lib_name.is_empty() else "(default)")
 
-    # 遍历每个库
-    for lib_name in libraries:
-        var library = animation_player.get_animation_library(lib_name)
-        if lib_name != "":
-            print("\nLibrary: ", lib_name)
-        else:
-            print("\nLibrary: (default)")
+        for anim_name in lib.get_animation_list():
+            var anim := lib.get_animation(anim_name)
+            print("  Animation: %-16s | Length: %.2f  | Tracks: %d"
+                  % [anim_name, anim.length, anim.get_track_count()])
 
-        # 打印库中的所有动画
-        var animations = library.get_animation_list()
-        print("  Animations: ", animations)
+            for t in range(anim.get_track_count()):
+                var key_cnt := anim.track_get_key_count(t)
 
-        # 详细打印每个动画
-        for anim_name in animations:
-            var animation = library.get_animation(anim_name)
-            print("\n  Animation: ", anim_name)
-            print("    Length: ", animation.length, " seconds")
-            print("    Track count: ", animation.get_track_count())
+                print("\n    Track %02d (%s): %s  | Keys: %d"
+                      % [t, anim.track_get_type(t),
+                         anim.track_get_path(t), key_cnt])
 
-            # 打印每个轨道的信息
-            for track_idx in range(animation.get_track_count()):
-                var track_type = animation.track_get_type(track_idx)
-                var track_path = animation.track_get_path(track_idx)
+                for k in range(key_cnt):
+                    var _time := anim.track_get_key_time(t, k)
+                    var value = anim.track_get_key_value(t, k)
+                    var trans := anim.track_get_key_transition(t, k)
+                    print("      Key %-2d: time=%.3f  value=%s  transition=%.2f" % [k, _time, value, trans])
 
-                # 获取轨道类型名称
-                var type_name = "Unknown"
-                match track_type:
-                    Animation.TYPE_VALUE: type_name = "Value"
-                    Animation.TYPE_POSITION_3D: type_name = "Position3D"
-                    Animation.TYPE_ROTATION_3D: type_name = "Rotation3D"
-                    Animation.TYPE_SCALE_3D: type_name = "Scale3D"
-                    Animation.TYPE_BLEND_SHAPE: type_name = "BlendShape"
-                    Animation.TYPE_METHOD: type_name = "Method"
-                    Animation.TYPE_BEZIER: type_name = "Bezier"
-                    Animation.TYPE_AUDIO: type_name = "Audio"
-                    Animation.TYPE_ANIMATION: type_name = "Animation"
-
-                print("    Track ", track_idx, " (", type_name, "): ", track_path)
-
-                # 打印轨道上的关键帧
-                var key_count = animation.track_get_key_count(track_idx)
-                print("      Key count: ", key_count)
-
-                for key_idx in range(key_count):
-                    var key_time = animation.track_get_key_time(track_idx, key_idx)
-                    var key_value = animation.track_get_key_value(track_idx, key_idx)
-                    var transition = animation.track_get_key_transition(track_idx, key_idx)
-                    print("      Key ", key_idx, ": time=", key_time, ", value=", key_value, ", transition=", transition)
 #endregion

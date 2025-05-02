@@ -27,18 +27,3 @@ func new_tween(_trans: int = Tween.TRANS_QUART, _ease: int = Tween.EASE_OUT) -> 
 
 func timer(_time: float) -> SceneTreeTimer:
     return get_tree().create_timer(_time)
-
-# func tween(target: Object, property: String, final_value, duration: float, _trans: int = Tween.TRANS_QUART,    _ease: int = Tween.EASE_OUT) -> TweenWrapper:
-#     if not target: return null
-#     var t := new_tween(_trans, _ease)
-#     t.tween_property(target, property, final_value, duration)
-#     var wrapper := TweenWrapper.new()
-#     wrapper.tween = t
-#     return wrapper
-
-# func n_tween(target: BaseObject, property: String, start_value, final_value, duration: float, interpolation: Animation.InterpolationType = Animation.INTERPOLATION_LINEAR, _ease: float = 1) -> AnimationData:
-#   if not target: return null
-#   var _path := target.get_path().get_concatenated_names().trim_prefix("root/")
-#   var data: AnimationData = AnimationData.new(_path + ':' + property, duration, start_value, final_value, interpolation, _ease)
-#   UIManager.timeline_panel.add_animation_data(data)
-#   return data

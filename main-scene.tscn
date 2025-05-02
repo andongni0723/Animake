@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://ddnwwsvd0y3jm"]
+[gd_scene load_steps=33 format=3 uid="uid://ddnwwsvd0y3jm"]
 
 [ext_resource type="Script" uid="uid://w85ki6lxi3eo" path="res://Scripts/Managers/ui_manager.gd" id="1_g86mt"]
 [ext_resource type="Script" uid="uid://bhae2k1rp6e5i" path="res://Scripts/Managers/hint-manager.gd" id="1_i1fv3"]
@@ -22,7 +22,11 @@
 [ext_resource type="PackedScene" uid="uid://cgm82wpkrhmlj" path="res://Prefabs/rect_tool_example_square.tscn" id="12_p0wft"]
 [ext_resource type="PackedScene" uid="uid://du77iuaovi1m1" path="res://Prefabs/Data Panel/data_panel.tscn" id="13_5k8xk"]
 [ext_resource type="PackedScene" uid="uid://dckk8tgh51sgj" path="res://Prefabs/Script Panel/script_panel.tscn" id="16_slrkl"]
+[ext_resource type="Script" uid="uid://dcw8tagfx25t7" path="res://Scripts/UI/Script Panel/menu_bar.gd" id="17_8opmy"]
 [ext_resource type="PackedScene" uid="uid://cvwjw6yvb3tmg" path="res://Prefabs/Timeline Panel/timeline.tscn" id="18_es55r"]
+[ext_resource type="Texture2D" uid="uid://g81r7sp81ida" path="res://_Assets/icon/FileBrowse.svg" id="18_qyw6v"]
+[ext_resource type="Texture2D" uid="uid://bgsj0q8oenxw3" path="res://_Assets/icon/Save.svg" id="19_fa8gu"]
+[ext_resource type="Texture2D" uid="uid://ctf077vbw77rb" path="res://Data/code_icon.svg" id="20_tova5"]
 
 [sub_resource type="Environment" id="Environment_e304g"]
 glow_enabled = true
@@ -40,6 +44,13 @@ corner_radius_bottom_left = 5
 [sub_resource type="LabelSettings" id="LabelSettings_qetym"]
 font = ExtResource("2_q2uwy")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fa8gu"]
+bg_color = Color(0.176471, 0.192157, 0.25098, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
 [sub_resource type="LabelSettings" id="LabelSettings_p0wft"]
 font = ExtResource("2_q2uwy")
 font_size = 25
@@ -54,48 +65,52 @@ script = ExtResource("1_i1fv3")
 
 [node name="UI Manager" type="Node2D" parent="." node_paths=PackedStringArray("_read_file_button", "_reload_file_button", "_canvas", "_world_canvas", "_timeline_panel", "_script_panel", "_rect_tool_button", "_script_tool_button")]
 script = ExtResource("1_g86mt")
-_normal_hint_bar = ExtResource("3_es55r")
-_error_hint_bar = ExtResource("8_ikad4")
-_file_dialog_prefab = ExtResource("6_351bi")
-_read_file_button = NodePath("../Canvas/Control/Left Panel/V Box/Read File Button")
-_reload_file_button = NodePath("../Canvas/Control/Left Panel/V Box/Reload File Button")
+_read_file_button = NodePath("../Canvas/Control/Main Box/Menu Bar/MarginContainer/HBoxContainer/Tool HBox/Read File Button")
+_reload_file_button = NodePath("../Canvas/Control/Main Box/Menu Bar/MarginContainer/HBoxContainer/Tool HBox/Reload File Button")
 _canvas = NodePath("../Canvas")
 _world_canvas = NodePath("../World Canvas")
-_timeline_panel = NodePath("../Canvas/Control/Timeline Panel")
+_normal_hint_bar = ExtResource("3_es55r")
+_error_hint_bar = ExtResource("8_ikad4")
+_timeline_panel = NodePath("../Canvas/Control/Main Box/HSplit/VSplit/Timeline Panel")
 _script_panel = NodePath("../Canvas/Control/Script Panel")
-_rect_tool_button = NodePath("../Canvas/Control/Left Panel/V Box/GridContainer/Rect Line Button")
-_script_tool_button = NodePath("../Canvas/Control/Left Panel/V Box/GridContainer/Script Button")
+_file_dialog_prefab = ExtResource("6_351bi")
+_rect_tool_button = NodePath("../Canvas/Control/Main Box/Menu Bar/MarginContainer/HBoxContainer/Tool HBox/Rect Tool Button")
+_script_tool_button = NodePath("../Canvas/Control/Main Box/Menu Bar/MarginContainer/HBoxContainer/Tool HBox/Script Tool Button")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(130, 370)
 skew = 0.31765
-zoom = Vector2(0.5, 0.5)
+zoom = Vector2(0.28, 0.28)
 script = ExtResource("6_5ug5c")
+open_drag = false
+open_zoom = false
 zoom_speed = 0.01
 min_zoom = 0.1
+metadata/_edit_lock_ = true
 
 [node name="Bounds" type="Node2D" parent="."]
 z_index = -999
 
 [node name="Bound" type="Sprite2D" parent="Bounds"]
 position = Vector2(-1172, 7)
-scale = Vector2(0.148437, 5.125)
+scale = Vector2(0.1, 5.2)
 texture = ExtResource("3_5ulvj")
 
 [node name="Bound2" type="Sprite2D" parent="Bounds"]
 position = Vector2(1172, 7)
-scale = Vector2(0.148437, 5.125)
+scale = Vector2(0.1, 5.125)
 texture = ExtResource("3_5ulvj")
 
 [node name="Bound3" type="Sprite2D" parent="Bounds"]
 position = Vector2(0, -670)
 rotation = 1.5708
-scale = Vector2(0.144, 9.3)
+scale = Vector2(0.1, 9.3)
 texture = ExtResource("3_5ulvj")
 
 [node name="Bound4" type="Sprite2D" parent="Bounds"]
 position = Vector2(0, 670)
 rotation = 1.5708
-scale = Vector2(0.144, 9.3)
+scale = Vector2(0.1, 9.3)
 texture = ExtResource("3_5ulvj")
 
 [node name="Background" type="Sprite2D" parent="."]
@@ -109,18 +124,13 @@ metadata/_edit_lock_ = true
 
 [node name="Control" type="Control" parent="Canvas"]
 layout_mode = 3
-anchor_right = 1.01181
-anchor_bottom = 1.03858
-offset_right = 6.4
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
-
-[node name="Timeline Panel" parent="Canvas/Control" instance=ExtResource("18_es55r")]
-layout_mode = 0
-offset_left = 194.0
-offset_top = 477.0
-offset_right = 853.0
-offset_bottom = 625.0
 
 [node name="Left Panel" type="MarginContainer" parent="Canvas/Control"]
 layout_mode = 0
@@ -132,71 +142,6 @@ theme = ExtResource("9_r7pl7")
 layout_mode = 2
 theme = ExtResource("9_r7pl7")
 
-[node name="Logo Background" type="TextureRect" parent="Canvas/Control/Left Panel/V Box"]
-self_modulate = Color(0.154, 0.169333, 0.2, 0)
-custom_minimum_size = Vector2(0, 43.45)
-layout_mode = 2
-texture = ExtResource("3_5ulvj")
-expand_mode = 1
-
-[node name="LOGO" type="TextureRect" parent="Canvas/Control/Left Panel/V Box/Logo Background"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -161.0
-offset_top = -30.0
-offset_right = 161.0
-offset_bottom = 30.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.48, 0.48)
-pivot_offset = Vector2(161.782, 30.678)
-texture = ExtResource("6_e304g")
-metadata/_edit_lock_ = true
-
-[node name="Read File Button" parent="Canvas/Control/Left Panel/V Box" instance=ExtResource("9_slrkl")]
-custom_minimum_size = Vector2(80, 60)
-layout_mode = 2
-toggle_mode = false
-metadata/_edit_use_anchors_ = true
-
-[node name="Label" type="Label" parent="Canvas/Control/Left Panel/V Box/Read File Button"]
-self_modulate = Color(1.2, 0.6, 1, 1)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("9_r7pl7")
-theme_override_font_sizes/font_size = 20
-text = "Read File"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Reload File Button" parent="Canvas/Control/Left Panel/V Box" instance=ExtResource("9_slrkl")]
-custom_minimum_size = Vector2(80, 60)
-layout_mode = 2
-toggle_mode = false
-
-[node name="Label2" type="Label" parent="Canvas/Control/Left Panel/V Box/Reload File Button"]
-self_modulate = Color(0.361, 0.647, 1.2, 1)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("9_r7pl7")
-theme_override_font_sizes/font_size = 20
-text = "Reload File"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
-
 [node name="GridContainer" type="GridContainer" parent="Canvas/Control/Left Panel/V Box"]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -207,8 +152,10 @@ columns = 2
 
 [node name="Rect Line Button" parent="Canvas/Control/Left Panel/V Box/GridContainer" instance=ExtResource("9_slrkl")]
 layout_mode = 2
+icon = ExtResource("3_5ulvj")
+icon = ExtResource("3_5ulvj")
 
-[node name="MarginContainer" type="MarginContainer" parent="Canvas/Control/Left Panel/V Box/GridContainer/Rect Line Button"]
+[node name="MarginContainer2" type="MarginContainer" parent="Canvas/Control/Left Panel/V Box/GridContainer/Rect Line Button"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -217,15 +164,17 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect" type="TextureRect" parent="Canvas/Control/Left Panel/V Box/GridContainer/Rect Line Button/MarginContainer"]
+[node name="TextureRect" type="TextureRect" parent="Canvas/Control/Left Panel/V Box/GridContainer/Rect Line Button/MarginContainer2"]
 layout_mode = 2
 texture = ExtResource("6_jvpjp")
 expand_mode = 1
 
 [node name="Script Button" parent="Canvas/Control/Left Panel/V Box/GridContainer" instance=ExtResource("9_slrkl")]
 layout_mode = 2
+icon = ExtResource("3_5ulvj")
+icon = ExtResource("3_5ulvj")
 
-[node name="MarginContainer" type="MarginContainer" parent="Canvas/Control/Left Panel/V Box/GridContainer/Script Button"]
+[node name="MarginContainer2" type="MarginContainer" parent="Canvas/Control/Left Panel/V Box/GridContainer/Script Button"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -234,17 +183,17 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect" type="TextureRect" parent="Canvas/Control/Left Panel/V Box/GridContainer/Script Button/MarginContainer"]
+[node name="TextureRect" type="TextureRect" parent="Canvas/Control/Left Panel/V Box/GridContainer/Script Button/MarginContainer2"]
 layout_mode = 2
 texture = ExtResource("11_qh5v2")
 expand_mode = 1
 
 [node name="Panel" type="Panel" parent="Canvas/Control"]
 layout_mode = 0
-offset_left = 195.0
-offset_top = 16.0
-offset_right = 320.0
-offset_bottom = 50.0
+offset_left = 12.0
+offset_top = 52.0
+offset_right = 137.0
+offset_bottom = 86.0
 theme = ExtResource("9_r7pl7")
 theme_override_styles/panel = SubResource("StyleBoxFlat_5ug5c")
 
@@ -264,39 +213,15 @@ script = ExtResource("4_g86mt")
 
 [node name="Current Tool Label" type="Label" parent="Canvas/Control"]
 layout_mode = 0
-offset_left = 192.0
-offset_top = 64.0
-offset_right = 710.0
-offset_bottom = 107.0
+offset_left = 12.0
+offset_top = 91.0
+offset_right = 530.0
+offset_bottom = 134.0
 scale = Vector2(0.72, 0.72)
 text = "Current Tool: None"
 label_settings = SubResource("LabelSettings_qetym")
 vertical_alignment = 1
 script = ExtResource("7_p0wft")
-
-[node name="Right Data Panel" type="VSplitContainer" parent="Canvas/Control"]
-layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -274.005
-offset_top = 15.0
-offset_right = -44.0051
-offset_bottom = -40.9998
-grow_horizontal = 0
-grow_vertical = 2
-theme = ExtResource("9_r7pl7")
-split_offset = 292
-
-[node name="Node Tree" type="Tree" parent="Canvas/Control/Right Data Panel"]
-layout_mode = 2
-theme = ExtResource("9_r7pl7")
-hide_root = true
-script = ExtResource("12_kudqo")
-
-[node name="Data Panel" parent="Canvas/Control/Right Data Panel" instance=ExtResource("13_5k8xk")]
-layout_mode = 2
 
 [node name="Script Panel" parent="Canvas/Control" instance=ExtResource("16_slrkl")]
 visible = false
@@ -306,6 +231,219 @@ offset_left = 191.0
 offset_top = 26.0
 offset_right = 1114.0
 offset_bottom = 619.0
+
+[node name="Main Box" type="VBoxContainer" parent="Canvas/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Menu Bar" type="Panel" parent="Canvas/Control/Main Box"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme = ExtResource("9_r7pl7")
+
+[node name="MarginContainer" type="MarginContainer" parent="Canvas/Control/Main Box/Menu Bar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Canvas/Control/Main Box/Menu Bar/MarginContainer"]
+layout_mode = 2
+
+[node name="LOGO" type="TextureRect" parent="Canvas/Control/Main Box/Menu Bar/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(113.25, 0)
+layout_mode = 2
+texture = ExtResource("6_e304g")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="Control" type="Control" parent="Canvas/Control/Main Box/Menu Bar/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+
+[node name="MenuBar" type="MenuBar" parent="Canvas/Control/Main Box/Menu Bar/MarginContainer/HBoxContainer" node_paths=PackedStringArray("_file_menu")]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("9_r7pl7")
+script = ExtResource("17_8opmy")
+_file_menu = NodePath("File")
+
+[node name="File" type="PopupMenu" parent="Canvas/Control/Main Box/Menu Bar/MarginContainer/HBoxContainer/MenuBar"]
+auto_translate_mode = 1
+size = Vector2i(193, 100)
+theme = ExtResource("9_r7pl7")
+hide_on_item_selection = false
+item_count = 3
+item_0/text = "Create Script File"
+item_0/id = 0
+item_1/text = "Save Script File"
+item_1/id = 1
+item_2/text = "Save As ..."
+item_2/id = 2
+
+[node name="Edit" type="PopupMenu" parent="Canvas/Control/Main Box/Menu Bar/MarginContainer/HBoxContainer/MenuBar"]
+auto_translate_mode = 1
+size = Vector2i(193, 100)
+theme = ExtResource("9_r7pl7")
+
+[node name="Tool HBox" type="HBoxContainer" parent="Canvas/Control/Main Box/Menu Bar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Read File Button" parent="Canvas/Control/Main Box/Menu Bar/MarginContainer/HBoxContainer/Tool HBox" instance=ExtResource("9_slrkl")]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_fa8gu")
+toggle_mode = false
+icon = ExtResource("18_qyw6v")
+icon = ExtResource("18_qyw6v")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="Canvas/Control/Main Box/Menu Bar/MarginContainer/HBoxContainer/Tool HBox/Read File Button"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="TextureRect" type="TextureRect" parent="Canvas/Control/Main Box/Menu Bar/MarginContainer/HBoxContainer/Tool HBox/Read File Button/MarginContainer2"]
+layout_mode = 2
+texture = ExtResource("18_qyw6v")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Reload File Button" parent="Canvas/Control/Main Box/Menu Bar/MarginContainer/HBoxContainer/Tool HBox" instance=ExtResource("9_slrkl")]
+layout_mode = 2
+size_flags_vertical = 4
+toggle_mode = false
+icon = ExtResource("19_fa8gu")
+icon = ExtResource("19_fa8gu")
+
+[node name="MarginContainer2" type="MarginContainer" parent="Canvas/Control/Main Box/Menu Bar/MarginContainer/HBoxContainer/Tool HBox/Reload File Button"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="TextureRect" type="TextureRect" parent="Canvas/Control/Main Box/Menu Bar/MarginContainer/HBoxContainer/Tool HBox/Reload File Button/MarginContainer2"]
+layout_mode = 2
+texture = ExtResource("19_fa8gu")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Rect Tool Button" parent="Canvas/Control/Main Box/Menu Bar/MarginContainer/HBoxContainer/Tool HBox" instance=ExtResource("9_slrkl")]
+layout_mode = 2
+size_flags_vertical = 4
+toggle_mode = false
+icon = ExtResource("6_jvpjp")
+icon = ExtResource("6_jvpjp")
+
+[node name="MarginContainer2" type="MarginContainer" parent="Canvas/Control/Main Box/Menu Bar/MarginContainer/HBoxContainer/Tool HBox/Rect Tool Button"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="TextureRect" type="TextureRect" parent="Canvas/Control/Main Box/Menu Bar/MarginContainer/HBoxContainer/Tool HBox/Rect Tool Button/MarginContainer2"]
+layout_mode = 2
+texture = ExtResource("19_fa8gu")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Script Tool Button" parent="Canvas/Control/Main Box/Menu Bar/MarginContainer/HBoxContainer/Tool HBox" instance=ExtResource("9_slrkl")]
+layout_mode = 2
+size_flags_vertical = 4
+toggle_mode = false
+icon = ExtResource("20_tova5")
+icon = ExtResource("20_tova5")
+
+[node name="MarginContainer2" type="MarginContainer" parent="Canvas/Control/Main Box/Menu Bar/MarginContainer/HBoxContainer/Tool HBox/Script Tool Button"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="TextureRect" type="TextureRect" parent="Canvas/Control/Main Box/Menu Bar/MarginContainer/HBoxContainer/Tool HBox/Script Tool Button/MarginContainer2"]
+layout_mode = 2
+texture = ExtResource("19_fa8gu")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="HSplit" type="HSplitContainer" parent="Canvas/Control/Main Box"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+split_offset = 900
+
+[node name="VSplit" type="VSplitContainer" parent="Canvas/Control/Main Box/HSplit"]
+layout_mode = 2
+mouse_filter = 2
+split_offset = 440
+
+[node name="Control" type="Control" parent="Canvas/Control/Main Box/HSplit/VSplit"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Timeline Panel" parent="Canvas/Control/Main Box/HSplit/VSplit" instance=ExtResource("18_es55r")]
+layout_mode = 2
+
+[node name="Right Data Panel" type="VSplitContainer" parent="Canvas/Control/Main Box/HSplit"]
+layout_mode = 2
+theme = ExtResource("9_r7pl7")
+split_offset = 292
+
+[node name="Node Tree" type="Tree" parent="Canvas/Control/Main Box/HSplit/Right Data Panel"]
+layout_mode = 2
+theme = ExtResource("9_r7pl7")
+hide_root = true
+script = ExtResource("12_kudqo")
+
+[node name="Data Panel" parent="Canvas/Control/Main Box/HSplit/Right Data Panel" instance=ExtResource("13_5k8xk")]
+layout_mode = 2
 
 [node name="Anime Node" type="Node2D" parent="."]
 
@@ -381,5 +519,5 @@ follow_viewport_enabled = true
 [node name="TextureRect" parent="World Canvas" instance=ExtResource("12_p0wft")]
 visible = false
 
-[connection signal="button_clicked" from="Canvas/Control/Right Data Panel/Node Tree" to="Canvas/Control/Right Data Panel/Node Tree" method="_on_button_clicked"]
-[connection signal="item_selected" from="Canvas/Control/Right Data Panel/Node Tree" to="Canvas/Control/Right Data Panel/Node Tree" method="_on_item_selected"]
+[connection signal="button_clicked" from="Canvas/Control/Main Box/HSplit/Right Data Panel/Node Tree" to="Canvas/Control/Main Box/HSplit/Right Data Panel/Node Tree" method="_on_button_clicked"]
+[connection signal="item_selected" from="Canvas/Control/Main Box/HSplit/Right Data Panel/Node Tree" to="Canvas/Control/Main Box/HSplit/Right Data Panel/Node Tree" method="_on_item_selected"]

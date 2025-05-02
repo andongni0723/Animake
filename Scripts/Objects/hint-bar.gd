@@ -9,7 +9,7 @@ func show_hint_bar(_title_text: String, _hint_text: String) -> void:
 	var	fade_in	= Core.new_tween()
 	fade_in.set_parallel()
 	fade_in.tween_property(self, "modulate", Color(1, 1, 1, 1),	0.3)
-	fade_in.tween_property(self, "global_position", global_position, 0.3).from(Vector2(20, 570+100))
+	fade_in.tween_property(self, "global_position", global_position, 0.3).from(global_position + Vector2(0, 100))
 	await Core.timer(1).timeout
 	var	fade_out = Core.new_tween()
 	fade_out.set_parallel()

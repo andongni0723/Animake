@@ -15,17 +15,14 @@ func _gui_input(event: InputEvent) -> void:
 		_is_drag = true
 
 	if event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
-		_mouse_delta = get_global_mouse_position() - global_position 
+		_mouse_delta = get_global_mouse_position() - global_position
 
 	if event.is_action_released("left-key"):
 		_is_chosen = !_is_chosen
 		_is_drag = false
 		choose_image.visible = _is_chosen
-		# choose_image.size = size + Vector2.ONE * 30 
-		# choose_image.position = Vector2.ZERO
-		# choose_image.scale = Vector2.ONE * 1.1
 
-	
+
 func _process(_delta):
 	if Input.is_action_pressed("delete") and _is_chosen:
 		queue_free()

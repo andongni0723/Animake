@@ -21,7 +21,7 @@ metadata/_custom_type_script = "uid://c178p6kbo1u3q"
 script = ExtResource("1_7p0ha")
 name = "Rotation"
 type = 0
-id = "center:rotation_degrees"
+id = "rotation_degrees"
 metadata/_custom_type_script = "uid://c178p6kbo1u3q"
 
 [resource]

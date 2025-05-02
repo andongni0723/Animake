@@ -5,4 +5,3 @@ class_name AnimationRect extends Panel
 func initialize(end: float, text: String) -> void:
     label.text = text
     size.x = end
-    # print("initialize", end, text)

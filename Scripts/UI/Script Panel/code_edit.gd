@@ -90,12 +90,3 @@ func _save_file() -> void:
 	_current_file = FileAccess.open(_current_file_path, FileAccess.WRITE)
 	_current_file.store_string(text)
 	HintManager.call_normal_hint("File saved")
-
-# func print_custom_classes()	-> void:
-# 	var	custom_classes = ProjectSettings.get_setting("application/config/script_classes")
-# 	print(custom_classes)
-# 	if custom_classes:
-# 		for	n in custom_classes.keys():
-# 			print(n)
-# 	else:
-# 		print("No custom classes defined.")

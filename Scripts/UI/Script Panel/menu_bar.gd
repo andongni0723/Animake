@@ -1,7 +1,7 @@
 extends MenuBar
 
 @export var _file_menu: PopupMenu
-@export var _edit_menu: PopupMenu
+# @export var _edit_menu: PopupMenu
 
 
 func _ready():
@@ -15,4 +15,3 @@ func _initialize():
 	var sh = Shortcut.new()
 	sh.events.append(ev)
 	_file_menu.set_item_shortcut(1, sh)
-	print(_edit_menu)

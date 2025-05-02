@@ -5,6 +5,8 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t871u"]
 bg_color = Color(1, 1, 1, 1)
+border_width_top = 10
+border_color = Color(0.917647, 0.27451, 0.278431, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 
@@ -19,9 +21,12 @@ outline_size = 2
 
 [node name="Error Hint Bar" type="Control" node_paths=PackedStringArray("hint_text_label")]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 1126.0
-offset_bottom = 90.0
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
 pivot_offset = Vector2(563, 45)
 script = ExtResource("1_e7al2")
 hint_text_label = NodePath("Bottom/Hint Label")
@@ -36,6 +41,7 @@ pivot_offset = Vector2(585, 52)
 theme_override_styles/panel = SubResource("StyleBoxFlat_t871u")
 
 [node name="Red Bar" type="Panel" parent="Bottom"]
+visible = false
 self_modulate = Color(1, 0.299416, 0.299416, 1)
 clip_children = 2
 layout_mode = 0

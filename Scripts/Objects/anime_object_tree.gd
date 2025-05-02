@@ -24,7 +24,6 @@ func _refresh_node_tree() -> void:
     var anime_node := GameManager._get_anime_node()
     if not anime_node: return
 
-    # var tree = Tree.new()
     var root := create_item(null)
     if not root: return
     add_node_to_tree(anime_node, root)
@@ -33,5 +32,9 @@ func add_node_to_tree(node: Node, parent: TreeItem) -> void:
     for child in node.get_children():
         var item := create_item(parent)
         item.set_text(0, child.name)
+
+        if not child is BaseObject:
+            item.set_custom_color(0, Color(0.5,0.5,0.5))
+
         item.set_metadata(0, child)
         add_node_to_tree(child, item)
