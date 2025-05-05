@@ -24,10 +24,10 @@ func main():
 
 
     var a = Flow.all()
-    a.add(panel.tween.size.x.to(1200).span(0.8))
+    a.add(panel.tween.size.to(Vector2(1200, 500)).span(0.8))
     a.add(panel.tween.self_color.to(GREEN).span(0.8))
     a.add(text.tween.label.text.to("CONTENT").span(0.5))
-    a.add(text.tween.size.x.to(1200).span(0.8))
+    a.add(text.tween.size.to(Vector2(1200, 500)).span(0.8))
     a.wait().end()
 
     a = Flow.all()

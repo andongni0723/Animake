@@ -21,7 +21,7 @@ func _clear_tree(_path: String) -> void:
 func _refresh_node_tree() -> void:
     clear()
 
-    var anime_node := GameManager._get_anime_node()
+    var anime_node := GameManager.get_anime_node()
     if not anime_node: return
 
     var root := create_item(null)

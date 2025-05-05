@@ -1,5 +1,6 @@
-extends BaseObject
-class_name Text
+class_name Text extends BaseObject
+
+@export var label: Label
 
 var font_size: int = 16:
     set(value):
@@ -23,8 +24,6 @@ var alpha: float = 1:
         alpha = value
     get():
         return alpha
-
-@onready var label: Label = $"Label"
 
 var text_data: SettingDetail = preload("res://Data/Object Property Data/text_data.tres")
 

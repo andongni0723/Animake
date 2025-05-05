@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://ddnwwsvd0y3jm"]
+[gd_scene load_steps=35 format=3 uid="uid://ddnwwsvd0y3jm"]
 
 [ext_resource type="Script" uid="uid://w85ki6lxi3eo" path="res://Scripts/Managers/ui_manager.gd" id="1_g86mt"]
 [ext_resource type="Script" uid="uid://bhae2k1rp6e5i" path="res://Scripts/Managers/hint-manager.gd" id="1_i1fv3"]
@@ -10,7 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://rner2aytek3r" path="res://Prefabs/ile_dialog.tscn" id="6_351bi"]
 [ext_resource type="Texture2D" uid="uid://c3cb14wy82v0w" path="res://_Assets/Animake-v2/Animake-v2-white.svg" id="6_e304g"]
 [ext_resource type="Texture2D" uid="uid://f3lkte1vv623" path="res://out square.png" id="6_jvpjp"]
+[ext_resource type="Script" uid="uid://db2yegdakig5l" path="res://Scripts/Managers/recorder.gd" id="7_lyro5"]
 [ext_resource type="Script" uid="uid://c6f0p3ybhm3dp" path="res://Scripts/Objects/current_tool_label.gd" id="7_p0wft"]
+[ext_resource type="Script" uid="uid://bwrldngawpyud" path="res://Scripts/Managers/record_animation_process.gd" id="7_ton0n"]
 [ext_resource type="PackedScene" uid="uid://2cea68gkwesg" path="res://Prefabs/error_hint_bar.tscn" id="8_ikad4"]
 [ext_resource type="Script" uid="uid://h6bfv4ois6dq" path="res://Scripts/Objects/mouse_line.gd" id="8_t871u"]
 [ext_resource type="Theme" uid="uid://cixie5v1vsdec" path="res://Data/main-theme.tres" id="9_r7pl7"]
@@ -27,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://g81r7sp81ida" path="res://_Assets/icon/FileBrowse.svg" id="18_qyw6v"]
 [ext_resource type="Texture2D" uid="uid://bgsj0q8oenxw3" path="res://_Assets/icon/Save.svg" id="19_fa8gu"]
 [ext_resource type="Texture2D" uid="uid://ctf077vbw77rb" path="res://Data/code_icon.svg" id="20_tova5"]
+[ext_resource type="Texture2D" uid="uid://ds6hymrdu22lu" path="res://_Assets/icon/Play.svg" id="21_ps7dk"]
 
 [sub_resource type="Environment" id="Environment_e304g"]
 glow_enabled = true
@@ -44,13 +47,6 @@ corner_radius_bottom_left = 5
 [sub_resource type="LabelSettings" id="LabelSettings_qetym"]
 font = ExtResource("2_q2uwy")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fa8gu"]
-bg_color = Color(0.176471, 0.192157, 0.25098, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-
 [sub_resource type="LabelSettings" id="LabelSettings_p0wft"]
 font = ExtResource("2_q2uwy")
 font_size = 25
@@ -59,6 +55,21 @@ font_size = 25
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_e304g")
+
+[node name="Record Viewport" type="SubViewport" parent="."]
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="Camera2D" type="Camera2D" parent="Record Viewport"]
+
+[node name="Background" type="Sprite2D" parent="Record Viewport"]
+modulate = Color(0.0784314, 0.0862745, 0.113725, 1)
+z_index = -1000
+scale = Vector2(10.2031, 6.29)
+texture = ExtResource("3_5ulvj")
+metadata/_edit_lock_ = true
+
+[node name="Anime Node Record" type="Node2D" parent="Record Viewport"]
 
 [node name="Hint Manager" type="Node2D" parent="."]
 script = ExtResource("1_i1fv3")
@@ -76,6 +87,14 @@ _script_panel = NodePath("../Canvas/Control/Script Panel")
 _file_dialog_prefab = ExtResource("6_351bi")
 _rect_tool_button = NodePath("../Canvas/Control/Main Box/Menu Bar/MarginContainer/HBoxContainer/Tool HBox/Rect Tool Button")
 _script_tool_button = NodePath("../Canvas/Control/Main Box/Menu Bar/MarginContainer/HBoxContainer/Tool HBox/Script Tool Button")
+
+[node name="Recorder" type="Node" parent="." node_paths=PackedStringArray("record_process")]
+script = ExtResource("7_lyro5")
+viewport_path = NodePath("../Record Viewport")
+record_process = NodePath("Record Process")
+
+[node name="Record Process" type="Node" parent="Recorder"]
+script = ExtResource("7_ton0n")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(130, 370)
@@ -133,6 +152,7 @@ metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
 [node name="Left Panel" type="MarginContainer" parent="Canvas/Control"]
+visible = false
 layout_mode = 0
 offset_right = 190.0
 offset_bottom = 653.0
@@ -152,8 +172,6 @@ columns = 2
 
 [node name="Rect Line Button" parent="Canvas/Control/Left Panel/V Box/GridContainer" instance=ExtResource("9_slrkl")]
 layout_mode = 2
-icon = ExtResource("3_5ulvj")
-icon = ExtResource("3_5ulvj")
 
 [node name="MarginContainer2" type="MarginContainer" parent="Canvas/Control/Left Panel/V Box/GridContainer/Rect Line Button"]
 layout_mode = 1
@@ -171,8 +189,6 @@ expand_mode = 1
 
 [node name="Script Button" parent="Canvas/Control/Left Panel/V Box/GridContainer" instance=ExtResource("9_slrkl")]
 layout_mode = 2
-icon = ExtResource("3_5ulvj")
-icon = ExtResource("3_5ulvj")
 
 [node name="MarginContainer2" type="MarginContainer" parent="Canvas/Control/Left Panel/V Box/GridContainer/Script Button"]
 layout_mode = 1
@@ -242,7 +258,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Menu Bar" type="Panel" parent="Canvas/Control/Main Box"]
-custom_minimum_size = Vector2(0, 40)
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme = ExtResource("9_r7pl7")
 
@@ -306,31 +322,8 @@ size_flags_horizontal = 3
 [node name="Read File Button" parent="Canvas/Control/Main Box/Menu Bar/MarginContainer/HBoxContainer/Tool HBox" instance=ExtResource("9_slrkl")]
 layout_mode = 2
 size_flags_vertical = 4
-theme_override_styles/normal = SubResource("StyleBoxFlat_fa8gu")
-toggle_mode = false
 icon = ExtResource("18_qyw6v")
 icon = ExtResource("18_qyw6v")
-metadata/_edit_use_anchors_ = true
-
-[node name="MarginContainer2" type="MarginContainer" parent="Canvas/Control/Main Box/Menu Bar/MarginContainer/HBoxContainer/Tool HBox/Read File Button"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="TextureRect" type="TextureRect" parent="Canvas/Control/Main Box/Menu Bar/MarginContainer/HBoxContainer/Tool HBox/Read File Button/MarginContainer2"]
-layout_mode = 2
-texture = ExtResource("18_qyw6v")
-expand_mode = 1
-stretch_mode = 5
-metadata/_edit_use_anchors_ = true
 
 [node name="Reload File Button" parent="Canvas/Control/Main Box/Menu Bar/MarginContainer/HBoxContainer/Tool HBox" instance=ExtResource("9_slrkl")]
 layout_mode = 2
@@ -339,52 +332,12 @@ toggle_mode = false
 icon = ExtResource("19_fa8gu")
 icon = ExtResource("19_fa8gu")
 
-[node name="MarginContainer2" type="MarginContainer" parent="Canvas/Control/Main Box/Menu Bar/MarginContainer/HBoxContainer/Tool HBox/Reload File Button"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="TextureRect" type="TextureRect" parent="Canvas/Control/Main Box/Menu Bar/MarginContainer/HBoxContainer/Tool HBox/Reload File Button/MarginContainer2"]
-layout_mode = 2
-texture = ExtResource("19_fa8gu")
-expand_mode = 1
-stretch_mode = 5
-metadata/_edit_use_anchors_ = true
-
 [node name="Rect Tool Button" parent="Canvas/Control/Main Box/Menu Bar/MarginContainer/HBoxContainer/Tool HBox" instance=ExtResource("9_slrkl")]
 layout_mode = 2
 size_flags_vertical = 4
 toggle_mode = false
 icon = ExtResource("6_jvpjp")
 icon = ExtResource("6_jvpjp")
-
-[node name="MarginContainer2" type="MarginContainer" parent="Canvas/Control/Main Box/Menu Bar/MarginContainer/HBoxContainer/Tool HBox/Rect Tool Button"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="TextureRect" type="TextureRect" parent="Canvas/Control/Main Box/Menu Bar/MarginContainer/HBoxContainer/Tool HBox/Rect Tool Button/MarginContainer2"]
-layout_mode = 2
-texture = ExtResource("19_fa8gu")
-expand_mode = 1
-stretch_mode = 5
-metadata/_edit_use_anchors_ = true
 
 [node name="Script Tool Button" parent="Canvas/Control/Main Box/Menu Bar/MarginContainer/HBoxContainer/Tool HBox" instance=ExtResource("9_slrkl")]
 layout_mode = 2
@@ -393,31 +346,18 @@ toggle_mode = false
 icon = ExtResource("20_tova5")
 icon = ExtResource("20_tova5")
 
-[node name="MarginContainer2" type="MarginContainer" parent="Canvas/Control/Main Box/Menu Bar/MarginContainer/HBoxContainer/Tool HBox/Script Tool Button"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="TextureRect" type="TextureRect" parent="Canvas/Control/Main Box/Menu Bar/MarginContainer/HBoxContainer/Tool HBox/Script Tool Button/MarginContainer2"]
+[node name="Record Button" parent="Canvas/Control/Main Box/Menu Bar/MarginContainer/HBoxContainer/Tool HBox" instance=ExtResource("9_slrkl")]
 layout_mode = 2
-texture = ExtResource("19_fa8gu")
-expand_mode = 1
-stretch_mode = 5
-metadata/_edit_use_anchors_ = true
+size_flags_vertical = 4
+toggle_mode = false
+icon = ExtResource("21_ps7dk")
+icon = ExtResource("21_ps7dk")
 
 [node name="HSplit" type="HSplitContainer" parent="Canvas/Control/Main Box"]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
-split_offset = 900
+split_offset = 960
 
 [node name="VSplit" type="VSplitContainer" parent="Canvas/Control/Main Box/HSplit"]
 layout_mode = 2
@@ -519,5 +459,6 @@ follow_viewport_enabled = true
 [node name="TextureRect" parent="World Canvas" instance=ExtResource("12_p0wft")]
 visible = false
 
+[connection signal="pressed" from="Canvas/Control/Main Box/Menu Bar/MarginContainer/HBoxContainer/Tool HBox/Record Button" to="Recorder" method="start_record"]
 [connection signal="button_clicked" from="Canvas/Control/Main Box/HSplit/Right Data Panel/Node Tree" to="Canvas/Control/Main Box/HSplit/Right Data Panel/Node Tree" method="_on_button_clicked"]
 [connection signal="item_selected" from="Canvas/Control/Main Box/HSplit/Right Data Panel/Node Tree" to="Canvas/Control/Main Box/HSplit/Right Data Panel/Node Tree" method="_on_item_selected"]

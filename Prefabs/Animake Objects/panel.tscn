@@ -1,12 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://cpswam8meatxt"]
 
-[ext_resource type="Script" uid="uid://cpcaoknjr4tw4" path="res://Scripts/panel.gd" id="1_smdjv"]
+[ext_resource type="Script" uid="uid://cpcaoknjr4tw4" path="res://Scripts/Animake Objects/panel.gd" id="1_smdjv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cd2lv"]
 bg_color = Color(1, 1, 1, 1)
 
-[node name="Panel" type="Node2D"]
+[node name="Panel" type="Node2D" node_paths=PackedStringArray("center", "panel")]
 script = ExtResource("1_smdjv")
+center = NodePath("Center")
+panel = NodePath("Center/panel")
 
 [node name="Center" type="CenterContainer" parent="."]
 anchors_preset = 15

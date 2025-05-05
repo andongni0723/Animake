@@ -16,6 +16,12 @@ func _physics_process(_delta):
     mouse_position = get_global_mouse_position()
 
 
+## Get the anime node from the scene tree,
+## if it isn't exist, return null
+func get_anime_node() -> Node2D:
+    return get_node_or_null("/root/Main Scene/Anime Node")
+
+
 func _dialog_initialize():
     dialog = UIManager.file_dialog_prefab.instantiate()
     add_child(dialog)
@@ -60,7 +66,6 @@ func _on_folder_selected(path):
     play_node.set_script(script)
     play_node.call_deferred("_ready")
 
-
 ## If not get main script path, return empty string ""
 func get_main_script_path(_path: String) -> String:
     # Check folder depth
@@ -90,7 +95,7 @@ func _reload_file():
     _on_folder_selected(dialog.current_path)
 
 
-func _get_anime_node() -> Node2D:
+func _get_or_create_anime_node() -> Node2D:
     var anime_node := get_node_or_null("/root/Main Scene/Anime Node")
     if not anime_node:
         anime_node = Node2D.new()

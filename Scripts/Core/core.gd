@@ -13,7 +13,8 @@ func spawn(prefab: PackedScene, _name: String, spawn_position: Vector2 = Vector2
     instance.name = _name
     instance.position = spawn_position
     instance.rotation = spawn_rotation
-    GameManager._get_anime_node().add_child(instance)
+    var anime_node = GameManager.get_anime_node()
+    if anime_node: anime_node.add_child(instance)
     ToolSignal.emit_signal("anime_object_add_group_done")
     return instance
 

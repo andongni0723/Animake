@@ -1,7 +1,7 @@
 class_name ImagePanel extends BaseObject
 
-@onready var center: CenterContainer = $"Center"
-@onready var panel: Panel = $"Center/panel"
+@export var center: CenterContainer
+@export var panel: Panel
 @export var panel_data: SettingDetail = preload("res://Data/Object Property Data/panel_data.tres")
 
 var size: Vector2:

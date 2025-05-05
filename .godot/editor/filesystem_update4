@@ -1,35 +1,20 @@
+res://Scripts/Managers/recorder.gd
 res://main-scene.tscn
 res://Data/Object Property Data/base_object_data.tres
 res://Data/main-theme.tres
-res://Data/Object Property Data/panel_data.tres
+res://Shader/rounded.gdshader
 res://Data/Object Property Data/text_data.tres
 res://Data/Object Property Data/base_sprite_data.tres
 res://Data/Object Property Data/square_data.tres
+res://Data/Object Property Data/panel_data.tres
 res://Data/Object Data/panel_detail.tres
-res://Shader/rounded.gdshader
-res://Prefabs/Animake Objects/panel.tscn
-res://Prefabs/Animake Objects/text.tscn
 res://Prefabs/Timeline Panel/timeline.tscn
-res://Prefabs/Data Panel/property_item.tscn
-res://Prefabs/Timeline Panel/animation_rect.tscn
+res://Scripts/Managers/record_animation_process.gd
+res://Prefabs/Animake Objects/panel.tscn
+res://Scripts/UI/Data Panel/data_panel.gd
 res://_User/v5/main.gd
-res://Scripts/UI/Timeline Panel/timeline_canvas.gd
-res://Prefabs/Script Panel/script_panel.tscn
-res://Prefabs/base_tool_button.tscn
-res://Scripts/UI/base_tool_button.gd
-res://Prefabs/error_hint_bar.tscn
-res://Scripts/Managers/hint-manager.gd
-res://Scripts/Objects/hint-bar.gd
-res://Scripts/Managers/camera.gd
-res://Scripts/UI/Timeline Panel/timeline_panel.gd
-res://Scripts/Base/base_object.gd
-res://Scripts/Core/core.gd
-res://Scripts/Core/node_style_interpreter.gd
-res://Scripts/Core/property_id_transformer.gd
+res://Scripts/panel.gd
+res://Scripts/Animake Objects/text.gd
+res://Prefabs/Animake Objects/text.tscn
+res://Scripts/Base/tween_wrapper.gd
 res://Scripts/Managers/game-manager.gd
-res://Scripts/Objects/anime_object_tree.gd
-res://Scripts/Objects/current_tool_label.gd
-res://Scripts/Objects/rect_tool_square.gd
-res://Scripts/UI/Script Panel/code_edit.gd
-res://Scripts/UI/Script Panel/menu_bar.gd
-res://Scripts/UI/Timeline Panel/animation_rect.gd
