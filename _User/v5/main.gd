@@ -22,7 +22,6 @@ func main():
     text.font_size = 128
     # text.label.set_variation_axis("wght", 800)
 
-
     var a = Flow.all()
     a.add(panel.tween.size.to(Vector2(1200, 500)).span(0.8))
     a.add(panel.tween.self_color.to(GREEN).span(0.8))

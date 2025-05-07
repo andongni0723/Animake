@@ -5,18 +5,24 @@ class_name RecordAnimationProcess extends Node
 ## and process the node path about prefix point to "Anime Node".
 ## @return The new animation player with the node path processed.
 func duplicate_animation_player_and_process_node_path() -> AnimationPlayer:
-    var animation_player: AnimationPlayer = UIManager.timeline_panel.animation_player.duplicate()
-    var lib := animation_player.get_animation_library("")
-    if not lib: return animation_player
+    var new_player := AnimationPlayer.new()
+    var new_lib := AnimationLibrary.new()
+    new_player.add_animation_library("", new_lib)
 
-    for anim_name in lib.get_animation_list():
-        var anim := lib.get_animation(anim_name)
+    var src_player : AnimationPlayer = UIManager.timeline_panel.animation_player
+    var src_lib    : AnimationLibrary = src_player.get_animation_library("")
 
-        for index in range(anim.get_track_count()):
-            var cur_path := anim.track_get_path(index)
-            var new_path = change_path_prefix(cur_path)
-            anim.track_set_path(index, new_path)
-    return animation_player
+    for anim_name in src_lib.get_animation_list():
+        var anim_src : Animation = src_lib.get_animation(anim_name)
+        var anim_dup : Animation = anim_src.duplicate(true)
+
+        for track_id in anim_dup.get_track_count():
+            var p : NodePath = anim_dup.track_get_path(track_id)
+            anim_dup.track_set_path(track_id, change_path_prefix(p))
+
+        new_lib.add_animation(anim_name, anim_dup)
+
+    return new_player
 
 
 ## Change the path prefix of a given path.

@@ -5,7 +5,7 @@ class_name Recorder
 @export var record_process : RecordAnimationProcess
 @export var fps            : int    = 30
 @export var duration_sec   : float  = 0.0
-@export var output_dir     : String = "user://record"
+@export var output_dir : String = OS.get_system_dir(OS.SYSTEM_DIR_DESKTOP) + "/AnimakeRecord"
 @export var ffmpeg_path    : String = "ffmpeg"
 @export var use_alpha      : bool   = false
 
@@ -58,32 +58,6 @@ func start_record():
     get_tree().paused = false
 
 
-func print_animation_details():
-    print("\n=== ANIMATION DETAILS ===")
-
-    for lib_name in _rec_player.get_animation_library_list():
-        var lib := _rec_player.get_animation_library(lib_name)
-        print("\nLibrary: ", str(lib_name) if not lib_name.is_empty() else "(default)")
-
-        for anim_name_ in lib.get_animation_list():
-            var anim := lib.get_animation(anim_name_)
-            print("  Animation: %-16s | Length: %.2f  | Tracks: %d"
-                  % [anim_name_, anim.length, anim.get_track_count()])
-
-            for t in range(anim.get_track_count()):
-                var key_cnt := anim.track_get_key_count(t)
-
-                print("\n    Track %02d (%s): %s  | Keys: %d"
-                      % [t, anim.track_get_type(t),
-                         anim.track_get_path(t), key_cnt])
-
-                for k in range(key_cnt):
-                    var _time := anim.track_get_key_time(t, k)
-                    var value = anim.track_get_key_value(t, k)
-                    var trans := anim.track_get_key_transition(t, k)
-                    print("      Key %-2d: anim_duration=%.3f  value=%s  transition=%.2f" % [k, _time, value, trans])
-
-
 func _process(_delta):
     if !_recording: return
     _capture_frame()
@@ -93,12 +67,13 @@ func _process(_delta):
         Engine.max_fps = 0
         call_deferred("_encode_video")
 
+
 func _capture_frame():
     await get_tree().process_frame
     var img := _vp.get_texture().get_image()
-    # img.flip_y()
     var path := "%s/frame_%05d.png" % [output_dir, _frame]
     img.save_png(path)
+
 
 func _duplicate_anime_node() -> bool:
     var anime_node := GameManager.get_anime_node()
@@ -106,32 +81,24 @@ func _duplicate_anime_node() -> bool:
         HintManager.call_error_hint("Failed to get anime node")
         return false
 
-    # ② 清舊副本
+    # Clear old Anime Record
     var old := _vp.get_node_or_null("Anime Node Record")
     if old: old.queue_free()
     await get_tree().process_frame        # 等舊的真刪
 
-    # ③ 複製並 deferred 加入，下一影格就會 ready
+    # Add new Anime Record and wait
     var new_node := anime_node.duplicate(DuplicateFlags.DUPLICATE_SCRIPTS)
     new_node.name = "Anime Node Record"
     await get_tree().process_frame
     _vp.add_child(new_node)
     _clone_anime_node = new_node
-
-    # var ps := PackedScene.new()
-    # ps.pack(anime_node)
-    # var clone := ps.instantiate()
-    # clone.name = "Anime Node Record"
-    # _vp.add_child(clone)
-    # _clone_anime_node = clone
-    # print("Clone")
-
     await get_tree().create_timer(3.0).timeout
     return true
 
 
 func _prepare_dir():
     DirAccess.make_dir_recursive_absolute(output_dir)
+
 
 func _encode_video():
     print("start encoding")
@@ -163,10 +130,6 @@ func _encode_video():
             out_path
         ]
 
-    # 確保 ffmpeg_path 正確（若放在 res://ffmpeg/ffmpeg.exe）
-    # if not FileAccess.file_exists(ffmpeg_path):
-        # ffmpeg_path = ProjectSettings.globalize_path("res://ffmpeg/ffmpeg.exe")
-
     var output := []
     print(ffmpeg_path, " ", args)
     var code  := OS.execute("/usr/bin/env", ["ffmpeg"] + args, output)
@@ -174,3 +137,30 @@ func _encode_video():
         print("🎬  Video exported → ", out_path)
     else:
         push_error("FFmpeg failed, code %d" % code, "\n", "\n".join(output))
+
+#region Debug
+func print_animation_details():
+    print("\n=== ANIMATION DETAILS ===")
+
+    for lib_name in _rec_player.get_animation_library_list():
+        var lib := _rec_player.get_animation_library(lib_name)
+        print("\nLibrary: ", str(lib_name) if not lib_name.is_empty() else "(default)")
+
+        for anim_name_ in lib.get_animation_list():
+            var anim := lib.get_animation(anim_name_)
+            print("  Animation: %-16s | Length: %.2f  | Tracks: %d"
+                  % [anim_name_, anim.length, anim.get_track_count()])
+
+            for t in range(anim.get_track_count()):
+                var key_cnt := anim.track_get_key_count(t)
+
+                print("\n    Track %02d (%s): %s  | Keys: %d"
+                      % [t, anim.track_get_type(t),
+                         anim.track_get_path(t), key_cnt])
+
+                for k in range(key_cnt):
+                    var _time := anim.track_get_key_time(t, k)
+                    var value = anim.track_get_key_value(t, k)
+                    var trans := anim.track_get_key_transition(t, k)
+                    print("      Key %-2d: anim_duration=%.3f  value=%s  transition=%.2f" % [k, _time, value, trans])
+#endregion

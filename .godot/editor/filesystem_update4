@@ -2,19 +2,15 @@ res://Scripts/Managers/recorder.gd
 res://main-scene.tscn
 res://Data/Object Property Data/base_object_data.tres
 res://Data/main-theme.tres
-res://Shader/rounded.gdshader
-res://Data/Object Property Data/text_data.tres
+res://Data/Object Property Data/panel_data.tres
 res://Data/Object Property Data/base_sprite_data.tres
 res://Data/Object Property Data/square_data.tres
-res://Data/Object Property Data/panel_data.tres
 res://Data/Object Data/panel_detail.tres
+res://Data/Object Property Data/text_data.tres
+res://Shader/rounded.gdshader
 res://Prefabs/Timeline Panel/timeline.tscn
-res://Scripts/Managers/record_animation_process.gd
 res://Prefabs/Animake Objects/panel.tscn
-res://Scripts/UI/Data Panel/data_panel.gd
+res://Scripts/Managers/record_animation_process.gd
 res://_User/v5/main.gd
-res://Scripts/panel.gd
-res://Scripts/Animake Objects/text.gd
-res://Prefabs/Animake Objects/text.tscn
-res://Scripts/Base/tween_wrapper.gd
+res://Scripts/Core/core.gd
 res://Scripts/Managers/game-manager.gd
