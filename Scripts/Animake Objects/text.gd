@@ -36,3 +36,18 @@ func change_parent(new_parent: Node) -> void:
     if get_parent():
         get_parent().remove_child(self)
     new_parent.add_child(self)
+
+func add_style(style_string: String) -> void:
+    var styles = style_string.split(' ')
+    print(styles)
+    for style in styles:
+        if style.begins_with("pos"):
+            position = NodeStyleInterpreter.vector2_interpret("pos", style, position)
+        elif style.begins_with("size"):
+            size = NodeStyleInterpreter.vector2_interpret("size", style, size)    
+        elif style.begins_with("font_size"):
+            font_size = NodeStyleInterpreter.number_interpret("font_size", style, font_size)
+        elif style.begins_with("alpha"):
+            alpha = NodeStyleInterpreter.number_interpret("alpha", style, alpha) 
+        elif style.begins_with("text"):
+            label.text = NodeStyleInterpreter.string_interpret("text", style, label.text)

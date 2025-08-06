@@ -115,7 +115,7 @@ func play_animation():
     animation_player.seek(0.0, true)
     animation_player.play("RESET", 0.0)
     animation_player.play(anim_name, 0.0)
-    print_animation_details()
+#    print_animation_details()
 
 
 func _on_frame_changed(new_time: float):

@@ -22,7 +22,7 @@ func _ready():
     _vp = get_node(viewport_path) as Viewport
 
 
-func _setup_record_player():
+func _setup_record_player() -> void:
     # Clone Anime Node
     if _recording: return
     await _duplicate_anime_node()
@@ -38,34 +38,27 @@ func _setup_record_player():
     print(duration_sec)
     fps = UIManager.timeline_panel.timeline_canvas.frame_rate
     _anim_name = UIManager.timeline_panel.anim_name
+    _rec_player.play("RESET", 0.0)
     _rec_player.play(_anim_name, 0.0)
     _rec_player.stop()
 
 func start_record():
+    HintManager.call_normal_hint("Start export video (.mp4)", 4)
     await _setup_record_player()
     print("Wait end")
     print(get_node_or_null("/root/Main Scene/Record Viewport/Anime Node Record/panel"))
     print(get_node_or_null("/root/Main Scene/Record Viewport/Anime Node Record/panel/Center/panel/text"))
+#    print_animation_details()
     _rec_player.seek(0.0, true)
-    _rec_player.play("RESET", 0.0)
-    _rec_player.play(_anim_name, 0.0)
-    print_animation_details()
     _frame = 0
     _frames_total = int(ceil(duration_sec * fps))
-    _recording = true
     _prepare_dir()
-    Engine.max_fps = fps
-    get_tree().paused = false
-
-
-func _process(_delta):
-    if !_recording: return
-    _capture_frame()
-    _frame += 1
-    if _frame >= _frames_total:
-        _recording = false
-        Engine.max_fps = 0
-        call_deferred("_encode_video")
+    for i in range(_frames_total):
+        _frame = i
+        _rec_player.seek(float(_frame) / fps, true)
+        await _capture_frame()
+    await get_tree().process_frame
+    call_deferred("_encode_video")    
 
 
 func _capture_frame():
@@ -99,45 +92,34 @@ func _duplicate_anime_node() -> bool:
 func _prepare_dir():
     DirAccess.make_dir_recursive_absolute(output_dir)
 
-
 func _encode_video():
-    print("start encoding")
+    var ffmpeg := "/opt/homebrew/bin/ffmpeg"
     var out_name := "capture.webm" if use_alpha else "capture.mp4"
     var out_path := "%s/%s" % [output_dir, out_name]
     var pattern := output_dir + "/frame_%05d.png"
 
     var args := [
         "-y",
-        "-r", str(fps),
-        "-f", "image2",
+        "-framerate", str(fps),
+        "-start_number", "1",
         "-i", pattern,
     ]
 
     if use_alpha:
-        args += [
-            "-c:v", "libvpx-vp9",
-            "-pix_fmt", "yuva420p",
-            "-crf", "18",
-            "-b:v", "0",
-            out_path
-        ]
+        args += ["-c:v", "libvpx-vp9", "-pix_fmt", "yuva420p", "-crf", "18", "-b:v", "0", out_path]
     else:
-        args += [
-            "-c:v", "libx264",
-            "-pix_fmt", "yuv420p",
-            "-crf", "18",
-            "-preset", "medium",
-            out_path
-        ]
+        args += ["-c:v", "libx264", "-pix_fmt", "yuv420p", "-crf", "18", "-preset", "medium", out_path]
 
     var output := []
-    print(ffmpeg_path, " ", args)
-    var code  := OS.execute("/usr/bin/env", ["ffmpeg"] + args, output)
+    var code := OS.execute(ffmpeg, args, output, true)
     if code == OK:
         print("🎬  Video exported → ", out_path)
+        HintManager.call_normal_hint("Video exported → " + out_path, 2)
     else:
-        push_error("FFmpeg failed, code %d" % code, "\n", "\n".join(output))
-
+        push_error("FFmpeg failed, code %d\n%s" % [code, "\n".join(output)])
+        HintManager.call_error_hint("FFmpeg failed, code {}\n{}".format([code, "\n".join(output)], "{}"), 3)
+        
+        
 #region Debug
 func print_animation_details():
     print("\n=== ANIMATION DETAILS ===")

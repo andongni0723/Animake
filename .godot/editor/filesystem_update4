@@ -1,4 +1,3 @@
-res://Scripts/Managers/recorder.gd
 res://main-scene.tscn
 res://Data/Object Property Data/base_object_data.tres
 res://Data/main-theme.tres
@@ -10,7 +9,14 @@ res://Data/Object Property Data/text_data.tres
 res://Shader/rounded.gdshader
 res://Prefabs/Timeline Panel/timeline.tscn
 res://Prefabs/Animake Objects/panel.tscn
-res://Scripts/Managers/record_animation_process.gd
+res://Scripts/Managers/recorder.gd
+res://Scripts/UI/Timeline Panel/timeline_panel.gd
+res://Scripts/Managers/hint-manager.gd
+res://Scripts/Objects/hint-bar.gd
 res://_User/v5/main.gd
-res://Scripts/Core/core.gd
-res://Scripts/Managers/game-manager.gd
+res://_User/v6/main..gd
+res://_User/v6/main.gd
+res://Scripts/Animake Objects/panel.gd
+res://Scripts/Animake Objects/text.gd
+res://Scripts/Base/tween_wrapper.gd
+res://Scripts/UI/Timeline Panel/timeline_canvas.gd

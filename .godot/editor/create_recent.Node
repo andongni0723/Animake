@@ -1,3 +1,4 @@
+Label
 SubViewportContainer
 Node2D
 Node
@@ -12,4 +13,3 @@ HBoxContainer
 Control
 HSplitContainer
 VSplitContainer
-VBoxContainer

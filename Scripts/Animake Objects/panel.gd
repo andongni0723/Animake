@@ -66,13 +66,10 @@ func add_style(style_string: String) -> void:
     var styles = style_string.split(' ')
     for style in styles:
         if style.begins_with("pos"):
-            # position = NodeStyleInterpreter.position_interpret(style)
             position = NodeStyleInterpreter.vector2_interpret("pos", style, position)
         elif style.begins_with("radius"):
             radius = NodeStyleInterpreter.number_interpret("radius", style, radius)
-            # radius = NodeStyleInterpreter.rounded_radius_interpret(style)
         elif style.begins_with("size"):
             size = NodeStyleInterpreter.vector2_interpret("size", style, size)
-            # size = NodeStyleInterpreter.size_interpret(style)
         elif style.begins_with("alpha"):
             alpha = NodeStyleInterpreter.number_interpret("alpha", style, alpha)
