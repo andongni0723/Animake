@@ -10,8 +10,9 @@ variation_opentype = {
 2003265652: 400
 }
 
-[node name="Text" type="Node2D"]
+[node name="Text" type="Node2D" node_paths=PackedStringArray("label")]
 script = ExtResource("2_aqmo6")
+label = NodePath("Label")
 
 [node name="Label" type="Label" parent="."]
 anchors_preset = 15

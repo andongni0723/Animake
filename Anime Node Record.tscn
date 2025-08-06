@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://qv8lx0isify3"]
+
+[ext_resource type="PackedScene" uid="uid://cpswam8meatxt" path="res://Prefabs/Animake Objects/panel.tscn" id="1_7eiod"]
+[ext_resource type="PackedScene" uid="uid://sp4krtx4rym1" path="res://Prefabs/Animake Objects/text.tscn" id="2_hlqin"]
+[ext_resource type="Theme" uid="uid://cixie5v1vsdec" path="res://Data/main-theme.tres" id="3_flvdi"]
+[ext_resource type="FontFile" uid="uid://de04ysvmeodi6" path="res://Font/JetBrainsMono[wght].ttf" id="4_ahm4q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hyejw"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="FontVariation" id="FontVariation_a8ry1"]
+base_font = ExtResource("4_ahm4q")
+variation_opentype = {
+2003265652: 400
+}
+
+[node name="Anime Node Record" type="Node2D"]
+position = Vector2(960, 540)
+
+[node name="panel" parent="." instance=ExtResource("1_7eiod")]
+script = null
+
+[node name="@CenterContainer@466" type="CenterContainer" parent="panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -500.0
+offset_top = -250.0
+offset_right = 500.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(500, 250)
+
+[node name="panel" type="Panel" parent="panel/@CenterContainer@466"]
+self_modulate = Color(1, 0.392, 0.439, 1)
+custom_minimum_size = Vector2(1000, 500)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hyejw")
+
+[node name="text" parent="panel/@CenterContainer@466/panel" instance=ExtResource("2_hlqin")]
+script = null
+
+[node name="@Label@465" type="Label" parent="panel/@CenterContainer@466/panel/text"]
+modulate = Color(0, 0, 0, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.5
+offset_right = 994.5
+offset_bottom = 500.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_flvdi")
+theme_override_fonts/font = SubResource("FontVariation_a8ry1")
+theme_override_font_sizes/font_size = 128
+text = "START"
+horizontal_alignment = 1
+vertical_alignment = 1

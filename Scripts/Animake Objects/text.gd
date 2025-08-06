@@ -1,5 +1,6 @@
-extends BaseObject
-class_name Text
+class_name Text extends BaseObject
+
+@export var label: Label
 
 var font_size: int = 16:
     set(value):
@@ -24,8 +25,6 @@ var alpha: float = 1:
     get():
         return alpha
 
-@onready var label: Label = $"Label"
-
 var text_data: SettingDetail = preload("res://Data/Object Property Data/text_data.tres")
 
 func get_data() -> Array[SettingProperty]:
@@ -37,3 +36,18 @@ func change_parent(new_parent: Node) -> void:
     if get_parent():
         get_parent().remove_child(self)
     new_parent.add_child(self)
+
+func add_style(style_string: String) -> void:
+    var styles = style_string.split(' ')
+    print(styles)
+    for style in styles:
+        if style.begins_with("pos"):
+            position = NodeStyleInterpreter.vector2_interpret("pos", style, position)
+        elif style.begins_with("size"):
+            size = NodeStyleInterpreter.vector2_interpret("size", style, size)    
+        elif style.begins_with("font_size"):
+            font_size = NodeStyleInterpreter.number_interpret("font_size", style, font_size)
+        elif style.begins_with("alpha"):
+            alpha = NodeStyleInterpreter.number_interpret("alpha", style, alpha) 
+        elif style.begins_with("text"):
+            label.text = NodeStyleInterpreter.string_interpret("text", style, label.text)

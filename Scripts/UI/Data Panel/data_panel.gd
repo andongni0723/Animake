@@ -14,7 +14,8 @@ func _exit_tree() -> void:
 func _show_property_detail(_item: TreeItem):
     _clear_v_box()
     # Object Path : AnimeNode + TreeItem Path
-    var	node_path_str: String	= str(GameManager._get_anime_node().get_path()) + _get_full_tree_item_path(_item)
+    if not GameManager.get_anime_node(): return
+    var	node_path_str: String	= str(GameManager.get_anime_node().get_path()) + _get_full_tree_item_path(_item)
     var	node: Node = get_node(NodePath(node_path_str))
     var object: BaseObject = node as BaseObject
 
@@ -43,4 +44,3 @@ func _get_full_tree_item_path(item: TreeItem) -> String:
             result = "/" + item_name + result
         current_item = current_item.get_parent()
     return result
-    

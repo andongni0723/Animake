@@ -34,5 +34,6 @@ func wait() -> TweenWrapper:
 func to_data() -> AnimationData:
     var _path = ""
     if not null_anim:
+        print(target, " ", target.get_path())
         _path = target.get_path().get_concatenated_names().trim_prefix("root/") + ":" + property_path
     return AnimationData.new(_path, duration, from, to, interp, ease_, wait_flag, null_anim)

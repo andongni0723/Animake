@@ -3,7 +3,7 @@ class_name TimelineCanvas extends Control
 @export var font: Font
 @export var canvas: Control
 @export var duration: float = 10
-@export var frame_rate: int = 30
+@export var frame_rate: int = 60
 @export var frame_per_px: float = 20
 @export var interval_frame: int = 4
 @export var keyframes: Array[Vector2]
