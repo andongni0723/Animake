@@ -71,7 +71,8 @@ func _clear_array_and_initialize(_p):
 func add_animation_data(_data: AnimationData):
     # Null path: add animation empty space
     if str(_data.key_path) != "" or not _data.null_anim:
-        call_add_animation(_data.key_path, Vector2(anim_duration, anim_duration + _data.duration), _data.from, _data.to, _data.ease_)
+        call_add_animation(_data.key_path, Vector2(anim_duration, anim_duration + _data.duration),
+        _data.from, _data.default_from,_data.to, _data.ease_)
 
     anim_duration += _data.duration if _data.wait else 0.0
     _anim.length = anim_duration
@@ -79,18 +80,29 @@ func add_animation_data(_data: AnimationData):
     timeline_canvas._update_animation_rect(_animation_data_array)
 
 
-func call_add_animation(_path: String, _time: Vector2, _start_value, _end_value, _trans: float):
+func call_add_animation(_path: String, _time: Vector2, _start_value, _default_value, _end_value, _trans: float):
     var track_id := _anim.find_track(_path, Animation.TYPE_VALUE)
     if track_id == -1:
         track_id = _anim.add_track(Animation.TYPE_VALUE)
         _anim.track_set_path(track_id, _path)
-
-    _anim.track_insert_key(track_id, _time.x, _start_value, _trans)
-
+    
+    if _start_value == null: print("start is null")
+    if _start_value == null:
+        var _key_count := _anim.track_get_key_count(track_id)
+        if _key_count > 0:
+            _start_value = _anim.track_get_key_value(track_id, _key_count - 1)
+        else:
+            _start_value = _default_value
+    print(_path, ' ', _start_value, ' ', _end_value)
+    
     # Setting Transition
     var start_key_idx := _anim.track_find_key(track_id, _time.x)
-    if start_key_idx != -1:
-        _anim.track_set_key_transition(track_id, start_key_idx, _trans)
+    if start_key_idx == -1:
+        _anim.track_insert_key(track_id, _time.x, _start_value, _trans)
+    else:
+        if _start_value != null:
+            _anim.track_insert_key(track_id, _time.x, _start_value, _trans)
+            _anim.track_set_key_transition(track_id, start_key_idx, _trans)
 
     _anim.track_insert_key(track_id, _time.y, _end_value, _trans)
 
@@ -129,6 +141,8 @@ func _print_animation_data_array():
         print("AnimationData:", i.key_path, " ", i.duration, " ", i.from, " ", i.to," ", i.wait)
 
 func print_animation_details():
+    _print_animation_data_array()
+    
     print("\n=== ANIMATION DETAILS ===")
 
     for lib_name in animation_player.get_animation_library_list():
@@ -152,5 +166,6 @@ func print_animation_details():
                     var value = anim.track_get_key_value(t, k)
                     var trans := anim.track_get_key_transition(t, k)
                     print("      Key %-2d: anim_duration=%.3f  value=%s  transition=%.2f" % [k, _time, value, trans])
-
+                    
+            print("\n")
 #endregion

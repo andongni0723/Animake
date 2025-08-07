@@ -2,8 +2,8 @@ class_name TweenWrapper extends RefCounted
 
 # var tween: Tween
 var target: BaseObject
-var property_path
-var from
+var property_path: String
+var from = null
 var to
 var duration
 var interp: int = Animation.INTERPOLATION_CUBIC
@@ -32,8 +32,8 @@ func wait() -> TweenWrapper:
     return self
 
 func to_data() -> AnimationData:
-    var _path = ""
+    var _path := ""
     if not null_anim:
-        print(target, " ", target.get_path())
         _path = target.get_path().get_concatenated_names().trim_prefix("root/") + ":" + property_path
-    return AnimationData.new(_path, duration, from, to, interp, ease_, wait_flag, null_anim)
+    var default_from = null if not target else target.get_indexed(property_path) 
+    return AnimationData.new(_path, duration, from, to, interp, ease_, wait_flag, null_anim, default_from)

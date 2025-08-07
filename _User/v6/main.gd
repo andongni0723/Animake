@@ -77,8 +77,8 @@ func anim():
     s.wait().end()
     
     var a := Flow.all()
-    a.add(r_bar.tween.pos.x.from(800).to((800 - cubes[3].pos.x - 150 - 50) / 2).span(0.5))
-    a.add(r_bar.tween.size.x.from(100).to(800).span(0.5))
+    a.add(r_bar.tween.pos.x.to((800 - cubes[3].pos.x - 150 - 50) / 2).span(0.5))
+    a.add(r_bar.tween.size.x.to(800).span(0.5))
     a.wait().end()
 
     s = Flow.step()
@@ -88,13 +88,13 @@ func anim():
     s.wait().end()
 
     a = Flow.all()
-    a.add(l_bar.tween.pos.x.from(-800).to((-800 + cubes[1].pos.x + 150 + 50) / 2).span(0.5))
-    a.add(l_bar.tween.size.x.from(100).to(400).span(0.5))
+    a.add(l_bar.tween.pos.x.to((-800 + cubes[1].pos.x + 150 + 50) / 2).span(0.5))
+    a.add(l_bar.tween.size.x.to(400).span(0.5))
     a.wait().end()
 
     s = Flow.step()
     s.add(Core.delay(0.5))
-    s.add(mid.tween.pos.x.from(cubes[1].pos_x - 20).to(cubes[2].pos_x - 20).span(0.3))
+    s.add(mid.tween.pos.x.to(cubes[2].pos_x - 20).span(0.3))
     s.add(Core.delay(0.5))
     s.wait().end()
     

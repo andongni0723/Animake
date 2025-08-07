@@ -46,9 +46,6 @@ func start_record():
     HintManager.call_normal_hint("Start export video (.mp4)", 4)
     await _setup_record_player()
     print("Wait end")
-    print(get_node_or_null("/root/Main Scene/Record Viewport/Anime Node Record/panel"))
-    print(get_node_or_null("/root/Main Scene/Record Viewport/Anime Node Record/panel/Center/panel/text"))
-#    print_animation_details()
     _rec_player.seek(0.0, true)
     _frame = 0
     _frames_total = int(ceil(duration_sec * fps))

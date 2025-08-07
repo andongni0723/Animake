@@ -2,7 +2,7 @@ class_name TweenProxy extends RefCounted
 
 var target
 var property_path := ""
-var start_value
+var start_value = null
 var final_value
 var duration := 0.0
 var ease_ := -2.0
@@ -15,10 +15,13 @@ var use_custom_start_value := false
 func _init(_t, _p := ""):
     target = _t
     property_path = _p
+    start_value = null
+    
 
 ## Return a new Proxy, accumulating the property path
 func _get(property: StringName) -> Variant:
-    var new_path = str(property) if property_path == "" else property_path + ":" + str(property)
+    print("_get")
+    var new_path := str(property) if property_path == "" else property_path + ":" + str(property)
     return TweenProxy.new(target, new_path)
 
 func from(val) -> TweenProxy:
@@ -36,6 +39,6 @@ func ease(_ease: float) -> TweenProxy:
 
 func span(val) -> TweenWrapper:
     duration = val
-    var current = target.get_indexed(property_path)
-    var start = start_value if use_custom_start_value else current
-    return TweenWrapper.new(target, property_path, start, final_value, duration, interp, ease_, wait_)
+#    var current = target.get_indexed(property_path)
+#    var start = start_value if use_custom_start_value else null
+    return TweenWrapper.new(target, property_path, start_value, final_value, duration, interp, ease_, wait_)

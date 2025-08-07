@@ -28,7 +28,7 @@ var alpha: float = 1:
 var text_data: SettingDetail = preload("res://Data/Object Property Data/text_data.tres")
 
 func get_data() -> Array[SettingProperty]:
-    var result = super.get_data()
+    var result := super.get_data()
     result.append_array(text_data.properties.duplicate())
     return result
 
@@ -38,8 +38,7 @@ func change_parent(new_parent: Node) -> void:
     new_parent.add_child(self)
 
 func add_style(style_string: String) -> void:
-    var styles = style_string.split(' ')
-    print(styles)
+    var styles := style_string.split(' ')
     for style in styles:
         if style.begins_with("pos"):
             position = NodeStyleInterpreter.vector2_interpret("pos", style, position)
