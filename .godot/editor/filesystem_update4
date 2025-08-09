@@ -1,20 +1,17 @@
-res://Scripts/Base/tween_proxy.gd
-res://Scripts/Base/tween_wrapper.gd
-res://Scripts/UI/Timeline Panel/animation_data.gd
-res://Scripts/UI/Timeline Panel/timeline_panel.gd
-res://_User/v6/main.gd
 res://main-scene.tscn
 res://Data/Object Property Data/base_object_data.tres
-res://Data/main-theme.tres
-res://Data/Object Property Data/panel_data.tres
-res://Data/Object Property Data/text_data.tres
 res://Data/Object Property Data/base_sprite_data.tres
 res://Data/Object Property Data/square_data.tres
+res://Data/main-theme.tres
+res://Data/Object Property Data/panel_data.tres
 res://Data/Object Data/panel_detail.tres
+res://Data/Object Property Data/text_data.tres
 res://Shader/rounded.gdshader
 res://Prefabs/Timeline Panel/timeline.tscn
 res://Prefabs/Animake Objects/panel.tscn
 res://Scripts/Animake Objects/text.gd
-res://_User/v7/main.gd
-res://_User/v5/main.gd
-res://Scripts/Managers/recorder.gd
+res://_User/v8/main.gd
+res://Prefabs/Animake Objects/text.tscn
+res://Scripts/UI/Timeline Panel/timeline_panel.gd
+res://Scripts/Core/node_style_interpreter.gd
+res://Scripts/Base/tween_proxy.gd

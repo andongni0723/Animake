@@ -13,9 +13,9 @@ static func number_interpret(begin: String, style: String, default_value: float 
 
 static func vector2_interpret(begin: String, style: String, default_value: Vector2 = Vector2.ZERO) -> Vector2:
     _begin_check(begin, style, default_value)
-    var result = _regex_check(style, begin + VECTOR2_PATTERN, 2)
-    var x = float(_match_check(result.get_string(1), default_value.x))
-    var y = float(_match_check(result.get_string(2), default_value.y))
+    var result := _regex_check(style, begin + VECTOR2_PATTERN, 2)
+    var x := float(_match_check(result.get_string(1), default_value.x))
+    var y := float(_match_check(result.get_string(2), default_value.y))
     return Vector2(x, y)
 
 

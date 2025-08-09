@@ -86,14 +86,12 @@ func call_add_animation(_path: String, _time: Vector2, _start_value, _default_va
         track_id = _anim.add_track(Animation.TYPE_VALUE)
         _anim.track_set_path(track_id, _path)
     
-    if _start_value == null: print("start is null")
     if _start_value == null:
         var _key_count := _anim.track_get_key_count(track_id)
         if _key_count > 0:
             _start_value = _anim.track_get_key_value(track_id, _key_count - 1)
         else:
             _start_value = _default_value
-    print(_path, ' ', _start_value, ' ', _end_value)
     
     # Setting Transition
     var start_key_idx := _anim.track_find_key(track_id, _time.x)

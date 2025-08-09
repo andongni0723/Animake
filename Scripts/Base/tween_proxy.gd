@@ -20,7 +20,6 @@ func _init(_t, _p := ""):
 
 ## Return a new Proxy, accumulating the property path
 func _get(property: StringName) -> Variant:
-    print("_get")
     var new_path := str(property) if property_path == "" else property_path + ":" + str(property)
     return TweenProxy.new(target, new_path)
 
